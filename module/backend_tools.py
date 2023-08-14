@@ -242,6 +242,13 @@ class laravel_orders():
         resource_name = input('resource name: ')
         self.action('resource', resource_name)
 
+    def makecontroller_resource(self):
+        '''
+        main_description: makecontroller resource.
+        '''
+        controller_name = option_list(self.model_list()) + 'Controller'
+        self.action('controller', controller_name + ' --resource')
+
     def migrate(self):
         '''
         main_description: migrate.
