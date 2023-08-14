@@ -1,0 +1,15 @@
+{
+    "dir": [
+        "F:/MyProjects"
+    ],
+    "exec": [
+        [
+            "Hacer autocommit",
+            "Opciones Backend"
+        ],
+        [
+            "scripts/git_update.py",
+            "scripts/backend_menu.py"
+        ]
+    ]
+}
