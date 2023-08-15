@@ -49,6 +49,8 @@ class laravel_orders():
              # Crea un nuevo controlador en la carpeta "app/Http/Controllers".
             'resource'  : 'php artisan make:resource', 
              # Crea una nueva clase de recurso en la carpeta "app/Http/Resources".
+            'route'  : 'php artisan route:list', 
+             # Muestra la lista actualizada de rutas del sistema".
         }
 
 
@@ -248,6 +250,12 @@ class laravel_orders():
         '''
         controller_name = option_list(self.model_list()) + 'Controller'
         self.action('controller', controller_name + ' --resource')
+
+    def routelist(self):
+        '''
+        main_description: routelist.
+        '''
+        self.action('route')
 
     def migrate(self):
         '''
