@@ -1,0 +1,6 @@
+ estoy probando a ver si
+ parece que en esta oportunidad si es capaz de recibir el audio que estoy mandando
+ si tengo problemas de conexión es más difícil
+ pero definitivamente es mucho mejor dictar qué escribir
+ ahora Necesito resolver como insertar texto desde el punto donde se encuentra el cursor
+ eso es un poco más complicado por lo visto.

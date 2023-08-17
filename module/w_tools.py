@@ -14,8 +14,8 @@ def Reconocimiento(ind):
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
 
-        with open('grabacion.wav', 'wb') as f:
-            f.write(audio.get_wav_data())
+        # with open('grabacion.wav', 'wb') as f:
+        #     f.write(audio.get_wav_data())
 
     try:
         # text = r.recognize_google(audio, language="en-US")
@@ -31,76 +31,6 @@ def raspado(url):
     links = bs.find_all('p')
     
     return links
-
-def obtener_microfonos_disponibles():
-    p = pyaudio.PyAudio()
-    info = p.get_host_api_info_by_index(0)
-    num_devices = info.get('deviceCount')
-    microfonos = []
-    for i in range(0, num_devices):
-        device_info = p.get_device_info_by_host_api_device_index(0, i)
-        if device_info.get('maxInputChannels') > 0:
-            microfono = {
-                'indice': i,
-                'nombre': device_info.get('name')
-            }
-            microfonos.append(microfono)
-    p.terminate()
-    return microfonos
-
-def voice_list():
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-
-    for voice in voices:
-        print("ID:", voice.id)
-        print("Name:", voice.name)
-        print("Languages:", voice.languages)
-        print("Gender:", voice.gender)
-        print("Age:", voice.age)
-        print("\n")
-
-def talk(lectura):
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)
-    engine.say(lectura)
-    engine.runAndWait()
-
-def recognizer(ruta_archivo_json):
-
-    with open(ruta_archivo_json) as archivo_json:
-        datos_json = json.load(archivo_json)
-
-    close_options = datos_json['voice_options']['close']
-    secuence_optionsA = datos_json['voice_options']['secuence'][0]
-    secuence_optionsB = datos_json['voice_options']['secuence'][1]
-    clear_options = datos_json['voice_options']['clear']
-
-    file = 'grabacion.txt'
-    if os.path.isfile(file):
-        pass
-    else:
-        string = ''
-        with open(file, 'w', encoding='utf-8') as f:
-            f.write(string)
-        f.close()
-
-    valor = False
-    while valor == False:
-
-        try:
-            dictado = Reconocimiento()            
-            objeto = orders(file, dictado)
-            
-            if objeto.close_options(close_options):
-                break        
-            objeto.secuence_options(secuence_optionsA, secuence_optionsB)
-            objeto.clear(clear_options)
-        
-        except:    
-            continue
-
 
 class orders:
 
@@ -147,3 +77,36 @@ class orders:
                 f.write(string)
             f.close()
 
+
+def recognizer(ruta_archivo_json, file):
+
+    with open(ruta_archivo_json) as archivo_json:
+        datos_json = json.load(archivo_json)
+
+    close_options = datos_json['voice_options']['close']
+    secuence_optionsA = datos_json['voice_options']['secuence'][0]
+    secuence_optionsB = datos_json['voice_options']['secuence'][1]
+    clear_options = datos_json['voice_options']['clear']
+
+    if os.path.isfile(file):
+        pass
+    else:
+        string = ''
+        with open(file, 'w', encoding='utf-8') as f:
+            f.write(string)
+        f.close()
+
+    valor = False
+    while valor == False:
+
+        try:
+            dictado = Reconocimiento(1)            
+            objeto = orders(file, dictado)
+            
+            if objeto.close_options(close_options):
+                break        
+            objeto.secuence_options(secuence_optionsA, secuence_optionsB)
+            objeto.clear(clear_options)
+        
+        except:    
+            continue
