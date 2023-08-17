@@ -1,39 +1,22 @@
+import pyttsx3
 import pyaudio
 import requests
 from bs4 import BeautifulSoup
 import speech_recognition as sr
-import sounddevice as sd
-import scipy.io.wavfile as wav
 
-def grabar_audio():
-    fs = 44100  # Frecuencia de muestreo (puedes ajustarla según tus necesidades)
-    duracion = 15  # Duración de la grabación en segundos (puedes ajustarla según tus necesidades)
-     # Obtener los dispositivos de entrada disponibles
-    dispositivos = sd.query_devices()
-    for i, dispositivo in enumerate(dispositivos):
-        print(f"Indice: {i}, Nombre: {dispositivo['name']}")
-     # Configurar el dispositivo de grabación
-    indice_dispositivo = 5  # Índice del dispositivo de grabación (ajústalo según tus necesidades)
-    canal_dispositivo = dispositivos[indice_dispositivo]['max_input_channels']
-    sd.default.device = (indice_dispositivo, canal_dispositivo)
-     # Grabar el audio
-    print("Iniciando grabacion...")
-    audio = sd.rec(int(fs * duracion), samplerate=fs, channels=canal_dispositivo)
-    sd.wait()  # Esperar a que termine la grabación
-     # Guardar el audio en un archivo WAV
-    nombre_archivo = "grabacion.wav"
-    wav.write(nombre_archivo, fs, audio)
-    print(f"Grabacion finalizada. Audio guardado en '{nombre_archivo}'.")
 
 def Reconocimiento(ind):
     r = sr.Recognizer()
     with sr.Microphone(ind) as source:
-    # with sr.WasapiLoopbackDevice() as source:
         print('Te escucho: ')
         r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
 
+        with open('grabacion.wav', 'wb') as f:
+            f.write(audio.get_wav_data())
+
     try:
+        # text = r.recognize_google(audio, language="en-US")
         text = r.recognize_google(audio, language="es-ES")
     except:
         print('No te he entendido')
@@ -62,3 +45,22 @@ def obtener_microfonos_disponibles():
             microfonos.append(microfono)
     p.terminate()
     return microfonos
+
+def voice_list():
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+
+    for voice in voices:
+        print("ID:", voice.id)
+        print("Name:", voice.name)
+        print("Languages:", voice.languages)
+        print("Gender:", voice.gender)
+        print("Age:", voice.age)
+        print("\n")
+
+def talk(lectura):
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[0].id)
+    engine.say(lectura)
+    engine.runAndWait()
