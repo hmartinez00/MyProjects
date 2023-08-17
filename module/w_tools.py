@@ -1,3 +1,5 @@
+import requests
+from bs4 import BeautifulSoup
 import speech_recognition as sr
 
 def Reconocimiento():
@@ -13,3 +15,10 @@ def Reconocimiento():
         print('No te he entendido')
 
     return text
+
+def raspado(url):
+    response = requests.get(url)
+    bs = BeautifulSoup(response.text, 'html.parser')
+    links = bs.find_all('p')
+    
+    return links
