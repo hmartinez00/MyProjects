@@ -5,11 +5,13 @@
     "exec": [
         [
             "Hacer autocommit",
-            "Opciones Backend"
+            "Opciones Backend",
+            "Prueba"
         ],
         [
             "scripts/git_update.py",
-            "scripts/backend_menu.py"
+            "scripts/backend_menu.py",
+            "scripts/test.py"
         ]
     ]
 }
