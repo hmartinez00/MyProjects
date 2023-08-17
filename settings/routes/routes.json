@@ -2,6 +2,9 @@
     "dir": [
         "F:/MyProjects"
     ],
+    "voice": [
+        "settings/routes/voice_comand_settings.json"
+    ],
     "exec": [
         [
             "Hacer autocommit",
