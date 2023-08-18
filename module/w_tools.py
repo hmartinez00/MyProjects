@@ -1,7 +1,5 @@
 import os
 import json
-import pyttsx3
-import pyaudio
 import requests
 from bs4 import BeautifulSoup
 import speech_recognition as sr
