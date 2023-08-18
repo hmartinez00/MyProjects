@@ -23,6 +23,24 @@ def Reconocimiento(ind):
 
     return text
 
+def reemplazar_espacios_archivo(nombre_archivo):
+    lineas_modificadas = []
+    
+    # Leer el archivo y verificar cada línea
+    with open(nombre_archivo, 'r', encoding='utf-8') as archivo:
+        lineas = archivo.readlines()
+        for linea in lineas:
+            if linea.startswith(' '):
+                # Reemplazar la línea eliminando el espacio inicial
+                linea_modificada = linea.lstrip()
+                lineas_modificadas.append(linea_modificada)
+            else:
+                lineas_modificadas.append(linea)
+    
+    # Escribir las líneas modificadas en el archivo
+    with open(nombre_archivo, 'w', encoding='utf-8') as archivo:
+        archivo.writelines(lineas_modificadas)
+
 def raspado(url):
     response = requests.get(url)
     bs = BeautifulSoup(response.text, 'html.parser')
@@ -96,10 +114,10 @@ def recognizer(ruta_archivo_json, file):
 
     valor = False
     while valor == False:
-
         try:
             dictado = Reconocimiento(1)            
             objeto = orders(file, dictado)
+            reemplazar_espacios_archivo(file)
             
             if objeto.close_options(close_options):
                 break        
