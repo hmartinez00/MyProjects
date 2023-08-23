@@ -44,9 +44,9 @@ def reemplazar_espacios_archivo(nombre_archivo):
 def raspado(url):
     response = requests.get(url)
     bs = BeautifulSoup(response.text, 'html.parser')
-    links = bs.find_all('p')
+    tags = bs.find_all('p')
     
-    return links
+    return tags
 
 class orders:
 
