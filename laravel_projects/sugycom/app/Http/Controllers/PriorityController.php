@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Priority;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class PriorityController extends Controller
@@ -9,9 +11,10 @@ class PriorityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $priorities = Priority::all();
+        return view('priority.index', compact('priorities'));
     }
 
     /**
