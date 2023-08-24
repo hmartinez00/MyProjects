@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('mode');
             $table->string('sensor');
             $table->string('status');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->timestamps();
-            $table->dateTime('closing_date');
+            $table->dateTime('closing_date')->nullable();
         });
     }
 
