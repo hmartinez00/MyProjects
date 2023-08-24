@@ -15,16 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('satellite');
             $table->string('target');
-            $table->decimal('latitude', 8, 6);
-            $table->decimal('longitude', 9, 6);
+            $table->float('latitude');
+            $table->float('longitude');
             $table->integer('duration');
-            $table->decimal('vh_angle', 8, 6);
+            $table->float('vh_angle');
             $table->string('mode');
             $table->string('sensor');
             $table->string('status');
             $table->string('code');
-            $table->dateTime('closing_date');
             $table->timestamps();
+            $table->dateTime('closing_date');
         });
     }
 
