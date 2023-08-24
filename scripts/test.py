@@ -1,6 +1,7 @@
 import pandas as pd
 from datetime import datetime as dt
 from General_Utilities.fecha import BatchID, dttostr
+from ManageDB.mysql_on_db import Insertar_registro_masivo
 
 # Extrayendo los datos del Dataframe
 file = r'C:\Users\admin\Downloads\Telegram Desktop\Planes Satelitales 20230823 - 20230829\Seleccion de Misiones\Control de Prioridades 20211114 191837.csv'
@@ -69,6 +70,9 @@ for i, value in enumerate(df['updated_at']):
     
     df.loc[i, 'updated_at'] = new_value
 
+for i, value in enumerate(df['satellite']):
+    if value == 'VRSS-1':
+        df.loc[i, 'closing_date'] = dttostr(dt.now())
 
 
-print(df)
+Insertar_registro_masivo(df, 'sugycom', 'priorities')
