@@ -36,9 +36,9 @@ class PriorityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Priority $priority): View
     {
-        //
+        return view('priority.show', compact('priority'));
     }
 
     /**
