@@ -1,3 +1,5 @@
+/* ============================== */
+/* color-var */
 :root {
     --letra-color: aliceblue;
     --fondo-0-color: #111;
@@ -7,21 +9,56 @@
     --fondo-4-color: rgb(38,38,38);
     --fondo-5-color: rgb(45,45,45);
 }
+/* ============================== */
+
+/* ============================== */
+/* generics */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: sans-serif;
+    font-size: 14px;
+}
 
 body {
     background-color: var(--fondo-3-color);
     color: var(--letra-color);
-    font-size: 18px;
 }
 
+.col-1  {width:  8.33%}
+.col-2  {width: 16.66%}
+.col-3  {width: 25.00%}
+.col-4  {width: 33.33%}
+.col-5  {width: 41.66%}
+.col-6  {width: 50.00%}
+.col-7  {width: 58.33%}
+.col-8  {width: 66.66%}
+.col-9  {width: 75.00%}
+.col-10 {width: 83.33%}
+.col-11 {width: 91.66%}
+.col-12 {width: 100.0%}
+
+[class*='col-'] {
+    float: left;
+}
+/* ============================== */
+
+/* ============================== */
+/* navbarh */
 .sticky {
     position: sticky;
     top: 0;
+    padding: 5px;
+    margin-bottom: 2px;
+    background-color: var(--fondo-0-color);
 }
+
 
 ul {
     list-style-type: none;
-    background-color: var(--fondo-0-color);
 }
 
 li a {
@@ -31,7 +68,37 @@ li a {
     padding-bottom: 3px;
     margin-left: 0;
 }
+/* ============================== */
 
+/* ============================== */
+/* navbarv */
+.navbarv {
+    background-color: var(--fondo-1-color);
+    height: 100vh;
+    margin-right: 10px;
+}
+
+.dropbtn {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbarv > li a:hover, .dropbtn:hover {
+    background-color: var(--fondo-5-color);
+}
+/* ============================== */
+
+/* ============================== */
+/* table */
 h2 {
     font-size: 1.2rem;
 }
@@ -40,17 +107,23 @@ table thead tr th {
     font-size: 1rem;
     text-align: center;
     background-color: var(--fondo-1-color);
-    padding: 1px 10px;
+    padding: 2px 10px;
 }
 
 tbody > tr {
     font-size: 0.7rem;
 }
 
+.target {
+    width: 200px;
+    overflow-x: hidden;
+}
+
 tbody > tr td > a {
     text-decoration: none;
     display: block;
     color: var(--letra-color);
+    padding: 1px;
 }
 
 tbody > tr:nth-child(even) {
@@ -64,3 +137,4 @@ tbody > tr:nth-child(odd) {
 tbody > tr:hover {
     background-color: var(--fondo-5-color);
 }
+/* ============================== */
