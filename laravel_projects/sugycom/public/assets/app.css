@@ -1,3 +1,66 @@
+:root {
+    --letra-color: aliceblue;
+    --fondo-0-color: #111;
+    --fondo-1-color: rgb(22,22,22);
+    --fondo-2-color: rgb(30,30,30);
+    --fondo-3-color: rgb(31,31,31);
+    --fondo-4-color: rgb(38,38,38);
+    --fondo-5-color: rgb(45,45,45);
+}
+
 body {
-    background-color: rgb(31,31,31);
+    background-color: var(--fondo-3-color);
+    color: var(--letra-color);
+    font-size: 18px;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+ul {
+    list-style-type: none;
+    background-color: var(--fondo-0-color);
+}
+
+li a {
+    display: block;
+    color: var(--letra-color);
+    text-decoration: none;
+    padding-bottom: 3px;
+    margin-left: 0;
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+table thead tr th {
+    font-size: 1rem;
+    text-align: center;
+    background-color: var(--fondo-1-color);
+    padding: 1px 10px;
+}
+
+tbody > tr {
+    font-size: 0.7rem;
+}
+
+tbody > tr td > a {
+    text-decoration: none;
+    display: block;
+    color: var(--letra-color);
+}
+
+tbody > tr:nth-child(even) {
+    background-color: var(--fondo-4-color);
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: var(--fondo-3-color);
+}
+
+tbody > tr:hover {
+    background-color: var(--fondo-5-color);
 }

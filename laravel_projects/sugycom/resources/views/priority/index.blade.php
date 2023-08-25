@@ -1,28 +1,28 @@
 @extends('layouts.app')
 @section('content')
     <h2>Priorities</h2>
-    <div class="table-responsive small">
-        <table class="table table-striped table-sm">
+    <div>
+        <table>
             <thead>
                 <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">satellite</th>
-                    <th scope="col">target</th>
-                    <th scope="col">status</th>
-                    <th scope="col">created_at</th>
+                    <th>id</th>
+                    <th>satellite</th>
+                    <th>target</th>
+                    <th>status</th>
+                    <th>created_at</th>
                 </tr>
             </thead>
             <tbody>
-            @forelse ($priorities as $priority)
-                <tr>
-                    <td>{{ $priority->id }}</td>
-                    <td>{{ $priority->satellite }}</td>
-                    <td>{{ $priority->target }}</td>
-                    <td>{{ $priority->status }}</td>
-                    <td>{{ $priority->created_at }}</td>
-                </tr>
+                @forelse ($priorities as $priority)
+                    <tr>
+                        <td><a href="#">{{ $priority->id }}</a></td>
+                        <td><a href="#">{{ $priority->satellite }}</a></td>
+                        <td><a href="#">{{ $priority->target }}</a></td>
+                        <td><a href="#">{{ $priority->status }}</a></td>
+                        <td><a href="#">{{ $priority->created_at }}</a></td>
+                    </tr>
                 @empty
-                <p>No data.</p>
+                    <p>No data.</p>
                 @endforelse
             </tbody>
         </table>
