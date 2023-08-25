@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <h2>Priorities</h2>
-    <div>
-        <table>
+    <div class="content">
+        <h2>Priorities</h2>
+        <table class="table-index">
             <thead>
                 <tr>
                     <th>id</th>
