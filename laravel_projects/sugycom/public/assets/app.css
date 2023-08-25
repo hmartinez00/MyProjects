@@ -28,18 +28,6 @@ body {
     color: var(--letra-color);
 }
 
-ul {
-    list-style-type: none;
-}
-
-li a {
-    display: block;
-    color: var(--letra-color);
-    text-decoration: none;
-    padding-bottom: 3px;
-    margin-left: 0;
-}
-
 .col-1  {width:  8.33%}
 .col-2  {width: 16.66%}
 .col-3  {width: 25.00%}
@@ -58,7 +46,8 @@ li a {
 }
 
 .content {
-    margin: 20px;
+    margin-left: 40px;
+    margin-top: 20px;
 }
 
 /* ============================== */
@@ -68,9 +57,17 @@ li a {
 .navbarh {
     position: sticky;
     top: 0;
-    padding: 5px;
+    background-color: var(--fondo-1-color);
     margin-bottom: 2px;
+}
+
+.navbarh > a {
+    display: inline-block;
     background-color: var(--fondo-0-color);
+    color: var(--letra-color);
+    text-decoration: none;
+    padding: 7px 27px;
+    margin-left: 0;
 }
 /* ============================== */
 
@@ -78,8 +75,16 @@ li a {
 /* navbarv */
 .navbarv {
     background-color: var(--fondo-1-color);
-    height: 100vh;
+    height: 90vh;
     margin-right: 10px;
+}
+
+.navbarv > ul > li a {
+    display: block;
+    color: var(--letra-color);
+    text-decoration: none;
+    padding-bottom: 3px;
+    margin-left: 0;
 }
 
 .dropbtn {
