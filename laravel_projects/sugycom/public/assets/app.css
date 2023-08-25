@@ -101,7 +101,7 @@ body {
     display: block;
 }
 
-.navbarv > li a:hover, .dropbtn:hover {
+.navbarv > ul > li a:hover, .dropbtn:hover {
     background-color: var(--fondo-5-color);
 }
 /* ============================== */
