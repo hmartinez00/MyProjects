@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
 </head>
 <body>
-    <nav class="sticky">
-        <ul>
-            <li><a href="{{ route('priority.index') }}">Sugycom</a></li>
-        </ul>
-    </nav>
+    @include('layouts._partials.navbarh')
     <div class="container">
         <div class="row">
             <div class="col-2">
