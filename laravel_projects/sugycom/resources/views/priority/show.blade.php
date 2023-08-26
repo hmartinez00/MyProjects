@@ -6,7 +6,7 @@
             <tbody>
                 <tr>
                     <td>id:</td>
-                    <td>{{ $priority->id }}</td>
+                    <td><input type="text" name="id" class="form-control" value="{{ $priority->id }}"></td>
                 </tr>
                 <tr>
                     <td>satellite:</td>
