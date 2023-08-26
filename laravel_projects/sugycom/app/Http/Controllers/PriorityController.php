@@ -6,6 +6,7 @@ use App\Models\Priority;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PriorityController extends Controller
 {
@@ -63,8 +64,9 @@ class PriorityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Priority $priority):RedirectResponse
     {
-        //
+        $priority->delete();
+        return redirect()->route('priority.index');
     }
 }

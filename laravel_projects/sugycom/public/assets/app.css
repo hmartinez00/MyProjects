@@ -10,6 +10,8 @@
     --fondo-5-color: rgb(45,45,45);
     --btn-primary-0: rgb(37, 105, 202);
     --btn-primary-1: rgb(11, 94, 215);
+    --btn-danger-0: rgb(220, 53, 69);
+    --btn-danger-1: rgb(187, 45, 59);
 }
 /* ============================== */
 
@@ -183,10 +185,35 @@ tbody > tr:hover {
 .btn-primary > a {
     text-decoration: none;
     color: var(--letra-color);
+    display: block;
 }
 
 .btn-primary:hover {
     background-color: var(--btn-primary-1);
+    cursor: pointer;
+}
+
+.btn-danger {
+    text-decoration: none;
+    background-color: var(--btn-danger-0);
+    color: var(--letra-color);
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-danger > a {
+    text-decoration: none;
+    color: var(--letra-color);
+    display: block;
+}
+
+.btn-danger:hover {
+    background-color: var(--btn-danger-1);
     cursor: pointer;
 }
 /* ============================== */
