@@ -23,13 +23,6 @@
                         <td><a href="{{ route('priority.show', $priority->id) }}" class="target">{{ $priority->target }}</a></td>
                         <td><a href="{{ route('priority.show', $priority->id) }}">{{ $priority->status }}</a></td>
                         <td><a href="{{ route('priority.show', $priority->id) }}">{{ $priority->created_at }}</a></td>
-                        <td>
-                            <form action="{{ route('priority.destroy', $priority->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn-danger">Delete</button>
-                            </form>
-                        </td>
                     </tr>
                 @empty
                     <p>No data.</p>

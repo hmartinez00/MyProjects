@@ -61,8 +61,13 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn-primary">
-            <a href="{{ route('priority.edit', $priority->id) }}">Edit</a>
-        </button>
+        <form action="{{ route('priority.destroy', $priority->id) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn-danger">Delete</button>
+            <button class="btn-primary">
+                <a href="{{ route('priority.edit', $priority->id) }}">Edit</a>
+            </button>
+        </form>
     </div>
 @endsection

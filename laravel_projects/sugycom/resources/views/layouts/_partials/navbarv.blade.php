@@ -1,6 +1,6 @@
 <nav class="navbarv">
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><i class="bi bi-0-circle"></i><a href="{{ route('priority.index') }}">Priorities</a></li>
         <li><a href="#">News</a></li>
         <li class="dropdown">
             <a href="#" class="dropbtn">Dropdown</a>
