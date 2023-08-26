@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="content">
+        <button class="btn-primary">
+            <a href="#">+</a>
+        </button>
         <h2>Priorities</h2>
         <table class="table-index">
             <thead>
@@ -20,7 +23,6 @@
                         <td><a href="{{ route('priority.show', $priority->id) }}" class="target">{{ $priority->target }}</a></td>
                         <td><a href="{{ route('priority.show', $priority->id) }}">{{ $priority->status }}</a></td>
                         <td><a href="{{ route('priority.show', $priority->id) }}">{{ $priority->created_at }}</a></td>
-                        <td><a href="{{ route('priority.edit', $priority->id) }}">Edit</a></td>
                     </tr>
                 @empty
                     <p>No data.</p>

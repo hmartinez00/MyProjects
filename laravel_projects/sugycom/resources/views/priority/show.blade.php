@@ -1,16 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <div class="content">
-        <h2>{{ $priority->target }}</h2>
         <table class="table-show">
             <tbody>
                 <tr>
                     <td>id:</td>
-                    <td><input type="text" name="id" class="form-control" value="{{ $priority->id }}"></td>
+                    <td>{{ $priority->id }}</td>
                 </tr>
                 <tr>
                     <td>satellite:</td>
                     <td>{{ $priority->satellite }}</td>
+                </tr>
+                <tr>
+                    <td>target:</td>
+                    <td>{{ $priority->target }}</td>
                 </tr>
                 <tr>
                     <td>latitude:</td>
@@ -58,5 +61,8 @@
                 </tr>
             </tbody>
         </table>
+        <button class="btn-primary">
+            <a href="{{ route('priority.edit', $priority->id) }}">Edit</a>
+        </button>
     </div>
 @endsection

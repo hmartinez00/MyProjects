@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Priority;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -52,9 +53,10 @@ class PriorityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Priority $priority): RedirectResponse
     {
-        //
+        $priority->update($request->all());
+        return redirect()->route('priority.show', $priority->id);
     }
 
     /**

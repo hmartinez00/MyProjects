@@ -8,6 +8,8 @@
     --fondo-3-color: rgb(31,31,31);
     --fondo-4-color: rgb(38,38,38);
     --fondo-5-color: rgb(45,45,45);
+    --btn-primary-0: rgb(37, 105, 202);
+    --btn-primary-1: rgb(11, 94, 215);
 }
 /* ============================== */
 
@@ -126,6 +128,7 @@ body {
 
 .table-show > tbody > tr td:first-child {
     text-align: right;
+    padding-right: 10px;
 }
 
 .target {
@@ -150,5 +153,40 @@ tbody > tr:nth-child(odd) {
 
 tbody > tr:hover {
     background-color: var(--fondo-5-color);
+}
+
+.form-control {
+    background-color: var(--fondo-1-color);
+    color: var(--letra-color);
+    border: none;
+    border-radius: 4px;
+    width: auto;
+}
+
+.form-control:hover {
+    background-color: var(--fondo-5-color);
+}
+
+.btn-primary {
+    text-decoration: none;
+    background-color: var(--btn-primary-0);
+    color: var(--letra-color);
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary > a {
+    text-decoration: none;
+    color: var(--letra-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-primary-1);
+    cursor: pointer;
 }
 /* ============================== */
