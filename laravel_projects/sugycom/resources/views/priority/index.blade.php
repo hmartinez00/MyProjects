@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
         <button class="btn-primary">
-            <a href="{{ route('priority.create') }}">+</a>
+            <a href="{{ route('priority.create') }}"><i class="fa fa-plus"></i></a>
         </button>
         <h2>Priorities</h2>
         <table class="table-index">
