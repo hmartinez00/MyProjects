@@ -72,7 +72,7 @@
                     </tr>
                     <tr>
                         <td>created_at:</td>
-                        <td><input type="datetime-local" name="created_at" class="form-control" value="{{ $priority->created_at }}"></td>
+                        <td><input type="datetime-local" name="created_at" class="form-control" value="{{ $priority->created_at->format('Y-m-d H:i:s') }}"></td>
                     </tr>
                     <tr>
                         <td>updated_at:</td>
