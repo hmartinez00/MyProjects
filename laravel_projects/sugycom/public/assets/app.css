@@ -38,7 +38,7 @@ i {
     font-size: 0.9rem;
 }
 
-.col-1  {width:  8.33%}
+/* .col-1  {width:  8.33%}
 .col-2  {width: 16.66%}
 .col-3  {width: 25.00%}
 .col-4  {width: 33.33%}
@@ -53,7 +53,48 @@ i {
 
 [class*='col-'] {
     float: left;
+} */
+
+/* Estilos para el contenedor principal */
+.container {
+  width: 100%; /* Ancho del contenedor al 100% */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Margen automático para centrar el contenedor */
+  padding: 0 15px; /* Espacio interno del contenedor */
 }
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ /* Estilos para las filas */
+.row {
+  display: flex; /* Utilizar el modelo de flexbox para organizar las columnas */
+  flex-wrap: wrap; /* Permitir que las columnas se envuelvan en varias filas */
+  margin: 0 -15px; /* Margen negativo para compensar el espaciado de las columnas */
+}
+ /* Estilos para las columnas */
+.col {
+  flex-basis: 0; /* Valor inicial para el tamaño de las columnas */
+  flex-grow: 1; /* Permitir que las columnas crezcan para llenar el espacio disponible */
+  max-width: 100%; /* Ancho máximo de las columnas */
+  padding: 0 15px; /* Espacio interno de las columnas */
+}
+ /* Estilos para columnas específicas */
+.col-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+.col-2 { flex: 0 0 16.66%; max-width: 16.66%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+.col-8 { flex: 0 0 66.66%; max-width: 66.66%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.col-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
 
 .content {
     margin-left: 40px;
@@ -68,7 +109,6 @@ i {
     position: sticky;
     top: 0;
     background-color: var(--fondo-1-color);
-    margin-bottom: 2px;
 }
 
 .navbarh > a {
@@ -87,6 +127,10 @@ i {
     background-color: var(--fondo-1-color);
     height: 90vh;
     margin-right: 10px;
+}
+
+.navbarv > ul > li:first-child {
+    padding-top: 5px;
 }
 
 .navbarv > ul > li a {
@@ -223,3 +267,15 @@ tbody > tr:hover {
     cursor: pointer;
 }
 /* ============================== */
+
+/* ============================== */
+/* footer-container */
+
+.footer-container {
+    bottom: 0;    
+    background-color: var(--fondo-0-color);
+    width: 100%;
+}
+
+/* ============================== */
+

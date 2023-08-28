@@ -18,8 +18,10 @@
             <div class="col-9">
                 @yield('content')
             </div>
-            <div class="col-1"></div>
         </div>
+    </div>
+    <div>
+        @include('layouts._partials.footer')
     </div>
 </body>
 </html>
