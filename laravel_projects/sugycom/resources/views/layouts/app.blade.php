@@ -20,8 +20,6 @@
             </div>
         </div>
     </div>
-    <div>
-        @include('layouts._partials.footer')
-    </div>
+    @include('layouts._partials.footer')
 </body>
 </html>

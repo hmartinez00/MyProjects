@@ -38,6 +38,10 @@ i {
     font-size: 0.9rem;
 }
 
+li {
+    list-style-type: none;
+}
+
 /* .col-1  {width:  8.33%}
 .col-2  {width: 16.66%}
 .col-3  {width: 25.00%}
@@ -57,30 +61,30 @@ i {
 
 /* Estilos para el contenedor principal */
 .container {
-  width: 100%; /* Ancho del contenedor al 100% */
-  max-width: 1200px; /* Ancho máximo del contenedor */
-  margin: 0 auto; /* Margen automático para centrar el contenedor */
-  padding: 0 15px; /* Espacio interno del contenedor */
+    width: 100%; /* Ancho del contenedor al 100% */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0; /* Margen automático para centrar el contenedor */
+    padding: 0 15px; /* Espacio interno del contenedor */
 }
 .container-fluid {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    /* padding-right: 15px; */
+    /* padding-left: 15px; */
+    /* margin-right: auto; */
+    /* margin-left: auto; */
 }
  /* Estilos para las filas */
 .row {
-  display: flex; /* Utilizar el modelo de flexbox para organizar las columnas */
-  flex-wrap: wrap; /* Permitir que las columnas se envuelvan en varias filas */
-  margin: 0 -15px; /* Margen negativo para compensar el espaciado de las columnas */
+    display: flex; /* Utilizar el modelo de flexbox para organizar las columnas */
+    flex-wrap: wrap; /* Permitir que las columnas se envuelvan en varias filas */
+    /* margin: 0 -15px; Margen negativo para compensar el espaciado de las columnas */
 }
  /* Estilos para las columnas */
 .col {
-  flex-basis: 0; /* Valor inicial para el tamaño de las columnas */
-  flex-grow: 1; /* Permitir que las columnas crezcan para llenar el espacio disponible */
-  max-width: 100%; /* Ancho máximo de las columnas */
-  padding: 0 15px; /* Espacio interno de las columnas */
+    flex-basis: 0; /* Valor inicial para el tamaño de las columnas */
+    flex-grow: 1; /* Permitir que las columnas crezcan para llenar el espacio disponible */
+    max-width: 100%; /* Ancho máximo de las columnas */
+    /* padding: 0 15px; Espacio interno de las columnas */
 }
  /* Estilos para columnas específicas */
 .col-1 { flex: 0 0 8.33%; max-width: 8.33%; }
@@ -109,6 +113,7 @@ i {
     position: sticky;
     top: 0;
     background-color: var(--fondo-1-color);
+    width: 100%;
 }
 
 .navbarh > a {
@@ -125,8 +130,7 @@ i {
 /* navbarv */
 .navbarv {
     background-color: var(--fondo-1-color);
-    height: 90vh;
-    margin-right: 10px;
+    height: 85vh;
 }
 
 .navbarv > ul > li:first-child {
@@ -158,6 +162,33 @@ i {
 .navbarv > ul > li a:hover, .dropbtn:hover {
     background-color: var(--fondo-5-color);
 }
+/* ============================== */
+
+/* ============================== */
+/* footer-* */
+.footer-panel {
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 4rem;
+    background-color: var(--fondo-0-color);
+    height: 70px;
+}
+
+.footer-panel > ul > li {
+    list-style-type: none;
+}
+
+.footer-panel > ul > li a {
+    text-decoration: none;
+    color: var(--letra-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    background-color: var(--fondo-0-color);
+    width: 100%;
+}
+
 /* ============================== */
 
 /* ============================== */
@@ -276,6 +307,5 @@ tbody > tr:hover {
     background-color: var(--fondo-0-color);
     width: 100%;
 }
-
 /* ============================== */
 
