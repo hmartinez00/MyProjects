@@ -17,6 +17,7 @@
                         <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->id }}</a></td>
                         <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->satellite }}</a></td>
                         <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $priority->target }}</span></a></td>
+                        {{-- <td><a class="nav-link text-white" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="Top popover" href="#{{ $priority->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $priority->target }}</span></a></td> --}}
                         <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->status }}</a></td>
                         <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->created_at }}</a></td>
                     </tr>
