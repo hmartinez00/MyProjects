@@ -1,5 +1,5 @@
 <footer>
-    <div class="container">
+    <div class="container-fluid bg-secondary-subtle">
         <div class="row">
             <div class="col-6">
                 <div class="footer-panel">
@@ -21,10 +21,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
-        <div class="footer-bottom">
-            <p>&copy; 2023 Your Company. All rights reserved.</p>
+        <div class="row">
+            <div class="footer-bottom">
+                <p>&copy; 2023 Your Company. All rights reserved.</p>
+            </div>
         </div>
     </div>
 </footer>

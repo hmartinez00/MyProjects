@@ -1,14 +1,5 @@
-<nav class="navbarv">
-    <ul>
-        <li><a href="{{ route('priority.index') }}"><i class="fa fa-pen"></i>Priorities</a></li>
-        <li><a href="#">News</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropbtn">Dropdown</a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </li>
+<nav class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
+    <ul class="nav nav-pills flex-column">
+        <li><a href="{{ route('priority.index') }}" class="nav-link text-white">Priorities</a></li>
     </ul>
 </nav>
