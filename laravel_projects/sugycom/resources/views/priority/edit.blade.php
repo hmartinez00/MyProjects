@@ -27,8 +27,12 @@
                                         <option value="Media" {{ $priority->status == 'Media' ? 'selected' : '' }}>Media</option>
                                         <option value="Alta" {{ $priority->status == 'Alta' ? 'selected' : '' }}>Alta</option>
                                     </select>
+                                @elseif ( in_array($header, $headers_text ))
+                                    <input type="text" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
+                                @elseif ( in_array($header, $headers_datetime_local ))
+                                    <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
                                 @else
-                                    <input type="number" name="id" class="form-control" value="{{ $priority->$header }}">
+                                    <input type="number" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
                                 @endif
                             </td>
                         </tr>
