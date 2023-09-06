@@ -12,7 +12,6 @@
                     </tr>
                     <tr>
                         <td>satellite:</td>
-                        {{-- <td><input type="text" name="satellite" class="form-control" value="{{ $priority->satellite }}"></td> --}}
                         <td>
                             <select name="satellite" class="form-control">
                                 <option value="VRSS-1" {{ $priority->satellite == 'VRSS-1' ? 'selected' : '' }}>VRSS-1</option>
@@ -42,7 +41,6 @@
                     </tr>
                     <tr>
                         <td>mode:</td>
-                        {{-- <td><input type="text" name="mode" class="form-control" value="{{ $priority->mode }}"></td> --}}
                         <td>
                             <select name="mode" class="form-control">
                                 <option value="RealTime" {{ $priority->mode == 'RealTime' ? 'selected' : '' }}>RealTime</option>
@@ -57,7 +55,6 @@
                     </tr>
                     <tr>
                         <td>status:</td>
-                        {{-- <td><input type="text" name="status" class="form-control" value="{{ $priority->status }}"></td> --}}
                         <td>
                             <select name="status" class="form-control">
                                 <option value="Baja" {{ $priority->status == 'Baja' ? 'selected' : '' }}>Baja</option>

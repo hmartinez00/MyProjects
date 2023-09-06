@@ -4,11 +4,9 @@
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>satellite</th>
-                    <th>target</th>
-                    <th>status</th>
-                    <th>created_at</th>
+                    @foreach ($selectedHeaders as $selectedHeader)
+                        <th>{{ $selectedHeader }}</th>
+                    @endforeach
                 </tr>
             </thead>
             <tbody class="table-group-divider">
