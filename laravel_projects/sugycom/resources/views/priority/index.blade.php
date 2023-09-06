@@ -26,17 +26,20 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
+                            <button type="button" class="btn btn-primary mb-4">
+                                <a class="nav-link text-white" href="{{ route('priority.create') }}">Crear nuevo item</a>
+                            </button>
                             <div>
-                                Acá puede elegir desplegar las caracteristicas del item seleccionado, borrarlo, o crear un nuevo item.
+                                Acá puede elegir desplegar las caracteristicas del item seleccionado, actualizarlo o borrarlo.
                             </div>
                             <div class="dropdown mt-3">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                     Dropdown Button
                                 </button>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('priority.show', $priority->id) }}">Mostrar item {{ $priority->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('priority.show', $priority->id) }}">Leer item {{ $priority->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('priority.edit', $priority->id) }}">Actualizar item {{ $priority->id }}</a></li>
                                 <li><a class="dropdown-item" href="{{ route('priority.destroy', $priority->id) }}">Borrar item {{ $priority->id }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('priority.create') }}">Crear nuevo item</a></li>
                               </ul>
                             </div>
                         </div>
