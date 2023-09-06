@@ -54,7 +54,8 @@ class PriorityController extends Controller
      */
     public function edit(Priority $priority): View
     {
-        return view('priority.edit', compact('priority'));
+        $headers = Schema::getColumnListing('priorities');
+        return view('priority.edit', compact('priority', 'headers'));
     }
 
     /**
