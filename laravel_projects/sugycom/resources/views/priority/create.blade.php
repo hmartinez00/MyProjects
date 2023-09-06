@@ -12,13 +12,45 @@
             @csrf
             <table class="table-show">
                 <tbody>
+                    @foreach ($headers as $header)
+                        <tr>
+                            <td>{{ $header }}:</td>
+                            <td>
+                                @if ( $header == "satellite" )
+                                    <select name="satellite" class="form-control">
+                                        <option value="VRSS-1">VRSS-1</option>
+                                        <option value="VRSS-2">VRSS-2</option>
+                                    </select>    
+                                @elseif ( $header == "mode" )
+                                    <select name="mode" class="form-control">
+                                        <option value="RealTime">RealTime</option>
+                                        <option value="Record">Record</option>
+                                        <option value="RealTime/Record">RealTime/Record</option>
+                                    </select>
+                                @elseif ( $header == "status" )
+                                    <select name="status" class="form-control">
+                                        <option value="Baja">Baja</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Alta">Alta</option>
+                                    </select>
+                                @elseif ( in_array($header, $headers_text ))
+                                    <input type="text" name="{{ $header }}" class="form-control">                                   
+                                @elseif ( in_array($header, $headers_datetime_local ))
+                                    <input type="datetime-local" name="{{ $header }}" class="form-control">                                   
+                                @else
+                                    <input type="number" name="{{ $header }}" class="form-control">
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                {{-- <tbody>
                     <tr>
                         <td>id:</td>
                         <td><input type="number" name="id" class="form-control"></td>
                     </tr>
                     <tr>
                         <td>satellite:</td>
-                        {{-- <td><input type="text" name="satellite" class="form-control" value="{{ $priority->satellite }}"></td> --}}
                         <td>
                             <select name="satellite" class="form-control">
                                 <option value="VRSS-1">VRSS-1</option>
@@ -48,7 +80,6 @@
                     </tr>
                     <tr>
                         <td>mode:</td>
-                        {{-- <td><input type="text" name="mode" class="form-control" value="{{ $priority->mode }}"></td> --}}
                         <td>
                             <select name="mode" class="form-control">
                                 <option value="RealTime">RealTime</option>
@@ -63,7 +94,6 @@
                     </tr>
                     <tr>
                         <td>status:</td>
-                        {{-- <td><input type="text" name="status" class="form-control" value="{{ $priority->status }}"></td> --}}
                         <td>
                             <select name="status" class="form-control">
                                 <option value="Baja">Baja</option>
@@ -88,7 +118,7 @@
                         <td>closing_date:</td>
                         <td><input type="datetime-local" name="closing_date" class="form-control"></td>
                     </tr>
-                </tbody>
+                </tbody> --}}
             </table>
             <input type="submit" class="btn-primary" value="Create">
         </form>

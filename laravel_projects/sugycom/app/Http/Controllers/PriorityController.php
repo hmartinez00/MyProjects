@@ -28,7 +28,12 @@ class PriorityController extends Controller
      */
     public function create(): View
     {
-        return view('priority.create');
+        $headers = Schema::getColumnListing('priorities');
+        $text_index = [2, 8, 10];
+        $datetime_local_index = [11, 12, 13];
+        $headers_text = array_intersect_key($headers, array_flip($text_index));
+        $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
+        return view('priority.create', compact('headers', 'headers_text', 'headers_datetime_local'));
     }
 
     /**
