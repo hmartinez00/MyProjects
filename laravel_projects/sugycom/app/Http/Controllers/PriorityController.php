@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Schema;
 
 class PriorityController extends Controller
 {
@@ -16,7 +17,8 @@ class PriorityController extends Controller
     public function index(): View
     {
         $priorities = Priority::all();
-        return view('priority.index', compact('priorities'));
+        $columns = Schema::getColumnListing('priorities');
+        return view('priority.index', compact('priorities', 'columns'));
     }
 
     /**
@@ -41,7 +43,8 @@ class PriorityController extends Controller
      */
     public function show(Priority $priority): View
     {
-        return view('priority.show', compact('priority'));
+        $columns = Schema::getColumnListing('priorities');
+        return view('priority.show', compact('priority', 'columns'));
     }
 
     /**
