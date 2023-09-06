@@ -17,8 +17,7 @@ class PriorityController extends Controller
     public function index(): View
     {
         $priorities = Priority::all();
-        $columns = Schema::getColumnListing('priorities');
-        return view('priority.index', compact('priorities', 'columns'));
+        return view('priority.index', compact('priorities'));
     }
 
     /**
@@ -43,8 +42,8 @@ class PriorityController extends Controller
      */
     public function show(Priority $priority): View
     {
-        $columns = Schema::getColumnListing('priorities');
-        return view('priority.show', compact('priority', 'columns'));
+        $headers = Schema::getColumnListing('priorities');
+        return view('priority.show', compact('priority', 'headers'));
     }
 
     /**

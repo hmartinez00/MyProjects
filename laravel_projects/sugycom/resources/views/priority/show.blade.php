@@ -3,10 +3,10 @@
     <div class="content">
         <table class="table-show">
             <tbody>
-                @foreach ($columns as $column)
+                @foreach ($headers as $header)
                     <tr>
-                        <td>{{ $column }}:</td>
-                        <td>{{ $priority->$column }}:</td>
+                        <td>{{ $header }}:</td>
+                        <td>{{ $priority->$header }}:</td>
                     </tr>
                 @endforeach
             </tbody>

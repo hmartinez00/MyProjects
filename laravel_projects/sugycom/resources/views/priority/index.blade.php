@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="content">
-        @foreach($columns as $column)
-            <p>{{ $column }}</p>
-        @endforeach
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
