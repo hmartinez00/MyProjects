@@ -14,7 +14,7 @@
                                     <select name="satellite" class="form-control">
                                         <option value="VRSS-1" {{ $priority->satellite == 'VRSS-1' ? 'selected' : '' }}>VRSS-1</option>
                                         <option value="VRSS-2" {{ $priority->satellite == 'VRSS-2' ? 'selected' : '' }}>VRSS-2</option>
-                                    </select>    
+                                    </select>
                                 @elseif ( $header == "mode" )
                                     <select name="mode" class="form-control">
                                         <option value="RealTime" {{ $priority->mode == 'RealTime' ? 'selected' : '' }}>RealTime</option>
