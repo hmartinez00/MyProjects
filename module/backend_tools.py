@@ -49,8 +49,28 @@ class laravel_orders():
              # Crea un nuevo controlador en la carpeta "app/Http/Controllers".
             'resource'  : 'php artisan make:resource', 
              # Crea una nueva clase de recurso en la carpeta "app/Http/Resources".
-            'route'  : 'php artisan route:list', 
+            'request'   : 'php artisan make:request', 
+             # Crea una nueva clase de request en la carpeta "app/Http/Requests".
+            'middleware': 'php artisan make:middleware', 
+             # Crea un nuevo middleware.
+            'livewire_component': 'php artisan make:livewire', 
+             # Crea un nuevo compnente livewire.
+            'route'     : 'php artisan route:list', 
              # Muestra la lista actualizada de rutas del sistema".
+            'Auth_breeze_package'   : 'composer require laravel/breeze --dev',
+             # Instalará el paquete breeze para gestionar autenticaciones.
+            'Auth_jetstream_package': 'composer require laravel/jetstream',
+             # Instalará el paquete jetstream para gestionar autenticaciones.
+            'livewire'  : 'composer require livewire/livewire',
+             # Instalará el paquete livewire para renderizado parcial en el proyecto.
+            'breeze_install'        : 'php artisan breeze:install',
+             # Instalará el scafolding.
+            'jetstream_install'     : 'php artisan jetstream:install',
+             # Instalará el scafolding.
+            'npm_install': 'npm install',
+             # Instalará npm para vizualizacion del scafolding.
+            'npm_run_dev': 'npm run dev',
+             # Iniciara node para la adecuada ejecuacion de los frontales.
         }
 
         self.conn_project()
@@ -168,7 +188,7 @@ class laravel_orders():
 
     def model_list(self):
         '''
-        main_description: model list.
+        main_description: model_list.
         '''
         directorio = os.path.join(self.project_path, 'app', 'Models')
 
@@ -197,6 +217,38 @@ class laravel_orders():
         # print(modelos)
 
         return modelos
+
+    def middleware_list(self):
+        '''
+        main_description: middleware_list.
+        '''
+        directorio = os.path.join(self.project_path, 'app', 'http' , 'middleware')
+
+        # Verificar si el directorio existe
+        if not os.path.isdir(directorio):
+            print("El directorio no existe.")
+            return []
+        
+        # Obtener todos los archivos del directorio
+        archivos = os.listdir(directorio)
+        
+        # Lista para almacenar los nombres de los middlewares
+        middlewares = []
+        
+        # Recorrer cada archivo del directorio
+        for archivo in archivos:
+            # Verificar si el archivo es un middleware (termina con ".php" y no es "middleware.php")
+            if archivo.endswith(".php") and archivo != "middleware.php":
+                # Agregar el nombre del middleware a la lista
+                middlewares.append(archivo[:-4])
+        
+        # Verificar si se encontraron middlewares
+        if len(middlewares) == 0:
+            print("No se encontraron middlewares en el directorio.")
+        
+        # print(middlewares)
+
+        return middlewares
 
 
     def serve(self):
@@ -238,7 +290,21 @@ class laravel_orders():
         '''
         main_description: makecontroller.
         '''
+        controller_name = input('controller name: ').capitalize()
+        self.action('controller', controller_name  + 'Controller')
+
+    def makecontroller_model(self):
+        '''
+        main_description: makecontroller_model.
+        '''
         controller_name = option_list(self.model_list()) + 'Controller'
+        self.action('controller', controller_name)
+
+    def makecontroller_middleware(self):
+        '''
+        main_description: makecontroller_middleware.
+        '''
+        controller_name = option_list(self.middleware_list()) + 'Controller'
         self.action('controller', controller_name)
 
     def makeresource(self):
@@ -250,10 +316,31 @@ class laravel_orders():
 
     def makecontroller_resource(self):
         '''
-        main_description: makecontroller resource.
+        main_description: makecontroller_resource.
         '''
         controller_name = option_list(self.model_list()) + 'Controller'
         self.action('controller', controller_name + ' --resource')
+
+    def makemiddleware(self):
+        '''
+        main_description: makemiddleware.
+        '''
+        middleware_name = input('middleware name: ').capitalize()
+        self.action('middleware', middleware_name)
+
+    def makerequest(self):
+        '''
+        main_description: makerequest.
+        '''
+        request_name = input('request name: ')
+        self.action('request', request_name)
+
+    def livewire_component(self):
+        '''
+        main_description: livewire_component.
+        '''
+        livewire_component_name = input('livewire component name: ')
+        self.action('livewire_component', livewire_component_name)
 
     def routelist(self):
         '''
@@ -290,6 +377,50 @@ class laravel_orders():
         main_description: dbseed.
         '''
         self.action('seed')
+
+    def Auth_breeze_package(self):
+        '''
+        main_description: Auth_breeze_package.
+        '''
+        self.action('Auth_breeze_package')
+
+    def Auth_jetstream_package(self):
+        '''
+        main_description: Auth_jetstream_package.
+        '''
+        self.action('Auth_jetstream_package')
+
+    def breeze_install(self):
+        '''
+        main_description: breeze_install.
+        '''
+        self.action('breeze_install')
+
+    def jetstream_install(self):
+        '''
+        main_description: jetstream_install.
+        '''
+        opt = ['livewire', 'inertia', 'inertia --teams']
+        stack = option_list(opt)
+        self.action('jetstream_install', stack)
+
+    def npm_install(self):
+        '''
+        main_description: npm_install.
+        '''
+        self.action('npm_install')
+
+    def npm_run_dev(self):
+        '''
+        main_description: npm_run_dev.
+        '''
+        self.action('npm_run_dev')
+
+    def livewire(self):
+        '''
+        main_description: livewire.
+        '''
+        self.action('livewire')
 
     def newview(self):
         '''
