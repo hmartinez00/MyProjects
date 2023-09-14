@@ -9,7 +9,19 @@
             </tr>
         </thead>
         <tbody>
-            
+            @forelse ($plan_biblia_52s as $item)
+                <tr>
+                    @foreach ($headers as $header)
+                        <td>{{ $item->$header }}</td>
+                    @endforeach
+                </tr>
+            @empty
+                <tr>
+                    @foreach ($headers as $header)
+                        <td>No data.</td>
+                    @endforeach
+                </tr>
+            @endforelse
         </tbody>
     </table>
 

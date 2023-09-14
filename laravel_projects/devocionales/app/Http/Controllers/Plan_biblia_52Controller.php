@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan_biblia_52;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -12,8 +13,9 @@ class Plan_biblia_52Controller extends Controller
      */
     public function index()
     {
+        $plan_biblia_52s = Plan_biblia_52::all();
         $headers = Schema::getColumnListing('plan_biblia_52s');
-        return view('plan_biblia_52.index', compact('headers'));
+        return view('plan_biblia_52.index', compact('plan_biblia_52s', 'headers'));
     }
 
     /**
