@@ -14,7 +14,7 @@
         [
             "scripts/git_update.py",
             "scripts/backend_menu.py",
-            "scripts/csv_to_mysql.py"
+            "scripts/test.py"
         ]
     ]
 }
