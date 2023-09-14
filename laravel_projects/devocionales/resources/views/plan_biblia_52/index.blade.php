@@ -24,6 +24,4 @@
             @endforelse
         </tbody>
     </table>
-
-    {{-- <a href="{{ route('dashboard') }}">Home</a> --}}
 @endsection

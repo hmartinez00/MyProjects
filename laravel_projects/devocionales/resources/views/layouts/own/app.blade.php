@@ -6,6 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        .footer-panel {
+            font-size: 0.7rem;
+            margin-left: 3rem
+        }
+
+        .footer-panel li {
+            list-style: none;
+        }
+
+        .footer-panel h3 {
+            font-size: 0.8rem;
+        }
+        
+        .footer-bottom {
+            font-size: 0.7rem;
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     @include('layouts.own._partials.navbarh')
