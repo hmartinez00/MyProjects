@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
+use TelegramBot\Api\BotApi;
 
 class Plan_biblia_52Controller extends Controller
 {
@@ -83,4 +84,20 @@ class Plan_biblia_52Controller extends Controller
         $plan_biblia_52->delete();
         return redirect()->route('plan_biblia_52.index');
     }
+
+
+    public function sendTelegramMessage(Request $request, Plan_biblia_52 $plan_biblia_52): RedirectResponse
+    {
+        $telegram = new BotApi("5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA");
+        $chatId = "1580008489";
+        $text = 'Hola desde Laravel!';//$plan_biblia_52->all();
+
+        $telegram->sendMessage(
+            $chatId,
+            $text,
+        );
+
+        return redirect()->route('plan_biblia_52.index');
+    }
+
 }

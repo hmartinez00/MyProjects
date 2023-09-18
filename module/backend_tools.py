@@ -71,6 +71,8 @@ class laravel_orders():
              # Instalará npm para vizualizacion del scafolding.
             'npm_run_dev': 'npm run dev',
              # Iniciara node para la adecuada ejecuacion de los frontales.
+            'telegram_bot'          : 'composer require telegram-bot/api',
+             # Descargara la libreria "Telegram Bot API"
         }
 
         self.conn_project()
@@ -421,6 +423,12 @@ class laravel_orders():
         main_description: livewire.
         '''
         self.action('livewire')
+
+    def telegram_bot(self):
+        '''
+        main_description: telegram_bot.
+        '''
+        self.action('telegram_bot')
 
     def newview(self):
         '''

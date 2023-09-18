@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('plan_biblia_52', Plan_biblia_52Controller::class);
+    Route::post('/plan_biblia_52/send-message', [Plan_biblia_52Controller::class, 'sendTelegramMessage'])->name('plan_biblia_52.sendTelegramMessage');
 });
 
 require __DIR__.'/auth.php';

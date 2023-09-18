@@ -39,6 +39,14 @@
                                 <li><a class="dropdown-item" href="{{ route('plan_biblia_52.destroy', $item->id) }}">Borrar item {{ $item->id }}</a></li>
                             </ul>
                             </div>
+
+                            <form action="{{ route('plan_biblia_52.sendTelegramMessage') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mt-4">
+                                    Enviar mensaje a Telegram
+                                </button>
+                            </form>
+
                         </div>
                     </div>
 
