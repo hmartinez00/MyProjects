@@ -4,7 +4,7 @@
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
-                    @foreach ($headers as $header)
+                    @foreach ($s_headers as $header)
                         <th>{{ $header }}</th>
                     @endforeach
                 </tr>
@@ -12,7 +12,7 @@
             <tbody>
                 @forelse ($plan_biblia_52s as $item)
                     <tr>
-                        @foreach ($headers as $header)
+                        @foreach ($s_headers as $header)
                             <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}">{{ $item->$header }}</a></td>
                         @endforeach
                     </tr>
@@ -44,7 +44,7 @@
 
                 @empty
                     <tr>
-                        @foreach ($headers as $header)
+                        @foreach ($s_headers as $header)
                             <td>No data.</td>
                         @endforeach
                     </tr>
