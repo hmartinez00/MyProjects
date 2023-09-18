@@ -17,7 +17,7 @@ class Plan_biblia_52Controller extends Controller
     {
         $plan_biblia_52s = Plan_biblia_52::all();
         $headers = Schema::getColumnListing('plan_biblia_52s');
-        $indices = [0, 1, 2, 3, 4, 5];
+        $indices = range(0, 5);
         $s_headers = array_intersect_key($headers, array_flip($indices));
         return view('plan_biblia_52.index', compact('plan_biblia_52s', 's_headers'));
     }

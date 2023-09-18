@@ -27,6 +27,10 @@
             border-top: 1px solid #333;
             padding-top: 0.5rem;
         }
+
+        .celdas {
+            
+        }
     </style>
 </head>
 <body>

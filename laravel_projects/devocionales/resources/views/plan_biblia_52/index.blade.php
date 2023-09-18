@@ -13,7 +13,7 @@
                 @forelse ($plan_biblia_52s as $item)
                     <tr>
                         @foreach ($s_headers as $header)
-                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}">{{ $item->$header }}</a></td>
+                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $item->$header }}</span></a></td>
                         @endforeach
                     </tr>
 

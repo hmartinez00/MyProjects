@@ -6,7 +6,7 @@
                 @foreach ($headers as $header)
                     <tr>
                         <td>{{ $header }}:</td>
-                        <td>{{ $plan_biblia_52->$header }}:</td>
+                        <td>{{ $plan_biblia_52->$header }}</td>
                     </tr>
                 @endforeach
             </tbody>

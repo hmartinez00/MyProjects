@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('plan_biblia_52s', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->string('lectura');
             $table->string('titulo');
             $table->string('intro');
