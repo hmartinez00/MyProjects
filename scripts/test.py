@@ -33,26 +33,32 @@ def extraer_cabeceras(__base_datos__, __tabla__):
 
     return fields
 
-
-# Extraemos los datos de la tabla de partida
+# Bases de datos de partida y llegada
+    # Start
 db = r'C:\Users\admin\Documents\0 - A Repositorios GitHub\Devocionales\2tim4_1.db'
 table = 'plan_biblia_52'
+    # End
+base_datos = 'devocionales'
+tabla = table + 's'
+
+
+# Extraemos los datos de la tabla de partida
 df = selectall(db, table)
 
+
+# Concatenamos las columnas copmplementarias
 for i in range(2):
     tag_col = f'column{i}'
-    df[tag_col] = pd.to_datetime(['' for _ in range(len(df))], format='%m/%d/%Y %H:%M')
-    df[tag_col] = df[tag_col].dt.strftime('%Y-%m-%d %H:%M:%S')
+    df[tag_col] = pd.to_datetime(['' for _ in range(len(df))], format='%m/%d/%Y')
+    df[tag_col] = df[tag_col].dt.strftime('%Y-%m-%d')
 
 
 # Extraemos las columnas de la tabla de llegada
-base_datos = 'devocionales'
-tabla = 'plan_biblia_52s'
 cabeceras = extraer_cabeceras(base_datos, tabla)
 df.columns = cabeceras
+df = df.set_index('id')
 
 print(cabeceras)
-df = df.set_index('id')
 print(df)
 
 # Insertar en Database
