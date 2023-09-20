@@ -91,20 +91,52 @@ class Plan_biblia_52Controller extends Controller
 
         $telegram = new BotApi("5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA");
         $chatId = "1580008489";
-        $text = 'Lectura del ' . 
-        $plan_biblia_52->fecha . ": " .
-        $plan_biblia_52->lectura;//'Hola desde Laravel!';
+        
+        $text_0 = '(' . $plan_biblia_52->id . ') ' .
+        'Lectura del ' . $plan_biblia_52->fecha . ": " .
+        $plan_biblia_52->lectura;
 
-        // $Number = 1;
-        // $s = 'hola esta es la string numero ' . $Number . ' en php' . "\n" .
-        // 'Aca he usado un caracter de escape!';
-        // echo $s;
-        // 
+        $text_1 = $text_0 . "\n\n" .
+        'Bosquejo - ' . $plan_biblia_52->titulo . "\n" .
+        'Conteste las siguientes preguntas:
+
+1. Cuantos capítulos tiene el libro?
+2. En cuantas partes se divide el libro y cuales son?
+3. De qué trata cada parte del libro mostrada en el video?
+4. Enumere 3 enseñanzas correspondientes a cada una de las partes del libro mostradas en el video.' . "\n\n" .
+        $plan_biblia_52->intro;//'Hola desde Laravel!';
+
+        $text_2 = '(' . $plan_biblia_52->id . ') ' .
+        'Trivia Biblica:
+
+Instrucciones:
+        
+1. Una vez entre al link contara con 30min para responder a las preguntas.
+2. Si culmina antes del tiempo presiones enviar. Sus resultados apareceran en un recuadro en la parte superior de la pagina.
+3. Si el tiempo se agota la pagina se congelará y sus resultados apareceran en un recuadro en la parte superior de la pagina.
+4. En cualquiera de ambos casos, al finalizar, tome un screenshot de sus resultados y envielas al grupo.
+        
+Que el Espíritu Santo le guíe a toda verdad.
+        
+' . $plan_biblia_52->encuesta;
+
+        if ($plan_biblia_52->titulo != ''){
+            $text = $text_1;
+        } else {
+            $text = $text_0;
+        }
 
         $telegram->sendMessage(
             $chatId,
             $text,
         );
+
+        if ($plan_biblia_52->encuesta != ''){
+            $telegram->sendMessage(
+                $chatId,
+                $text_2,
+            );
+        }
 
         return redirect()->route('plan_biblia_52.index');
     }
