@@ -40,11 +40,9 @@
                             </ul>
                             </div>
 
-                            <form action="{{ route('plan_biblia_52.sendTelegramMessage') }}" method="POST">
+                            <form method="POST" action="{{ route('plan_biblia_52.sendTelegramMessage', $item->id) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-primary mt-4">
-                                    Enviar mensaje a Telegram
-                                </button>
+                                <input type="submit" class="btn btn-primary mt-4" value="Enviar mensaje {{ $item->id }} a Telegram">
                             </form>
 
                         </div>

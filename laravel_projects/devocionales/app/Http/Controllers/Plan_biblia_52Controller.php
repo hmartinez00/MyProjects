@@ -86,11 +86,20 @@ class Plan_biblia_52Controller extends Controller
     }
 
 
-    public function sendTelegramMessage(Request $request, Plan_biblia_52 $plan_biblia_52): RedirectResponse
+    public function sendTelegramMessage(Plan_biblia_52 $plan_biblia_52): RedirectResponse
     {
+
         $telegram = new BotApi("5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA");
         $chatId = "1580008489";
-        $text = 'Hola desde Laravel!';//$plan_biblia_52->all();
+        $text = 'Lectura del ' . 
+        $plan_biblia_52->fecha . ": " .
+        $plan_biblia_52->lectura;//'Hola desde Laravel!';
+
+        // $Number = 1;
+        // $s = 'hola esta es la string numero ' . $Number . ' en php' . "\n" .
+        // 'Aca he usado un caracter de escape!';
+        // echo $s;
+        // 
 
         $telegram->sendMessage(
             $chatId,
