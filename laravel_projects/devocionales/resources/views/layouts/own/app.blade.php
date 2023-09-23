@@ -37,10 +37,10 @@
     @include('layouts.own._partials.navbarh')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-2">
                 @include('layouts.own._partials.navbarv')
             </div>
-            <div class="col-9">
+            <div class="col-md-9">
                 @yield('content')
             </div>
         </div>
