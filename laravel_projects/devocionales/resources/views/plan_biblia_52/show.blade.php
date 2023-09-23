@@ -36,19 +36,11 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        {{-- <a class="dropdown-item rounded-2" href="{{ route('plan_biblia_52.destroy', $plan_biblia_52->id) }}"> --}}
-                            <form action="{{ route('plan_biblia_52.destroy', $plan_biblia_52->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                {{-- <button type="submit" class="btn-danger"> --}}
-                                    {{-- <font style="vertical-align: inherit;"> --}}
-                                        {{-- <font style="vertical-align: inherit;">Delete</font> --}}
-                                    {{-- </font>     --}}
-                                {{-- </button> --}}
-                                <input type="submit" value="Delete">
-                            </form>
-                            
-                        {{-- </a> --}}
+                        <form action="{{ route('plan_biblia_52.destroy', $plan_biblia_52->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="dropdown-item rounded-2" value="Delete">
+                        </form>                            
                     </li>
                 </ul>
 

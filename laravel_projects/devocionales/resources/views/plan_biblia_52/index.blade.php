@@ -23,9 +23,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <button type="button" class="btn btn-primary mb-4">
-                                <a class="nav-link text-white" href="{{ route('plan_biblia_52.create') }}">Crear nuevo item</a>
-                            </button>
                             <div>
                                 Acá puede elegir desplegar las caracteristicas del item seleccionado, actualizarlo o borrarlo.
                             </div>

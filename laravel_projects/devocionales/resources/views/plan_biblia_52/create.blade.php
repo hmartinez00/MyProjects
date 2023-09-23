@@ -28,7 +28,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <input type="submit" class="btn-primary" value="Create">
+            <input type="submit" class="btn btn-primary m-4" value="Create">
         </form>
     </div>
 @endsection
