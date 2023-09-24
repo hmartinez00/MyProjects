@@ -20,7 +20,8 @@ class Plan_biblia_52Controller extends Controller
         $headers = Schema::getColumnListing('plan_biblia_52s');
         $indices = range(0, 5);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view('plan_biblia_52.index', compact('plan_biblia_52s', 's_headers'));
+        $output = shell_exec('python F:\MyProjects\scripts\test_copy.py');
+        return view('plan_biblia_52.index', compact('plan_biblia_52s', 's_headers', 'output'));
     }
 
     /**
@@ -137,7 +138,7 @@ Que el Espíritu Santo le guíe a toda verdad.
                 $text_2,
             );
         }
-
+   
         return redirect()->route('plan_biblia_52.index');
     }
 

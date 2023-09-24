@@ -1,6 +1,7 @@
 @extends('layouts.own.app')
 @section('content')
     <div class="content">
+        <h1>{{$output}}</h1>
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
