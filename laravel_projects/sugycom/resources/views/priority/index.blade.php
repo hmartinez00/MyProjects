@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.own.app')
 @section('content')
     <div class="content">
         <table class="table table-sm table-dark table-hover">
@@ -46,7 +46,11 @@
                     </div>
 
                 @empty
-                    <p>No data.</p>
+                    <tr>
+                        @foreach ($selectedHeaders as $selectedHeader)
+                            <td>No data.</td>
+                        @endforeach
+                    </tr>
                 @endforelse
             </tbody>
         </table>
