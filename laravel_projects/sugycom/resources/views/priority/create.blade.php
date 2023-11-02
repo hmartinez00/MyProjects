@@ -9,11 +9,12 @@
     @endif
     <div class="content">
 
-        <div class="row">
-            <div class="col-6">
+        <form method="POST" action="{{ route('priority.store') }}">
+            @csrf
+            
+            <div class="row">
 
-                <form method="POST" action="{{ route('priority.store') }}">
-                    @csrf
+                <div class="col-6">
                     <table class="table-show">
                         <tbody>
                             @foreach ($headers as $header)
@@ -50,33 +51,34 @@
                         </tbody>
                     </table>
                     {{-- <input type="submit" class="btn-primary" value="Create"> --}}
-                </form>
+                    
+                </div>
 
+                <div class="col-6">
+                    <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                        {{-- <li>
+                            <a class="dropdown-item rounded-2" href="{{ route('priority.create') }}">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">create</font>
+                                </font>
+                            </a>
+                        </li>                     --}}
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            {{-- <form action="{{ route('priority.store') }}" method="post"> --}}
+                                {{-- @csrf --}}
+                                {{-- @method('DELETE') --}}
+                                <input type="submit" class="dropdown-item rounded-2" value="Create">
+                            {{-- </form> --}}
+                        </li>
+                    </ul>
+                </div>
+                
             </div>
-
-            <div class="col-6">
-                <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
-                    {{-- <li>
-                        <a class="dropdown-item rounded-2" href="{{ route('priority.create') }}">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">create</font>
-                            </font>
-                        </a>
-                    </li>                     --}}
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <form action="{{ route('priority.store') }}" method="post">
-                            @csrf
-                            {{-- @method('DELETE') --}}
-                            <input type="submit" class="dropdown-item rounded-2" value="Create">
-                        </form>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
+                
+        </form>
 
     </div>
 @endsection
