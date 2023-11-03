@@ -42,7 +42,7 @@
                               <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('priority.show', $priority->id) }}">Leer item {{ $priority->id }}</a></li>
                                 <li><a class="dropdown-item" href="{{ route('priority.edit', $priority->id) }}">Actualizar item {{ $priority->id }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('priority.destroy', $priority->id) }}">Borrar item {{ $priority->id }}</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('priority.destroy', $priority->id) }}">Borrar item {{ $priority->id }}</a></li> --}}
                               </ul>
                             </div>
                         </div>

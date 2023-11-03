@@ -56,13 +56,13 @@
 
                 <div class="col-6">
                     <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
-                        {{-- <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('priority.create') }}">
+                        <li>
+                            <a class="dropdown-item rounded-2" href="{{ route('priority.index') }}">
                                 <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">create</font>
+                                    <font style="vertical-align: inherit;">Back</font>
                                 </font>
                             </a>
-                        </li>                     --}}
+                        </li>                    
                         <li>
                             <hr class="dropdown-divider">
                         </li>
