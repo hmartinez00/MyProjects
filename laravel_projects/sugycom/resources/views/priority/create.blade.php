@@ -50,12 +50,17 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- <input type="submit" class="btn-primary" value="Create"> --}}
                     
                 </div>
 
                 <div class="col-6">
                     <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
+                        <li>
+                            <input type="submit" class="dropdown-item rounded-2" value="Create">
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li>
                             <a class="dropdown-item rounded-2" href="{{ route('priority.index') }}">
                                 <font style="vertical-align: inherit;">
@@ -63,16 +68,6 @@
                                 </font>
                             </a>
                         </li>                    
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            {{-- <form action="{{ route('priority.store') }}" method="post"> --}}
-                                {{-- @csrf --}}
-                                {{-- @method('DELETE') --}}
-                                <input type="submit" class="dropdown-item rounded-2" value="Create">
-                            {{-- </form> --}}
-                        </li>
                     </ul>
                 </div>
                 
