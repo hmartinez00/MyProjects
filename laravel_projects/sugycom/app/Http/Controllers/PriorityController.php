@@ -19,8 +19,8 @@ class PriorityController extends Controller
         $priorities = Priority::all();
         $headers = Schema::getColumnListing('priorities');
         $indices = [0, 1, 2, 9, 11];
-        $selectedHeaders = array_intersect_key($headers, array_flip($indices));
-        return view('priority.index', compact('priorities', 'selectedHeaders'));
+        $s_headers = array_intersect_key($headers, array_flip($indices));
+        return view('priority.index', compact('priorities', 's_headers'));
     }
 
     /**

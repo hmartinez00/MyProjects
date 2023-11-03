@@ -7,19 +7,19 @@
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
-                    @foreach ($selectedHeaders as $selectedHeader)
-                        <th>{{ $selectedHeader }}</th>
+                    @foreach ($s_headers as $s_header)
+                        <th>{{ $s_header }}</th>
                     @endforeach
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 @forelse ($priorities as $priority)
                     <tr>
-                        @foreach ($selectedHeaders as $selectedHeader)
-                            @if ($selectedHeader != "target")
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->$selectedHeader }}</a></td>                                
+                        @foreach ($s_headers as $s_header)
+                            @if ($s_header != "target")
+                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->$s_header }}</a></td>                                
                             @else
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $priority->$selectedHeader }}</span></a></td>                                                                
+                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $priority->$s_header }}</span></a></td>                                                                
                             @endif
                         @endforeach
                     </tr>
@@ -47,7 +47,7 @@
 
                 @empty
                     <tr>
-                        @foreach ($selectedHeaders as $selectedHeader)
+                        @foreach ($s_headers as $s_header)
                             <td>No data.</td>
                         @endforeach
                     </tr>
