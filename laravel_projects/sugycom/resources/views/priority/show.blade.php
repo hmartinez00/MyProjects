@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
         <div class='row'>
-            <div class="col-6">
+            <div class="col-sm-6 col-md-6">
                 <table class="table-show">
                     <tbody>
                         @foreach ($headers as $header)
@@ -15,7 +15,7 @@
                 </table>
             </div>
 
-            <div class="col-6">
+            <div class="col-sm-6 col-md-6">
                 <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
                     <li>
                         <a class="dropdown-item rounded-2" href="{{ route('priority.edit', $priority->id) }}">
