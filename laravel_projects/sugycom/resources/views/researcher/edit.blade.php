@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
 
-        <form method="POST" action="{{ route('priority.update', $priority->id) }}">
+        <form method="POST" action="{{ route('researcher.update', $researcher->id) }}">
             @method('PUT')
             @csrf
         
@@ -14,29 +14,12 @@
                                 <tr>
                                     <td>{{ $header }}:</td>
                                     <td>
-                                        @if ( $header == "satellite" )
-                                            <select name="satellite" class="form-control">
-                                                <option value="VRSS-1" {{ $priority->satellite == 'VRSS-1' ? 'selected' : '' }}>VRSS-1</option>
-                                                <option value="VRSS-2" {{ $priority->satellite == 'VRSS-2' ? 'selected' : '' }}>VRSS-2</option>
-                                            </select>
-                                        @elseif ( $header == "mode" )
-                                            <select name="mode" class="form-control">
-                                                <option value="RealTime" {{ $priority->mode == 'RealTime' ? 'selected' : '' }}>RealTime</option>
-                                                <option value="Record" {{ $priority->mode == 'Record' ? 'selected' : '' }}>Record</option>
-                                                <option value="RealTime/Record" {{ $priority->mode == 'RealTime/Record' ? 'selected' : '' }}>RealTime/Record</option>
-                                            </select>
-                                        @elseif ( $header == "status" )
-                                            <select name="status" class="form-control">
-                                                <option value="Baja" {{ $priority->status == 'Baja' ? 'selected' : '' }}>Baja</option>
-                                                <option value="Media" {{ $priority->status == 'Media' ? 'selected' : '' }}>Media</option>
-                                                <option value="Alta" {{ $priority->status == 'Alta' ? 'selected' : '' }}>Alta</option>
-                                            </select>
-                                        @elseif ( in_array($header, $headers_text ))
-                                            <input type="text" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
+                                        @if ( in_array($header, $headers_text ))
+                                            <input type="text" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
                                         @elseif ( in_array($header, $headers_datetime_local ))
-                                            <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
+                                            <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
                                         @else
-                                            <input type="number" name="{{ $header }}" class="form-control" value="{{ $priority->$header }}">
+                                            <input type="number" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
                                         @endif
                                     </td>
                                 </tr>
@@ -53,14 +36,14 @@
                             <input type="submit" class="dropdown-item rounded-2" value="Update">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('priority.show', $priority->id) }}">
+                            <a class="dropdown-item rounded-2" href="{{ route('researcher.show', $researcher->id) }}">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Show</font>
                                 </font>
                             </a>
                         </li>
                         <li>
-                            <form action="{{ route('priority.destroy', $priority->id) }}" method="post">
+                            <form action="{{ route('researcher.destroy', $researcher->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="dropdown-item rounded-2" value="Delete">
@@ -70,7 +53,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('priority.index') }}">
+                            <a class="dropdown-item rounded-2" href="{{ route('researcher.index') }}">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Back</font>
                                 </font>

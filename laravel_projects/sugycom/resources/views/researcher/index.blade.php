@@ -1,11 +1,9 @@
-{{-- items --}}
-{{-- item --}}
 @extends('layouts.own.app')
 @section('content')
     <div class="content">
-        {{-- <button type="button" class="btn btn-primary m-4"> --}}
-            {{-- <a class="nav-link text-white" href="{{ route('item.create') }}">Crear nuevo item</a> --}}
-        {{-- </button> --}}
+        <button type="button" class="btn btn-primary m-4">
+            <a class="nav-link text-white" href="{{ route('researcher.create') }}">Crear nuevo item</a>
+        </button>
         <table class="table table-sm table-dark table-hover">
             <thead>
                 <tr>
@@ -18,11 +16,7 @@
                 @forelse ($items as $item)
                     <tr>
                         @foreach ($s_headers as $s_header)
-                            @if ($s_header != "target")
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}">{{ $item->$s_header }}</a></td>                                
-                            @else
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $item->$s_header }}</span></a></td>                                                                
-                            @endif
+                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}">{{ $item->$s_header }}</a></td>
                         @endforeach
                     </tr>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $item->id }}">
@@ -39,9 +33,8 @@
                                     Dropdown Button
                                 </button>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('item.show', $item->id) }}">Leer item {{ $item->id }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('item.edit', $item->id) }}">Actualizar item {{ $item->id }}</a></li>
-                                {{-- <li><a class="dropdown-item" href="{{ route('item.destroy', $item->id) }}">Borrar item {{ $item->id }}</a></li> --}}
+                                <li><a class="dropdown-item" href="{{ route('researcher.show', $item->id) }}">Leer item {{ $item->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('researcher.edit', $item->id) }}">Actualizar item {{ $item->id }}</a></li>
                               </ul>
                             </div>
                         </div>

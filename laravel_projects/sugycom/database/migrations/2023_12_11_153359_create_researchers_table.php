@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_card');
             $table->string('phone');
             $table->string('address')->nullable();
-            $table->date('date_of_hire')->nullable();
+            $table->dateTime('date_of_hire')->nullable();
             $table->timestamps();
         });
     }
