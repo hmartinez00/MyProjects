@@ -3,8 +3,8 @@
     <div class="content">
 
         <form method="POST" action="{{ route('researcher.update', $researcher->id) }}">
-            @method('PUT')
             @csrf
+            @method('PUT')
         
             <div class="row">
                 <div class="col-sm-6 col-md-6">
