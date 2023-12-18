@@ -3,9 +3,12 @@
 
     <div class="content">
 
-        <p>{{ $param }}</p>
+        <p>{{ $starttime }}</p>
 
-        <form action="{{ route('trigger.update'), $param }}" method="POST">
+        <form 
+            action="{{ route('trigger.update', [
+                    'starttime' => $starttime
+                ]) }}" method="POST">
             @csrf
 
             <table class="table table-sm table-dark table-hover">
@@ -19,10 +22,10 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <td>
-                        <input type="datetime-local" name="starttime" class="form-control">
+                        <input type="date" name="starttime" class="form-control">
                     </td>
                     <td>
-                        <input type="datetime-local" name="endtime" class="form-control">
+                        <input type="date" name="endtime" class="form-control">
                     </td>
                     <td>
                         <input type="submit" value="Generate">

@@ -31,9 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('priority', PriorityController::class);
     Route::resource('researcher', ResearcherController::class);
-    Route::get('trigger/{param?}', [Trigger_planController::class, 'index'])->name('trigger.index');
-    // Route::get('trigger/{param}', [Trigger_planController::class, 'index2'])->name('trigger.index2');
-    Route::post('trigger/{param?}', [Trigger_planController::class, 'update'])->name('trigger.update');
+    Route::get('trigger/{starttime?}', [Trigger_planController::class, 'index'])->name('trigger.index');
+    Route::post('trigger/{starttime?}', [Trigger_planController::class, 'update'])->name('trigger.update');
 });
 
 require __DIR__.'/auth.php';

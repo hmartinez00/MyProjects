@@ -9,14 +9,19 @@ use Illuminate\Http\RedirectResponse;
 
 class Trigger_planController extends Controller
 {
-    public function index($param = null): View
+    public function index($starttime = null): View
     {
-        return view('trigger.index', compact('param'));
+        return view('trigger.index', [
+            'starttime' => $starttime,
+        ]);
     }
 
     public function update(Request $request)
     {
-        $param = $request->starttime;
-        return redirect()->route('trigger.index', compact('param'));
+        $starttime = $request->starttime;
+
+        return redirect()->route('trigger.index', [
+            'starttime' => $starttime,
+        ]);
     }
 }
