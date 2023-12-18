@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\ResearcherController;
+use App\Http\Controllers\Trigger_planController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('priority', PriorityController::class);
     Route::resource('researcher', ResearcherController::class);
+    Route::get('trigger/{param?}', [Trigger_planController::class, 'index'])->name('trigger.index');
+    // Route::get('trigger/{param}', [Trigger_planController::class, 'index2'])->name('trigger.index2');
+    Route::post('trigger/{param?}', [Trigger_planController::class, 'update'])->name('trigger.update');
 });
 
 require __DIR__.'/auth.php';
