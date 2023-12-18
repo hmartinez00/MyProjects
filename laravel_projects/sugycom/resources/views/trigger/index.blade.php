@@ -3,11 +3,12 @@
 
     <div class="content">
 
-        <p>{{ $starttime }}</p>
+        <p>{{ $starttime }} | {{ $endtime }}</p>
 
         <form 
             action="{{ route('trigger.update', [
-                    'starttime' => $starttime
+                    'starttime' => $starttime,
+                    'endtime' => $endtime,
                 ]) }}" method="POST">
             @csrf
 
