@@ -6,7 +6,7 @@
         <p>{{ $stat }}</p>
 
         <form 
-            action="{{ route('trigger.update', compact('stat')) }}" method="POST">
+            action="{{ route('trigger.trigger', compact('stat')) }}" method="POST">
             @csrf
 
             <table class="table table-sm table-dark table-hover">
