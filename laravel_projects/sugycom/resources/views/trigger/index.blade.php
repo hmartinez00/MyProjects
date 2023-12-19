@@ -3,13 +3,10 @@
 
     <div class="content">
 
-        <p>{{ $starttime }} | {{ $endtime }}</p>
+        <p>{{ $stat }}</p>
 
         <form 
-            action="{{ route('trigger.update', [
-                    'starttime' => $starttime,
-                    'endtime' => $endtime,
-                ]) }}" method="POST">
+            action="{{ route('trigger.update', compact('stat')) }}" method="POST">
             @csrf
 
             <table class="table table-sm table-dark table-hover">
