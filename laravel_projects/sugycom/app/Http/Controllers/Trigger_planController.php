@@ -22,7 +22,7 @@ class Trigger_planController extends Controller
         $stat = $starttime . ' | ' . $endtime;
 
         // Define the directory where the JSON file will be created.
-        $directorio = 'F:\MyProjects\settings\sugycom';
+        $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
         // Comprueba si el archivo existe
         if (!file_exists($directorio . "/data_trigger.json")) {
 
