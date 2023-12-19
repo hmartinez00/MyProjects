@@ -40,6 +40,8 @@ class Trigger_planController extends Controller
 
         }
 
+        $output = shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\generar_batchid.py');
+
         return view('trigger.index', compact('stat'));
     }
 }
