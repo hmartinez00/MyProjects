@@ -7,7 +7,6 @@ from modulos.processes.files_organizer import files_organizer
 from modulos.exec.exec_module import generar_TCPLAN, generar_CPLAN2, generar_archivos2, actualiza_DB
 
 
-rootes = routing()
 
 def change_to_datetime(date_str):
     date_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d')
@@ -17,6 +16,7 @@ def change_to_datetime(date_str):
 with open("F:\MyProjects\laravel_projects\sugycom\py_scripts\data_trigger.json") as f:
     data = json.load(f)
 
+rootes = data['rootes']
 # starttime = change_to_datetime(data['starttime'])
 # endtime = change_to_datetime(data['endtime'])
 date = change_to_datetime(data['date'])

@@ -25,7 +25,7 @@ class Trigger_planController extends Controller
         if (!file_exists($directorio . "/data_trigger.json")) {
 
             // Crea el archivo JSON
-            $json = array("starttime" => $starttime, "endtime" => $endtime, "date" => null);
+            $json = array("starttime" => $starttime, "endtime" => $endtime, "date" => null, "rootes" => null);
             file_put_contents($directorio . "/data_trigger.json", json_encode($json));
 
         } else {
@@ -37,15 +37,21 @@ class Trigger_planController extends Controller
             file_put_contents($directorio . "/data_trigger.json", json_encode($json));
         }
 
+        // Actualizamos la clave con los enrutamientos en el json
+        shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
+
         // Create a for loop that iterates over the dates between the start and end dates.
+        $dates = [];
         for ($i = $starttime; $i <= $endtime; $i = date('Y-m-d', strtotime($i . ' + 1 day'))) {
 
             // Add the date to the list.
+            $dates[] = $i;
             $json->date = $i;
             file_put_contents($directorio . "/data_trigger.json", json_encode($json));
             $output = shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\generar_batchid.py');
             $stat = implode(', ', $dates). PHP_EOL;
         }
+
         return view('trigger.index', compact('stat'));
     }
 }
