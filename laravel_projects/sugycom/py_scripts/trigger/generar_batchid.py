@@ -7,6 +7,8 @@ from modulos.processes.files_organizer import files_organizer
 from modulos.exec.exec_module import generar_TCPLAN, generar_CPLAN2, generar_archivos2, actualiza_DB
 
 
+rootes = routing()
+
 def change_to_datetime(date_str):
     date_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d')
     return date_obj
@@ -25,11 +27,10 @@ for i in range(int((endtime - starttime).days) + 1):
     dates.append(date)
 
 # Print the list of dates
-Date_Code_BatchID = dates[0]
+date = dates[0]
 
-rootes = routing()
 
-Date_Code_BatchID = generar_CPLAN2(rootes, Date_Code_BatchID)
+Date_Code_BatchID = generar_CPLAN2(rootes, date)
 container = generar_archivos2(rootes)
 
 # ---------------------------------------------------------------------
@@ -37,7 +38,7 @@ container = generar_archivos2(rootes)
 # ---------------------------------------------------------------------
 print('{}% Organizando archivos.'.format(int(8/8*100)))
 
-dir_path = rootes['plans'] + f'Plan Satelital {Date_Code_BatchID}'
+dir_path = rootes['plans'] + f'Plan Satelital {date}'
 
 directory = os.getcwd()
 extension1  =   'CPLAN2'
