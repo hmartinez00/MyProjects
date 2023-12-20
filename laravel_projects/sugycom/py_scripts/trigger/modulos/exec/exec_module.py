@@ -33,14 +33,14 @@ def generar_CPLAN(mode_0):
     return Date_Code_BatchID
 
 
-def generar_CPLAN2(mode_0, Date_Code_BatchID):
+def generar_CPLAN2(rootes, Date_Code_BatchID):
     '''
     Funcion de gestion de generacion del CPLAN.
     
     **parametros:
-        mode_0: bool. Modo de interaccion con "cplanimport". Cuando es True solicita confirmacion de la ruta de archivos a consultar. Cuando vale False, acude a la ruta del compendio mas reciente.
+        rootes: bool. Modo de interaccion con "cplanimport". Cuando es True solicita confirmacion de la ruta de archivos a consultar. Cuando vale False, acude a la ruta del compendio mas reciente.
     '''
-    misiones_0 = cplanimport(mode_0)
+    misiones_0 = cplanimport(rootes)
     cplanxgen2(misiones_0, Date_Code_BatchID)
 
     return Date_Code_BatchID
@@ -53,6 +53,22 @@ def generar_archivos(mode_0):
     key0 = 'plans'
     key1 = 'missions'
     rootes = routing(mode_0)
+    container = rootes[key0]
+    location = rootes[key1]
+    print(container, location)
+
+    procexgen2(container, location)
+
+    return container
+
+def generar_archivos2(rootes):
+    '''
+    Funcion de gestion de generacion del OK, SETPARAs Y RECEIVETASKs. Asi mismo dispara la creacion de los directorios de alojamiento de los archivos.
+    '''
+
+    key0 = 'plans'
+    key1 = 'missions'
+    # rootes = routing(mode_0)
     container = rootes[key0]
     location = rootes[key1]
     print(container, location)

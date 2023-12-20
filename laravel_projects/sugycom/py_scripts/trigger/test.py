@@ -1,7 +1,12 @@
-from modulos.exec.exec_module import generar_TCPLAN, generar_CPLAN2, generar_archivos, actualiza_DB
+import os
+from modulos.processes.routing_module import routing
+from modulos.processes.files_organizer import files_organizer
 import json
 import datetime
 from General_Utilities.fecha import BatchID
+from modulos.processes.routing_module import routing
+from modulos.exec.exec_module import generar_TCPLAN, generar_CPLAN2, generar_archivos2, actualiza_DB
+
 
 def change_to_datetime(date_str):
     date_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d')
@@ -23,8 +28,16 @@ for i in range(int((endtime - starttime).days) + 1):
 # Print the list of dates
 Date_Code_BatchID = dates[0]
 
-mode = False
-Date_Code_BatchID = generar_CPLAN2(mode, Date_Code_BatchID)
+rootes = routing()
 
-mode = False
-container = generar_archivos(mode)
+dir_path = rootes['plans'] + f'Plan Satelital {Date_Code_BatchID}'
+
+directory = os.getcwd()
+extension1  =   'CPLAN2'
+extension2  =   'OK'
+extension3  =   'SETPARA2'
+extension4  =   'RECEIVETASK'
+directory1  =   dir_path + '/VRSS-2'
+directory2  =   dir_path + '/Station Plan'
+
+files_organizer(directory, extension1, extension2, extension3, extension4, directory1, directory2)

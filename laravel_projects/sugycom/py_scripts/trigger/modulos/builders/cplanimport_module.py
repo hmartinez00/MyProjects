@@ -5,7 +5,7 @@ import pandas as pd
 from modulos.builders.extractorcplan_module import extractorcplan
 
 
-def cplanimport(mode):
+def cplanimport(rootes):
     '''
     ABAE-SAT-UT-SGO
     Desarrollado por: Héctor Martínez (Jefe(E) Telecomunicaciones)
@@ -21,7 +21,7 @@ def cplanimport(mode):
     # que se encuentra almacenada en los archivos CSV del directorio
     # GPT (General Plan table).
     # ---------------------------------------------------------------------
-    misiones_0 = extractorcplan(mode)
+    misiones_0 = extractorcplan(rootes)
     misiones_0['Date'] = pd.to_datetime(misiones_0['Date'])
 
 

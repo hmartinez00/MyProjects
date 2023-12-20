@@ -62,8 +62,4 @@ def procexgen2(container, location):
     for ParameterFileCount in range(len(RECEIVETASK_dict['MessageID'])):
         XML_RECEIVETASK_Generator(RECEIVETASK_dict, ParameterFileCount)
         
-    # ---------------------------------------------------------------------
-    # Organizando los archivos
-    # ---------------------------------------------------------------------
-    print('{}% Organizando archivos.'.format(int(8/8*100)))
-    files_organizer(CPLAN_extract(archivo), RecPass, container)
+  

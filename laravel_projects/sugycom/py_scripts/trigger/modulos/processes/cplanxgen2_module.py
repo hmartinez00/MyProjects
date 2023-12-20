@@ -9,9 +9,9 @@ def cplanxgen2(misiones_0, Date_Code_BatchID):
     # ---------------------------------------------------------------------
     # Definiendo la Base de datos
     # ---------------------------------------------------------------------
-    key = 'database'
-    mode = False
-    base_datos = routing(mode)[key] + 'vrss_operation_and_managment_subsystem'
+    # key = 'database'
+    # mode = False
+    base_datos = r'C:\Users\admin\Documents\0 - A Control de Procesos\data\vrss_operation_and_managment_subsystem'
 
     # ---------------------------------------------------------------------
     # Consulta a la tabla de Control de Procesos.

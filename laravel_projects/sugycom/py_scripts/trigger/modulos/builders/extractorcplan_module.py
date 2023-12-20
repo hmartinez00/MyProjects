@@ -2,9 +2,11 @@ import os
 import pandas as pd
 from datetime import datetime
 from modulos.processes.routing_module import routing
+import tkinter as tk
+from tkinter import filedialog
 
 
-def extractorcplan(mode):
+def extractorcplan(rootes):
     '''
     ABAE-SAT-UT-SGO
     Desarrollado por: Héctor Martínez (Jefe(E) Telecomunicaciones)
@@ -16,9 +18,9 @@ def extractorcplan(mode):
 
     key = 'missions'
     # mode = True
-    directorio = routing(mode)[key]
-    rutas = []
+    directorio = rootes[key]
 
+    rutas = []
     for nombre_directorio, dirs, ficheros in os.walk(directorio):
         for nombre_fichero in ficheros:
             if 'final.xlsx' in nombre_fichero:
