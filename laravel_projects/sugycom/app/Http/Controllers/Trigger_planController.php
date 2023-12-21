@@ -34,11 +34,17 @@ class Trigger_planController extends Controller
             $json = json_decode(file_get_contents($directorio . "/data_trigger.json"));
             $json->starttime = $starttime;
             $json->endtime = $endtime;
+            // file_put_contents($directorio . "/data_trigger.json", json_encode($json));
+            // Actualizamos la clave con los enrutamientos en el json
+            if ($starttime === null && $endtime === null){
+                $json->rootes = null;
+            } else {               
+                $rootes = shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
+                // $json->rootes = $rootes;
+                $json->rootes = json_decode($rootes, true);
+            }
             file_put_contents($directorio . "/data_trigger.json", json_encode($json));
         }
-
-        // Actualizamos la clave con los enrutamientos en el json
-        shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
 
         // Create a for loop that iterates over the dates between the start and end dates.
         $dates = [];

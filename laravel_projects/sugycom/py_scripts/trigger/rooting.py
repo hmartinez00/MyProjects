@@ -4,15 +4,17 @@ from modulos.processes.routing_module import routing
 
 rootes = routing()
 
-file = os.path.dirname(os.getcwd()) + '/data_trigger.json'
+print(rootes)
 
- # Open the JSON file.
-with open(file, 'r') as f:
-    data = json.load(f)
+# file = r'F:\MyProjects\laravel_projects\sugycom\py_scripts\data_trigger.json'
 
- # Add the new value to the "roots" key.
-data['rootes'] = rootes
+#  # Open the JSON file.
+# with open(file, 'r') as f:
+#     data = json.load(f)
 
- # Write the updated JSON file.
-with open(file, 'w') as f:
-    json.dump(data, f)
+#  # Add the new value to the "roots" key.
+# data['rootes'] = rootes
+
+#  # Write the updated JSON file.
+# with open(file, 'w') as f:
+#     json.dump(data, f)
