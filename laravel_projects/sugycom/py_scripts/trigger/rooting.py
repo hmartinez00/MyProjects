@@ -1,20 +1,31 @@
 import os
 import json
-from modulos.processes.routing_module import routing
+import tkinter as tk
+from tkinter import filedialog
+# from modulos.processes.routing_module import routing
 
-rootes = routing()
+file = 'F:/MyProjects/laravel_projects/sugycom/py_scripts/rootes.json'
 
-print(rootes)
+root = tk.Tk()
+root.withdraw()
+compendium = filedialog.askdirectory()
+directorio = os.path.dirname(compendium)
 
-# file = r'F:\MyProjects\laravel_projects\sugycom\py_scripts\data_trigger.json'
+database = directorio + '/data/'
+compendium = compendium
+missions = compendium + '/Seleccion de Misiones/'
+plans = compendium + '/Planes Satelitales/'
 
-#  # Open the JSON file.
-# with open(file, 'r') as f:
-#     data = json.load(f)
+# Cargar los datos del archivo JSON existente
+with open(file, 'r') as f:
+    data = json.load(f)
 
-#  # Add the new value to the "roots" key.
-# data['rootes'] = rootes
+# Actualizar los valores en el diccionario de datos
+data['database'] = database
+data['compendium'] = compendium
+data['missions'] = missions
+data['plans'] = plans
 
-#  # Write the updated JSON file.
-# with open(file, 'w') as f:
-#     json.dump(data, f)
+# Guardar los datos actualizados en el archivo JSON
+with open(file, 'w') as f:
+    json.dump(data, f, indent=4)  # Añadir indentación para legibilidad

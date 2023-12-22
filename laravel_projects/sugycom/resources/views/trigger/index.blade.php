@@ -3,10 +3,10 @@
 
     <div class="content">
 
-        <p>{{ $stat }}</p>
+        {{-- <p>{{ $stat }}</p> --}}
 
         <form 
-            action="{{ route('trigger.trigger', compact('stat')) }}" method="POST">
+            action="{{ route('trigger.trigger') }}" method="POST">
             @csrf
 
             <table class="table table-sm table-dark table-hover">

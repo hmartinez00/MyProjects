@@ -1,9 +1,10 @@
 import os
+import json
 import tkinter as tk
 from tkinter import filedialog
 
 
-def routing():
+def routing(file):
 
     '''
     Funcion de gestion de rutas de acceso a la base de datos, y a los archivos. Debe devolver un diccionario.

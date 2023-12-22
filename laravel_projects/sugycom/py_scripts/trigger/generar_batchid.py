@@ -13,10 +13,15 @@ def change_to_datetime(date_str):
     return date_obj
 
  # Read the JSON file
-with open("F:\MyProjects\laravel_projects\sugycom\py_scripts\data_trigger.json") as f:
-    data = json.load(f)
+with open(r"F:\MyProjects\laravel_projects\sugycom\py_scripts\rootes.json") as f1:
+    rootes = json.load(f1)
 
-rootes = data['rootes']
+# print(rootes)
+
+ # Read the JSON file
+with open(r"F:\MyProjects\laravel_projects\sugycom\py_scripts\data_trigger.json") as f2:
+    data = json.load(f2)
+
 # starttime = change_to_datetime(data['starttime'])
 # endtime = change_to_datetime(data['endtime'])
 date = change_to_datetime(data['date'])
