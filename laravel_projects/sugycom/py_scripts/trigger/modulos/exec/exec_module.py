@@ -1,4 +1,4 @@
-from modulos.processes.tcplanprepare_module import tcplanprepare
+from modulos.processes.tcplanprepare_module import tcplanprepare, tcplanprepare2
 from modulos.builders.cplanimport_module import cplanimport
 from modulos.processes.cplanxgen2_module import cplanxgen2
 from modulos.processes.procexgen2_module import procexgen2
@@ -13,6 +13,13 @@ def generar_TCPLAN(mode_0):
     '''
 
     tcplanprepare(mode_0)
+
+def generar_TCPLAN2(rootes, mode):
+    '''
+    Actualiza la extension del TCPLAN. Por defecto es entregada en *.txt. Esta funcion transforma dicha extension a *.xml.
+    '''
+
+    tcplanprepare2(rootes, mode)
 
 def generar_CPLAN(mode_0):
     '''
@@ -104,9 +111,44 @@ def actualiza_DB(
     print(df)
 
 
-    pregunta = input('Desea actualizar la tabla de procesos? (S/N): ')
+    # pregunta = input('Desea actualizar la tabla de procesos? (S/N): ')
+    pregunta = 's'
 
     if pregunta == 's' or pregunta == 'S':
+        try:
+            sqlite_Insertar_registro_masivo(S_base_datos, S_tabla, df, 0, 4)
+        except:
+            print('No se actualizo la tabla!')
+
+def actualiza_DB2(
+        container,
+        Date_Code_BatchID,
+        rootes,
+        mode
+    ):
+    '''
+    Funcion de gestion la actualizacion de la tabla de control de procesos.
+    '''
+    
+    key = 'database'
+    directorio = rootes[key]
+    S_base_datos = directorio + 'vrss_operation_and_managment_subsystem'
+    S_tabla = '`control_misiones_id_control_process`'
+
+
+    if container == None and Date_Code_BatchID == None:
+        key = 'plans'
+        container = rootes[key]
+
+        dia_de_plan = input('{}% Introducir BatchID: '.format(int(0/8*100)))
+        Date_Code_BatchID = int(dia_de_plan)
+    
+    df = ID_Update(Date_Code_BatchID, container)
+    print(df)
+
+
+    # pregunta = input('Desea actualizar la tabla de procesos? (S/N): ')
+    if mode == True:
         try:
             sqlite_Insertar_registro_masivo(S_base_datos, S_tabla, df, 0, 4)
         except:

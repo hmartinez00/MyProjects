@@ -52,6 +52,7 @@ class Trigger_planController extends Controller
 
             } else {
                 shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
+                shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\generar_TCPLAN.py');
             }
         }
         
