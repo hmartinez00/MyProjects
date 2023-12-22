@@ -97,9 +97,11 @@ class Trigger_planController extends Controller
         $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
         if (file_exists($directorio . "/rootes.json")) {
             $json = json_decode(file_get_contents($directorio . "/rootes.json"));
-            if ($directoryData->plans !== null){
-                
+            if ($json->plans !== null){
+                shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\compress.py');
             }
         }
+
+        return redirect()->route('trigger.index');
     }
 }

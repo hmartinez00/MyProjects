@@ -35,7 +35,7 @@
 
     </div>
 
-    <form action="#" method="post">
+    <form action="{{ route('trigger.compress') }}" method="post">
         @csrf
         {{-- @method('DELETE') --}}
         <input type="submit" class="btn btn-success mb-3" value="Download All">
