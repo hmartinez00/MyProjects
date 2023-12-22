@@ -5,13 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use File;
 
 
 class Trigger_planController extends Controller
 {
-    public function index($stat = null): View
+    public function index($files = null): View
     {
-        return view('trigger.index', compact('stat'));
+        $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
+    
+        if (file_exists($directorio . "/rootes.json")) {
+            $directoryData = json_decode(file_get_contents($directorio . "/rootes.json"));
+            if ($directoryData->plans !== null){
+                $files = File::allFiles($directoryData->plans);
+                $files = implode(',' . PHP_EOL, $files);
+            }
+        } else {
+            $files = 'No data.';
+        }
+    
+        return view('trigger.index', compact('files'));
     }
 
     public function trigger(Request $request)
@@ -66,7 +79,7 @@ class Trigger_planController extends Controller
             file_put_contents($directorio . "/data_trigger.json", json_encode($json));
             $output = shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\generar_batchid.py');
         }
-        
-        return view('trigger.index');
+
+        return redirect()->route('trigger.index');
     }
 }

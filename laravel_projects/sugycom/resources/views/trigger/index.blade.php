@@ -35,5 +35,7 @@
 
     </div>
 
+    <p>{{ $files }}</p>
+
 
 @endsection
