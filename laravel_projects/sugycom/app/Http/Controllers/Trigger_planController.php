@@ -17,7 +17,14 @@ class Trigger_planController extends Controller
         if (file_exists($directorio . "/rootes.json")) {
             $directoryData = json_decode(file_get_contents($directorio . "/rootes.json"));
             if ($directoryData->plans !== null){
-                $files = File::allFiles($directoryData->plans);
+                $subcadena = $directoryData->plans;
+                $files_0 = File::allFiles($directoryData->plans);
+                $files = [];
+                foreach ($files_0 as $file){
+                    $file = str_replace("\\", "/", $file);
+                    $position = strlen($subcadena);
+                    $files[] = substr($file, $position);
+                }
                 $files = implode(',' . PHP_EOL, $files);
             }
         } else {
