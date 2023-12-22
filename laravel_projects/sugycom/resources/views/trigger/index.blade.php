@@ -35,7 +35,11 @@
 
     </div>
 
-    <p>{{ $files }}</p>
+    @forelse ($files as $file)
+        <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p>
+    @empty
+        <p>No data.</p>
+    @endforelse
 
 
 @endsection

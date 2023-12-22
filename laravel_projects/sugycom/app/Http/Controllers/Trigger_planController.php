@@ -17,21 +17,16 @@ class Trigger_planController extends Controller
         if (file_exists($directorio . "/rootes.json")) {
             $directoryData = json_decode(file_get_contents($directorio . "/rootes.json"));
             if ($directoryData->plans !== null){
+                $files = File::allFiles($directoryData->plans);
                 $subcadena = $directoryData->plans;
-                $files_0 = File::allFiles($directoryData->plans);
+                $position = strlen($subcadena);
+            } else {
                 $files = [];
-                foreach ($files_0 as $file){
-                    $file = str_replace("\\", "/", $file);
-                    $position = strlen($subcadena);
-                    $files[] = substr($file, $position);
-                }
-                $files = implode(',' . PHP_EOL, $files);
+                $position = 0;
             }
-        } else {
-            $files = 'No data.';
         }
-    
-        return view('trigger.index', compact('files'));
+
+        return view('trigger.index', compact('files', 'position'));
     }
 
     public function trigger(Request $request)
