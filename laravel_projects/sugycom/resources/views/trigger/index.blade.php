@@ -36,7 +36,10 @@
     </div>
 
     @forelse ($files as $file)
-        <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p>
+        {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
+        @if ( $file !== '.' && $file !== '..' )
+            <p>{{ $file }}</p>
+        @endif
     @empty
         <p>No data.</p>
     @endforelse
