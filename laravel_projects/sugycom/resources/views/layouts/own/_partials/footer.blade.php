@@ -5,7 +5,7 @@
                 <div class="footer-panel">
                     <h3>Contact Information</h3>
                     {{-- <p>Phone: +58 416-6273459</p> --}}
-                    <p>Email: hectoralonzomartinez00@abae.gob.ve</p>
+                    <p>Email: hectoralonzomartinez00@gmail.com</p>
                     {{-- <p>Address: Main Street, City</p> --}}
                 </div>
             </div>

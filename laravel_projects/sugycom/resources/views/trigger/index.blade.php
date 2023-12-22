@@ -35,11 +35,15 @@
 
     </div>
 
+    <form action="#" method="post">
+        @csrf
+        {{-- @method('DELETE') --}}
+        <input type="submit" class="btn btn-success mb-3" value="Download All">
+    </form>
+
     <table class="table table-sm table-dark table-hover">
 
         <tbody class="table-group-divider">
-            
-            <tr><td>Send All</td></tr>
 
             @forelse ($files as $file)
                 {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
