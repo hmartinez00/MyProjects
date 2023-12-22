@@ -26,7 +26,7 @@
                         <input type="date" name="endtime" class="form-control">
                     </td>
                     <td>
-                        <input type="submit" value="Generate">
+                        <input type="submit" class="btn btn-primary" value="Generate">
                     </td>                
                 </tbody>
             </table>
