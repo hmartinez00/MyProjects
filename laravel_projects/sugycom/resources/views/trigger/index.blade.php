@@ -35,14 +35,23 @@
 
     </div>
 
-    @forelse ($files as $file)
-        {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
-        @if ( $file !== '.' && $file !== '..' )
-            <p>{{ $file }}</p>
-        @endif
-    @empty
-        <p>No data.</p>
-    @endforelse
+    <table class="table table-sm table-dark table-hover">
 
+        <tbody class="table-group-divider">
+            
+            <tr><td>Send All</td></tr>
+
+            @forelse ($files as $file)
+                {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
+                @if ( $file !== '.' && $file !== '..' )
+                    <tr><td>{{ $file }}</td></tr>
+                @endif
+            @empty
+                <tr><td>No data.</td></tr>
+            @endforelse
+
+        </tbody>
+
+    </table>
 
 @endsection
