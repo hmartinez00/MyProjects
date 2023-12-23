@@ -46,10 +46,10 @@
                     </td>
                 </tr>
 
-                @forelse ($files as $file)
+                @forelse ($directories as $directory)
                     {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
-                    @if ( $file !== '.' && $file !== '..' && strpos($file, '.zip') === false )
-                        <tr><td>{{ $file }}</td></tr>
+                    @if ( $directory !== '.' && $directory !== '..' && strpos($directory, '.zip') === false )
+                        <tr><td>{{ $directory }}</td></tr>
                     @endif
                 @empty
                     <tr><td>No data.</td></tr>

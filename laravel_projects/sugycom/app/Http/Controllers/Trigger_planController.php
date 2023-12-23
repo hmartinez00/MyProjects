@@ -24,17 +24,17 @@ class Trigger_planController extends Controller
                 //         $files[] = $elemento;
                 //     }
                 // }
-                $files = scandir($directoryData->plans, 1); 
+                $directories = scandir($directoryData->plans, 1); 
                 // $subcadena = $directoryData->plans;
                 // $position = strlen($subcadena);
             } else {
-                $files = [];
+                $directories = [];
                 // $position = 0;
             }
         }
 
-        // return view('trigger.index', compact('files', 'position'));
-        return view('trigger.index', compact('files'));
+        // return view('trigger.index', compact('directories', 'position'));
+        return view('trigger.index', compact('directories'));
     }
 
     public function select(Request $request)
