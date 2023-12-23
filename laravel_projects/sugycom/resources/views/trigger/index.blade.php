@@ -47,7 +47,7 @@
 
             @forelse ($files as $file)
                 {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
-                @if ( $file !== '.' && $file !== '..' )
+                @if ( $file !== '.' && $file !== '..' && strpos($file, '.zip') === false )
                     <tr><td>{{ $file }}</td></tr>
                 @endif
             @empty
