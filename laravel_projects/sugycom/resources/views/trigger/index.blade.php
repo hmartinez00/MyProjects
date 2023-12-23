@@ -33,7 +33,6 @@
             
         </form>
 
-
         <table class="table table-sm table-dark table-hover">
             <tbody>
                 <tr>
@@ -44,19 +43,39 @@
                             <input type="submit" class="btn btn-success m-2" value="Download All">
                         </form>
                     </td>
-                </tr>
-
-                @forelse ($directories as $directory)
-                    {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
-                    @if ( $directory !== '.' && $directory !== '..' && strpos($directory, '.zip') === false )
-                        <tr><td>{{ $directory }}</td></tr>
-                    @endif
-                @empty
-                    <tr><td>No data.</td></tr>
-                @endforelse
-                
+                </tr>                
             </tbody>
         </table>
+
+        <div class="accordion" id="accordionExample">
+            @forelse ($directories as $directory)
+                @if ( $directory !== '.' && $directory !== '..' && strpos($directory, '.zip') === false )
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ str_replace(" ", "_", $directory) }}" aria-expanded="false" aria-controls="{{ str_replace(" ", "_", $directory) }}">
+                                {{ $directory }}
+                            </button>
+                        </h2>
+                        <div id="{{ str_replace(" ", "_", $directory) }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    @foreach ($files as $file)
+                                        @if ( strpos($file, $directory) !== false )
+                                            <li>{{ substr(str_replace("\\", "/", $file), $position) }}</li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
+            @empty
+                <p>No data.</p>
+            @endforelse
+
+        </div>
             
     </div>
 
