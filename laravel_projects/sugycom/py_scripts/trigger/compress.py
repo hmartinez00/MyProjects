@@ -9,16 +9,16 @@ import shutil
 with open(r"F:\MyProjects\laravel_projects\sugycom\py_scripts\rootes.json") as f1:
     rootes = json.load(f1)
 
-# root = tk.Tk()
-# root.withdraw()
-# directory = filedialog.askdirectory()
-
 filename = os.path.basename(rootes['compendium'])
 format = 'zip'
-directory = rootes['plans']
+directory1 = rootes['plans']
 
-shutil.make_archive(filename, format, directory)
-shutil.copy(filename + '.zip', directory)
+root = tk.Tk()
+root.withdraw()
+directory2 = filedialog.askdirectory()
+
+shutil.make_archive(filename, format, directory1)
+shutil.copy(filename + '.zip', directory2)
 os.remove(filename + '.zip')
 
 print(f"El directorio se comprimió en el archivo {filename}.")

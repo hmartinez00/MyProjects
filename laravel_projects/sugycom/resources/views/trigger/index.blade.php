@@ -2,9 +2,6 @@
 @section('content')
 
     <div class="content">
-
-        {{-- <p>{{ $stat }}</p> --}}
-
         <form 
             action="{{ route('trigger.trigger') }}" method="POST">
             @csrf
@@ -19,43 +16,48 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <td>
-                        <input type="date" name="starttime" class="form-control">
-                    </td>
-                    <td>
-                        <input type="date" name="endtime" class="form-control">
-                    </td>
-                    <td>
-                        <input type="submit" class="btn btn-primary" value="Generate">
-                    </td>                
+                    <tr>
+                        <td>
+                            <input type="date" name="starttime" class="form-control">
+                        </td>
+                        <td>
+                            <input type="date" name="endtime" class="form-control">
+                        </td>
+                        <td>
+                            <input type="submit" class="btn btn-primary" value="Generate">
+                        </td>                
+                    </tr>
+
                 </tbody>
             </table>
             
         </form>
 
+
+        <table class="table table-sm table-dark table-hover">
+            <tbody>
+                <tr>
+                    <td>
+                        <form action="{{ route('trigger.compress') }}" method="POST">
+                            @csrf
+                            {{-- @method('DELETE') --}}
+                            <input type="submit" class="btn btn-success m-2" value="Download All">
+                        </form>
+                    </td>
+                </tr>
+
+                @forelse ($files as $file)
+                    {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
+                    @if ( $file !== '.' && $file !== '..' && strpos($file, '.zip') === false )
+                        <tr><td>{{ $file }}</td></tr>
+                    @endif
+                @empty
+                    <tr><td>No data.</td></tr>
+                @endforelse
+                
+            </tbody>
+        </table>
+            
     </div>
-
-    <form action="{{ route('trigger.compress') }}" method="post">
-        @csrf
-        {{-- @method('DELETE') --}}
-        <input type="submit" class="btn btn-success mb-3" value="Download All">
-    </form>
-
-    <table class="table table-sm table-dark table-hover">
-
-        <tbody class="table-group-divider">
-
-            @forelse ($files as $file)
-                {{-- <p>{{ substr(str_replace("\\", "/", $file), $position) }}</p> --}}
-                @if ( $file !== '.' && $file !== '..' && strpos($file, '.zip') === false )
-                    <tr><td>{{ $file }}</td></tr>
-                @endif
-            @empty
-                <tr><td>No data.</td></tr>
-            @endforelse
-
-        </tbody>
-
-    </table>
 
 @endsection

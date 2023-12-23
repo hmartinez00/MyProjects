@@ -10,7 +10,7 @@ use File;
 
 class Trigger_planController extends Controller
 {
-    public function index($files = null): View
+    public function index(): View
     {
         $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
     
@@ -35,6 +35,35 @@ class Trigger_planController extends Controller
 
         // return view('trigger.index', compact('files', 'position'));
         return view('trigger.index', compact('files'));
+    }
+
+    public function select(Request $request)
+    {
+        $starttime = $request->starttime;
+        $endtime = $request->endtime;
+
+        // Define the directory where the JSON file will be created.
+        $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
+
+        // Comprueba si el archivo existe
+        if (!file_exists($directorio . "/rootes.json")) {
+
+            // Crea el archivo JSON
+            $json2 = array("database" => null, "compendium" => null, "missions" => null, "plans" => null);
+            file_put_contents($directorio . "/rootes.json", json_encode($json2));
+
+        } else {
+            if ($starttime === null || $endtime === null){
+
+                $json2 = array("database" => null, "compendium" => null, "missions" => null, "plans" => null);
+                file_put_contents($directorio . "/rootes.json", json_encode($json2));   
+
+            } else {
+                shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
+            }
+        }
+
+        return redirect()->route('trigger.index', compact('starttime', 'endtime'));
     }
 
     public function trigger(Request $request)
