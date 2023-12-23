@@ -17,27 +17,15 @@ class Trigger_planController extends Controller
         if (file_exists($directorio . "/rootes.json")) {
             $directoryData = json_decode(file_get_contents($directorio . "/rootes.json"));
             if ($directoryData->plans !== null){
-                $directories = scandir($directoryData->plans, 1); 
-                
-                $files = File::allFiles($directoryData->plans);
-                // $files = [];
-                // foreach (scandir($directoryData->plans) as $elemento) {
-                //     if (is_dir($directoryData->plans . DIRECTORY_SEPARATOR . $elemento)) {
-                //         $files[] = $elemento;
-                //     }
-                // }
-                $subcadena = $directoryData->plans;
-                $position = strlen($subcadena);
-                
+                $directories = scandir($directoryData->plans, 1);                
+                $files = File::allFiles($directoryData->plans);               
             } else {
                 $directories = [];
                 $files = [];
-                $position = 0;
             }
         }
 
-        return view('trigger.index', compact('directories', 'files', 'position'));
-        // return view('trigger.index', compact('directories'));
+        return view('trigger.index', compact('directories', 'files'));
     }
 
     public function select(Request $request)

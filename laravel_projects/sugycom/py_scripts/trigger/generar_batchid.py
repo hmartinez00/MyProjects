@@ -44,7 +44,7 @@ directory2  =   dir_path + '/Station Plan'
 files_organizer(directory, extension1, extension2, extension3, extension4, directory1, directory2)
 
 
-mode = False
+mode = True
 actualiza_DB2(
     container,
     Date_Code_BatchID,

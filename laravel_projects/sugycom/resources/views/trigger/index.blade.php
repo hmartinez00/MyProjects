@@ -10,6 +10,7 @@
 
                 <thead>
                     <tr>
+                        {{-- <th></th> --}}
                         <th>StartTime</th>
                         <th>EndTime</th>
                         <th></th>
@@ -17,6 +18,12 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
+                        {{-- <td>
+                            <select name="db_status" class="form-control">
+                                <option value="True">True</option>
+                                <option value="False">False</option>
+                            </select> 
+                        </td> --}}
                         <td>
                             <input type="date" name="starttime" class="form-control">
                         </td>
@@ -47,7 +54,7 @@
             </tbody>
         </table>
 
-        <div class="accordion" id="accordionExample">
+        <div class="accordion mb-4" id="accordionExample">
             @forelse ($directories as $directory)
                 @if ( $directory !== '.' && $directory !== '..' && strpos($directory, '.zip') === false )
 
@@ -62,10 +69,14 @@
                                 <ul>
                                     @foreach ($files as $file)
                                         @if ( strpos($file, $directory) !== false )
-                                            <li>{{ substr(str_replace("\\", "/", $file), $position) }}</li>
+                                            <li>
+                                                {{ basename(str_replace("\\", "/", $file)) }}
+                                            </li>
                                         @endif
                                     @endforeach
                                 </ul>
+
+                                {{-- button --}}
                             </div>
                         </div>
                     </div>
