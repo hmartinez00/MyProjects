@@ -7,8 +7,10 @@
                     <tbody>
                         @foreach ($headers as $header)
                             <tr>
-                                <td>{{ $header }}:</td>
-                                <td>{{ $researcher->$header }}</td>
+                                @if ( $header !== 'id' && $header !== 'created_at' && $header !== 'updated_at' )
+                                    <td>{{ $header }}:</td>
+                                    <td>{{ $researcher->$header }}</td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

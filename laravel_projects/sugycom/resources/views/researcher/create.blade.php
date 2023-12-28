@@ -19,16 +19,18 @@
                         <tbody>
                             @foreach ($headers as $header)
                                 <tr>
-                                    <td>{{ $header }}:</td>
-                                    <td>
-                                        @if ( in_array($header, $headers_text ))
-                                            <input type="text" name="{{ $header }}" class="form-control">                                   
-                                        @elseif ( in_array($header, $headers_datetime_local ))
-                                            <input type="datetime-local" name="{{ $header }}" class="form-control">                                   
-                                        @else
-                                            <input type="number" name="{{ $header }}" class="form-control">
-                                        @endif
-                                    </td>
+                                    @if ( $header !== 'id' && $header !== 'created_at' && $header !== 'updated_at' )
+                                        <td>{{ $header }}:</td>
+                                        <td>
+                                            @if ( in_array($header, $headers_text ))
+                                                <input type="text" name="{{ $header }}" class="form-control">                                   
+                                            @elseif ( in_array($header, $headers_datetime_local ))
+                                                <input type="datetime-local" name="{{ $header }}" class="form-control">                                   
+                                            @else
+                                                <input type="number" name="{{ $header }}" class="form-control">
+                                            @endif
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
