@@ -28,33 +28,22 @@ class Trigger_planController extends Controller
         return view('trigger.index', compact('directories', 'files'));
     }
 
-    public function select(Request $request)
+    public function sender(): View
     {
-        $starttime = $request->starttime;
-        $endtime = $request->endtime;
-
-        // Define the directory where the JSON file will be created.
         $directorio = 'F:\MyProjects\laravel_projects\sugycom\py_scripts';
-
-        // Comprueba si el archivo existe
-        if (!file_exists($directorio . "/rootes.json")) {
-
-            // Crea el archivo JSON
-            $json2 = array("database" => null, "compendium" => null, "missions" => null, "plans" => null);
-            file_put_contents($directorio . "/rootes.json", json_encode($json2));
-
-        } else {
-            if ($starttime === null || $endtime === null){
-
-                $json2 = array("database" => null, "compendium" => null, "missions" => null, "plans" => null);
-                file_put_contents($directorio . "/rootes.json", json_encode($json2));   
-
+    
+        if (file_exists($directorio . "/rootes.json")) {
+            $directoryData = json_decode(file_get_contents($directorio . "/rootes.json"));
+            if ($directoryData->plans !== null){
+                $directories = scandir($directoryData->plans, 1);                
+                $files = File::allFiles($directoryData->plans);               
             } else {
-                shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\rooting.py');
+                $directories = [];
+                $files = [];
             }
         }
 
-        return redirect()->route('trigger.index', compact('starttime', 'endtime'));
+        return view('trigger.sender', compact('directories', 'files'));
     }
 
     public function trigger(Request $request)
@@ -110,7 +99,11 @@ class Trigger_planController extends Controller
             $output = shell_exec('python F:\MyProjects\laravel_projects\sugycom\py_scripts\trigger\generar_batchid.py');
         }
 
-        return redirect()->route('trigger.index');
+        if ($starttime === null || $endtime === null){
+            return redirect()->route('trigger.index');
+        } else {
+            return redirect()->route('trigger.sender');
+        }
     }
 
     public function compress(){
@@ -122,6 +115,7 @@ class Trigger_planController extends Controller
             }
         }
 
-        return redirect()->route('trigger.index');
+        // return redirect()->route('trigger.index');
+        return redirect()->route('trigger.sender');
     }
 }

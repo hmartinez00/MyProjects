@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('trigger', [Trigger_planController::class, 'index'])->name('trigger.index');
     Route::post('trigger', [Trigger_planController::class, 'trigger'])->name('trigger.trigger');
     Route::post('compress', [Trigger_planController::class, 'compress'])->name('trigger.compress');
-    Route::post('select', [Trigger_planController::class, 'select'])->name('trigger.select');
+    Route::get('sender', [Trigger_planController::class, 'sender'])->name('trigger.sender');
 });
 
 require __DIR__.'/auth.php';
