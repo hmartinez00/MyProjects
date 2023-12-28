@@ -6,7 +6,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <a href="{{ route('trigger.index') }}">Back</a>
+                        <a class="ms-5" href="{{ route('trigger.index') }}">Back</a>
                     </td>
                     <td>
                         <form action="{{ route('trigger.compress') }}" method="POST">
