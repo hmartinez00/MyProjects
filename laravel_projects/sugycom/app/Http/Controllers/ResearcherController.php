@@ -60,8 +60,10 @@ class ResearcherController extends Controller
      */
     public function show(Researcher $researcher): View
     {
+        $data_item = $researcher;
+        $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
-        return view($this->views_category . '.show', compact($this->views_category, 'headers'));
+        return view($views_category . '.show', compact('data_item', 'headers', 'views_category'));
     }
 
     /**
