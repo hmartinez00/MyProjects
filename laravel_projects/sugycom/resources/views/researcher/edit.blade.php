@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
 
-        <form method="POST" action="{{ route('researcher.update', $researcher->id) }}">
+        <form method="POST" action="{{ route($views_category . '.update', $data_item->id) }}">
             @csrf
             @method('PUT')
         
@@ -16,11 +16,11 @@
                                         <td>{{ $header }}:</td>
                                         <td>
                                             @if ( in_array($header, $headers_text ))
-                                                <input type="text" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
+                                                <input type="text" name="{{ $header }}" class="form-control" value="{{ $data_item->$header }}">
                                             @elseif ( in_array($header, $headers_datetime_local ))
-                                                <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
+                                                <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $data_item->$header }}">
                                             @else
-                                                <input type="number" name="{{ $header }}" class="form-control" value="{{ $researcher->$header }}">
+                                                <input type="number" name="{{ $header }}" class="form-control" value="{{ $data_item->$header }}">
                                             @endif
                                         </td>
                                     @endif
@@ -38,14 +38,14 @@
                             <input type="submit" class="dropdown-item rounded-2" value="Update">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('researcher.show', $researcher->id) }}">
+                            <a class="dropdown-item rounded-2" href="{{ route($views_category . '.show', $data_item->id) }}">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Show</font>
                                 </font>
                             </a>
                         </li>
                         <li>
-                            <form action="{{ route('researcher.destroy', $researcher->id) }}" method="post">
+                            <form action="{{ route($views_category . '.destroy', $data_item->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" class="dropdown-item rounded-2" value="Delete">
@@ -55,7 +55,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('researcher.index') }}">
+                            <a class="dropdown-item rounded-2" href="{{ route($views_category . '.index') }}">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Back</font>
                                 </font>

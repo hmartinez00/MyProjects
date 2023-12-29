@@ -38,12 +38,13 @@ class ResearcherController extends Controller
      */
     public function create(): View
     {
+        $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         $text_index = $this->text_index_0;
         $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view($this->views_category . '.create', compact('headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.create', compact('views_category', 'headers', 'headers_text', 'headers_datetime_local'));
     }
 
     /**
@@ -63,7 +64,7 @@ class ResearcherController extends Controller
         $data_item = $researcher;
         $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
-        return view($views_category . '.show', compact('data_item', 'headers', 'views_category'));
+        return view($views_category . '.show', compact('data_item', 'views_category', 'headers'));
     }
 
     /**
@@ -71,12 +72,14 @@ class ResearcherController extends Controller
      */
     public function edit(Researcher $researcher): View
     {
+        $data_item = $researcher;
+        $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         $text_index = $this->text_index_0;
         $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view($this->views_category . '.edit', compact($this->views_category, 'headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.edit', compact('data_item', 'views_category', 'headers', 'headers_text', 'headers_datetime_local'));
     }
 
     /**

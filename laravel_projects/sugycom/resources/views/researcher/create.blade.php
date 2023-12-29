@@ -9,7 +9,7 @@
     @endif
     <div class="content">
 
-        <form method="POST" action="{{ route('researcher.store') }}">
+        <form method="POST" action="{{ route($views_category . '.store') }}">
             @csrf
             
             <div class="row">
@@ -47,7 +47,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route('researcher.index') }}">
+                            <a class="dropdown-item rounded-2" href="{{ route($views_category . '.index') }}">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Back</font>
                                 </font>
