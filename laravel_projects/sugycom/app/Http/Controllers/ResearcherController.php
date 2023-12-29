@@ -30,7 +30,7 @@ class ResearcherController extends Controller
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('views_category', 'items', 's_headers'));
+        return view($views_category . '.index', compact('items', 'views_category', 's_headers'));
 
     }
 
