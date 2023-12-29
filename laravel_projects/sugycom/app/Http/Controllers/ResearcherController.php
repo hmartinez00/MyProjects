@@ -26,10 +26,11 @@ class ResearcherController extends Controller
     public function index(): View
     {
         $items = Researcher::all();
+        $views_category = $this->views_category;
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($this->views_category . '.index', compact('items', 's_headers'));
+        return view($views_category . '.index', compact('views_category', 'items', 's_headers'));
 
     }
 
@@ -87,8 +88,10 @@ class ResearcherController extends Controller
      */
     public function update(Request $request, Researcher $researcher): RedirectResponse
     {
-        $researcher->update($request->all());
-        return redirect()->route($this->views_category . '.show', $researcher->id);
+        $data_item = $researcher;
+        $views_category = $this->views_category;
+        $data_item->update($request->all());
+        return redirect()->route($views_category . '.show', $data_item->id);
     }
 
     /**

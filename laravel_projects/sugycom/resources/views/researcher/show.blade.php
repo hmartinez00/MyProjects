@@ -27,7 +27,7 @@
                         </a>
                     </li>                    
                     <li>
-                        <form action="{{ route($views_category . '.destroy', $data_item->id) }}" method="post">
+                        <form action="{{ route($views_category . '.destroy', $data_item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="submit" class="dropdown-item rounded-2" value="Delete">

@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
         <button type="button" class="btn btn-primary m-4">
-            <a class="nav-link text-white" href="{{ route('researcher.create') }}">Crear nuevo item</a>
+            <a class="nav-link text-white" href="{{ route($views_category . '.create') }}">Crear nuevo item</a>
         </button>
         <table class="table table-sm table-dark table-hover">
             <thead>
@@ -13,13 +13,13 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @forelse ($items as $item)
+                @forelse ($items as $data_item)
                     <tr>
                         @foreach ($s_headers as $s_header)
-                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $item->id }}">{{ $item->$s_header }}</a></td>
+                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $data_item->id }}">{{ $data_item->$s_header }}</a></td>
                         @endforeach
                     </tr>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $item->id }}">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $data_item->id }}">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menú</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -33,8 +33,8 @@
                                     Dropdown Button
                                 </button>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('researcher.show', $item->id) }}">Leer item {{ $item->id }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('researcher.edit', $item->id) }}">Actualizar item {{ $item->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route($views_category . '.show', $data_item->id) }}">Leer item {{ $data_item->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route($views_category . '.edit', $data_item->id) }}">Actualizar item {{ $data_item->id }}</a></li>
                               </ul>
                             </div>
                         </div>
