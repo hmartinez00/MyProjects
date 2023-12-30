@@ -14,8 +14,10 @@ class Trigger_planController extends Controller
 
     public function __construct()
     {
+        // $this->test = Setting::find(2)->route;
         // $this->directorio_0 = 'F:/MyProjects/laravel_projects/sugycom/py_scripts';
-        $this->directorio_0 = Setting::find(1)->route;
+        $this->directorio = Setting::find(1)->route;
+        $this->directorio_0 = Setting::find(2)->route;
         $this->rootes_json = $this->directorio_0 . "/rootes.json";
         $this->data_trigger_json = $this->directorio_0 . "/data_trigger.json";
         $this->rooting_py = $this->directorio_0 . '/trigger/rooting.py';
@@ -26,18 +28,23 @@ class Trigger_planController extends Controller
 
     public function index(): View
     {   
-        if (file_exists($this->rootes_json)) {
-            $directoryData = json_decode(file_get_contents($this->rootes_json));
-            if ($directoryData->plans !== null){
-                $directories = scandir($directoryData->plans, 1);                
-                $files = File::allFiles($directoryData->plans);               
-            } else {
-                $directories = [];
-                $files = [];
-            }
-        }
+        // $test = $this->test;
+        // if (file_exists($this->rootes_json)) {
+        //     $directoryData = json_decode(file_get_contents($this->rootes_json));
+        //     if ($directoryData->plans !== null){
+        //         $directories = scandir($directoryData->plans, 1);                
+        //         $files = File::allFiles($directoryData->plans);               
+        //     } else {
+        //         $directories = [];
+        //         $files = [];
+        //     }
+        // }
 
-        return view('trigger.index', compact('directories', 'files'));
+        $directories = scandir($this->directorio, 1);
+
+        // return view('trigger.index', compact('test', 'directories', 'files'));
+        // return view('trigger.index', compact('directories', 'files'));
+        return view('trigger.index', compact('directories'));
     }
 
     public function sender(): View
