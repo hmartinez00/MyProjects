@@ -49,7 +49,7 @@
                         {{-- <tr><td>{{ $data_item }}</td></tr> --}}
                         <tr><td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ str_replace(" ", "_", $data_item) }}">{{ $data_item }}</a></td></tr>
                         
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ str_replace(" ", "_", $data_item) }}">
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ str_replace(" ", "_", $data_item)    }}">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menú</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

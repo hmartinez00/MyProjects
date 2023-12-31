@@ -14,7 +14,7 @@
                         <li><a href="{{ route('priority.index') }}">Priorities</a></li>
                         <li><a href="{{ route('researcher.index') }}">Researchers</a></li>
                         <li><a href="{{ route('trigger.index') }}">Trigger</a></li>
-                        <li><a href="{{ route('setting.index') }}">Settings Routes</a></li>
+                        <li><a href="{{ route('setting.index') }}">Settings</a></li>
                     </ul>
                 </div>
             </div>
