@@ -22,13 +22,20 @@ class SettingController extends Controller
     public function index(): View
     {
         $directoryData = json_decode(file_get_contents($this->directory));
-        // $directoryData = file_get_contents($this->directory);
+        
         $dir = $directoryData->dir;
         $database_status = $directoryData->database_status;
-        $py_settings = implode(',', $directoryData->py_settings);
-        $py_scripts = implode(',', $directoryData->py_scripts);
-        // return view('setting.index', compact('dir', 'database_status', 'py_settings', 'py_scripts'));
-        return view('setting.index', compact('py_settings'));
+        $py_settings = $directoryData->py_settings;
+        $py_scripts = $directoryData->py_scripts;
+
+        $directoryData = [
+            'dir' => $directoryData->dir,
+            'database_status' => $directoryData->database_status,
+            'py_settings' => $directoryData->py_settings,
+            'py_scripts' => $directoryData->py_scripts
+        ];
+
+        return view('setting.index', compact('dir', 'database_status', 'py_settings', 'py_scripts'));
     }
 
     /**
