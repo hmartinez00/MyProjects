@@ -63,8 +63,8 @@
                                         Dropdown Button
                                     </button>
                                   <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route($views_category . '.index', $data_item) }}">Leer item {{ $data_item }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ route($views_category . '.sender', $data_item) }}">Actualizar item {{ $data_item }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.index', $data_item) }}">Seleccionar</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.sender', $data_item) }}">Ver</a></li>
                                   </ul>
                                 </div>
                             </div>

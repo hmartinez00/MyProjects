@@ -14,8 +14,6 @@ class Trigger_planController extends Controller
 
     public function __construct()
     {
-        // $this->test = Setting::find(2)->route;
-        // $this->directorio_0 = 'F:/MyProjects/laravel_projects/sugycom/py_scripts';
         $this->directorio = Setting::find(1)->route;
         $this->directorio_0 = Setting::find(2)->route;
         $this->rootes_json = $this->directorio_0 . "/rootes.json";
@@ -25,47 +23,35 @@ class Trigger_planController extends Controller
         $this->generar_batchid_py = $this->directorio_0 . '/trigger/generar_batchid.py';
         $this->compress_py = $this->directorio_0 . '/trigger/compress.py';
         $this->views_category           = 'trigger';
+        $this->plans = '/Planes Satelitales';
+        $this->missions = '/Seleccion de Misiones';
     }
 
     public function index( $param = null ): View
     {   
-        // $test = $this->test;
-        // if (file_exists($this->rootes_json)) {
-        //     $directoryData = json_decode(file_get_contents($this->rootes_json));
-        //     if ($directoryData->plans !== null){
-        //         $directories = scandir($directoryData->plans, 1);                
-        //         $files = File::allFiles($directoryData->plans);               
-        //     } else {
-        //         $directories = [];
-        //         $files = [];
-        //     }
-        // }
         $views_category = $this->views_category;
         $directories = scandir($this->directorio, 1);
 
         return view('trigger.index', compact('param', 'views_category', 'directories'));
     }
 
-    public function sender( $param = null )
-    {   
-        if (file_exists($this->rootes_json)) {
-            $directoryData = json_decode(file_get_contents($this->rootes_json));
-            if ($directoryData->plans !== null){
-                $directories = scandir($directoryData->plans, 1);                
-                $files = File::allFiles($directoryData->plans);               
-            } else {
-                $directories = [];
-                $files = [];
-            }
-        }
+    public function sender( $param = null ): View
+    {         
+        $views_category = $this->views_category;
+        $compendium = $this->directorio . '/' . str_replace("_", " ", $param);
+        $missions = $compendium . $this->missions;
+        $plans = $compendium . $this->plans;
+        $directories = scandir($plans, 1);
+        $files = File::allFiles($plans);
 
-        return view('trigger.sender', compact('directories', 'files'));
-        
-        // $views_category = $this->views_category;
-        // $directoryData = $this->directorio . '/' . str_replace("_", " ", $param);
-        // $directories = scandir($directoryData, 1);
-        // $files = File::allFiles($directoryData);
-        // return redirect()->route($views_category . '.sender', compact('param', 'directories', 'files'));
+        // Actualiza las claves starttime y endtime en el archivo JSON
+        $json = json_decode(file_get_contents($this->rootes_json));
+        $json->compendium = $compendium;
+        $json->missions = $compendium;
+        $json->plans = $plans;
+        file_put_contents($this->rootes_json, json_encode($json, JSON_PRETTY_PRINT));
+
+        return view($views_category . '.sender', compact('param', 'views_category', 'directories', 'files'));
     }
 
     public function trigger(Request $request)
@@ -126,7 +112,8 @@ class Trigger_planController extends Controller
         }
     }
 
-    public function compress(){
+    public function compress()
+    {
         if (file_exists($this->rootes_json)) {
             $json = json_decode(file_get_contents($this->rootes_json));
             if ($json->plans !== null){
@@ -134,7 +121,6 @@ class Trigger_planController extends Controller
             }
         }
 
-        // return redirect()->route('trigger.index');
-        return redirect()->route('trigger.sender');
+        return redirect()->route('trigger.index');
     }
 }
