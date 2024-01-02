@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="content">
-        {{-- <p>{{ $test }}</p> --}}
+        <p>{{ $param }}</p>
 
         <form 
             action="{{ route('trigger.trigger') }}" method="POST">
@@ -63,8 +63,8 @@
                                         Dropdown Button
                                     </button>
                                   <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Leer item {{ $data_item }}</a></li>
-                                    <li><a class="dropdown-item" href="#">Actualizar item {{ $data_item }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.index', $data_item) }}">Leer item {{ $data_item }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.sender', $data_item) }}">Actualizar item {{ $data_item }}</a></li>
                                   </ul>
                                 </div>
                             </div>

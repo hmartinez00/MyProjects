@@ -24,9 +24,10 @@ class Trigger_planController extends Controller
         $this->generar_TCPLAN_py = $this->directorio_0 . '/trigger/generar_TCPLAN.py';
         $this->generar_batchid_py = $this->directorio_0 . '/trigger/generar_batchid.py';
         $this->compress_py = $this->directorio_0 . '/trigger/compress.py';
+        $this->views_category           = 'trigger';
     }
 
-    public function index(): View
+    public function index( $param = null ): View
     {   
         // $test = $this->test;
         // if (file_exists($this->rootes_json)) {
@@ -39,15 +40,13 @@ class Trigger_planController extends Controller
         //         $files = [];
         //     }
         // }
-
+        $views_category = $this->views_category;
         $directories = scandir($this->directorio, 1);
 
-        // return view('trigger.index', compact('test', 'directories', 'files'));
-        // return view('trigger.index', compact('directories', 'files'));
-        return view('trigger.index', compact('directories'));
+        return view('trigger.index', compact('param', 'views_category', 'directories'));
     }
 
-    public function sender(): View
+    public function sender( $param = null )
     {   
         if (file_exists($this->rootes_json)) {
             $directoryData = json_decode(file_get_contents($this->rootes_json));
@@ -61,6 +60,12 @@ class Trigger_planController extends Controller
         }
 
         return view('trigger.sender', compact('directories', 'files'));
+        
+        // $views_category = $this->views_category;
+        // $directoryData = $this->directorio . '/' . str_replace("_", " ", $param);
+        // $directories = scandir($directoryData, 1);
+        // $files = File::allFiles($directoryData);
+        // return redirect()->route($views_category . '.sender', compact('param', 'directories', 'files'));
     }
 
     public function trigger(Request $request)
