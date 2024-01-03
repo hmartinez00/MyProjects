@@ -12,7 +12,7 @@
                         <form action="{{ route($views_category . '.compress') }}" method="POST">
                             @csrf
                             {{-- @method('DELETE') --}}
-                            <input type="submit" class="btn btn-success m-2 ms-5" value="Download All">
+                            <input type="submit" class="btn btn-success m-2 ms-5 fa-download" value="Download All">
                         </form>
                     </td>
                 </tr>                

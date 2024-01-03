@@ -35,6 +35,14 @@ class Trigger_planController extends Controller
         return view('trigger.index', compact('param', 'views_category', 'directories'));
     }
 
+    public function select( $data_item ): RedirectResponse
+    {
+        // $param = $this->directorio . '/' . $param;
+        
+        $param = $data_item;
+        return redirect()->route('trigger.index', $param);
+    }
+
     public function sender( $param = null ): View
     {         
         $views_category = $this->views_category;
