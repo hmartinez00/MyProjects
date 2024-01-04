@@ -76,13 +76,6 @@ class Trigger_planController extends Controller
         $starttime = $result[0];
         $endtime = $result[1];
 
-        // // Actualiza las claves starttime y endtime en el archivo JSON
-        // $json = json_decode(file_get_contents($this->data_trigger_json));
-        // $json->starttime = $starttime;
-        // $json->endtime = $endtime;
-        // // $json->date = null;
-        // file_put_contents($this->data_trigger_json, json_encode($json, JSON_PRETTY_PRINT));
-
         return redirect()->route('trigger.index', compact('starttime', 'endtime'));
     }
 
@@ -135,7 +128,7 @@ class Trigger_planController extends Controller
                 file_put_contents($this->rootes_json, json_encode($json2));   
 
             } else {
-                shell_exec('python ' . $this->rooting_py);
+                // shell_exec('python ' . $this->rooting_py);
                 shell_exec('python ' . $this->generar_TCPLAN_py);
             }
         }
@@ -151,10 +144,13 @@ class Trigger_planController extends Controller
             $output = shell_exec('python ' . $this->generar_batchid_py);
         }
 
+        $json2 = json_decode(file_get_contents($this->rootes_json));
+        $param = basename($json2->compendium);
+
         if ($starttime === null || $endtime === null){
             return redirect()->route('trigger.index');
         } else {
-            return redirect()->route('trigger.sender');
+            return redirect()->route('trigger.sender', $param);
         }
     }
 
