@@ -2,17 +2,15 @@
 @section('content')
 
     <div class="content">
-        <p>{{ $param }}</p>
 
         <form 
-            action="{{ route('trigger.trigger') }}" method="POST">
+            action="{{ route($views_category . '.trigger') }}" method="POST">
             @csrf
 
             <table class="table table-sm table-dark table-hover">
 
                 <thead>
                     <tr>
-                        {{-- <th></th> --}}
                         <th>StartTime</th>
                         <th>EndTime</th>
                         <th></th>
@@ -20,17 +18,11 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        {{-- <td>
-                            <select name="db_status" class="form-control">
-                                <option value="True">True</option>
-                                <option value="False">False</option>
-                            </select> 
-                        </td> --}}
                         <td>
-                            <input type="date" name="starttime" class="form-control">
+                            <input type="date" name="starttime" class="form-control" value="{{ str_replace(" ", "" , $starttime) }}">
                         </td>
                         <td>
-                            <input type="date" name="endtime" class="form-control">
+                            <input type="date" name="endtime" class="form-control" value="{{ str_replace(" ", "" , $endtime) }}">
                         </td>
                         <td>
                             <input type="submit" class="btn btn-primary" value="Generate">

@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     
-    Route::get('trigger/{param?}', [Trigger_planController::class, 'index'])->name('trigger.index');
+    Route::get('trigger/{starttime?}/{endtime?}', [Trigger_planController::class, 'index'])->name('trigger.index');
     Route::post('trigger', [Trigger_planController::class, 'trigger'])->name('trigger.trigger');
     Route::post('compress', [Trigger_planController::class, 'compress'])->name('trigger.compress');
     Route::get('sender/{param?}', [Trigger_planController::class, 'sender'])->name('trigger.sender');
