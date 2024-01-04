@@ -31,10 +31,11 @@ container = generar_archivos2(rootes)
 # Organizando los archivos
 # ---------------------------------------------------------------------
 print('{}% Organizando archivos.'.format(int(8/8*100)))
+print(container)
 
 dir_path = rootes['plans'] + f'/Plan Satelital {date}'
 
-directory   = os.getcwd()
+directory   =   os.getcwd()
 extension1  =   'CPLAN2'
 extension2  =   'OK'
 extension3  =   'SETPARA2'
@@ -42,18 +43,14 @@ extension4  =   'RECEIVETASK'
 directory1  =   dir_path + '/VRSS-2'
 directory2  =   dir_path + '/Station Plan'
 
-# print(
-#     directory ,
-#     directory1,
-#     directory2,
-# )
-
 files_organizer(directory, extension1, extension2, extension3, extension4, directory1, directory2)
 
-# mode = True
-# actualiza_DB2(
-#     container,
-#     Date_Code_BatchID,
-#     rootes,
-#     mode
-# )
+
+
+mode = True
+actualiza_DB2(
+    container,
+    Date_Code_BatchID,
+    rootes,
+    mode
+)

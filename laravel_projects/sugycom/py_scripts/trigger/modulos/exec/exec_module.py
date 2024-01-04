@@ -76,7 +76,7 @@ def generar_archivos2(rootes):
     key0 = 'plans'
     key1 = 'missions'
     # rootes = routing(mode_0)
-    container = rootes[key0]
+    container = rootes[key0] + '/'
     location = rootes[key1]
     print(container, location)
 
@@ -132,7 +132,7 @@ def actualiza_DB2(
     
     key = 'database'
     directorio = rootes[key]
-    S_base_datos = directorio + 'vrss_operation_and_managment_subsystem'
+    S_base_datos = directorio + '/vrss_operation_and_managment_subsystem'
     S_tabla = '`control_misiones_id_control_process`'
 
 

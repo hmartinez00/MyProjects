@@ -25,8 +25,8 @@ def files_organizer(directory, extension1, extension2, extension3, extension4, d
     ok_files = [file for file in files if file.endswith(extension3)]
     receivetask_files = [file for file in files if file.endswith(extension4)]
  
-    os.makedirs(directory1)
-    os.makedirs(directory2)
+    # os.makedirs(directory1)
+    # os.makedirs(directory2)
  
      # Movemos los archivos a los directorios correspondientes.
     for file in cplan2_files:
