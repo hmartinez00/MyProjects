@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('compress', [Trigger_planController::class, 'compress'])->name('trigger.compress');
     Route::get('sender/{param?}', [Trigger_planController::class, 'sender'])->name('trigger.sender');
     Route::get('select/{data_item?}', [Trigger_planController::class, 'select'])->name('trigger.select');
+    Route::get('table/{param?}/{data_item?}', [Trigger_planController::class, 'table'])->name('trigger.table');
 });
 
 require __DIR__.'/auth.php';

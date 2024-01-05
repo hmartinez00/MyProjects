@@ -56,7 +56,9 @@
                                     </button>
                                   <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route($views_category . '.select', $data_item) }}">Seleccionar</a></li>
-                                    <li><a class="dropdown-item" href="{{ route($views_category . '.sender', $data_item) }}">Ver</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.sender', $data_item) }}">Ver directorio</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.table', ['param' => 'tcplan', 'data_item' => $data_item]) }}">TCPLAN</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($views_category . '.table', ['param' => 'cplan' , 'data_item' => $data_item]) }}">PLAN</a></li>
                                   </ul>
                                 </div>
                             </div>

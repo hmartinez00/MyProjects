@@ -36,7 +36,7 @@ class Trigger_planController extends Controller
         $views_category = $this->views_category;
         $directories = scandir($this->directorio, 1);
 
-        return view('trigger.index', compact('starttime', 'endtime', 'views_category', 'directories'));
+        return view($views_category . '.index', compact('starttime', 'endtime', 'views_category', 'directories'));
     }
 
     public function select_0( $data_item )
@@ -76,7 +76,7 @@ class Trigger_planController extends Controller
         $starttime = $result[0];
         $endtime = $result[1];
 
-        return redirect()->route('trigger.index', compact('starttime', 'endtime'));
+        return redirect()->route($views_category . '.index', compact('starttime', 'endtime'));
     }
 
     public function sender( $param = null ): View
@@ -95,6 +95,8 @@ class Trigger_planController extends Controller
 
     public function trigger(Request $request)
     {
+        $views_category = $this->views_category;
+        
         $starttime = $request->starttime;
         $endtime = $request->endtime;
 
@@ -148,14 +150,16 @@ class Trigger_planController extends Controller
         $param = basename($json2->compendium);
 
         if ($starttime === null || $endtime === null){
-            return redirect()->route('trigger.index');
+            return redirect()->route($views_category . '.index');
         } else {
-            return redirect()->route('trigger.sender', $param);
+            return redirect()->route($views_category . '.sender', $param);
         }
     }
 
     public function compress()
     {
+        $views_category = $this->views_category;
+
         if (file_exists($this->rootes_json)) {
             $json = json_decode(file_get_contents($this->rootes_json));
             if ($json->plans !== null){
@@ -163,6 +167,20 @@ class Trigger_planController extends Controller
             }
         }
 
-        return redirect()->route('trigger.index');
+        return redirect()->route($views_category . '.index');
+    }
+
+    public function table( $param = null, $data_item = null )
+    {
+        $views_category = $this->views_category;
+        if          ( $param == 'tcplan' ){
+            $data_item = shell_exec('python ' . $this->trackingplan_py);
+        } else if   ( $param == 'cplan' ) {
+            $data_item = 'No data';
+        } else {
+            $data_item = 'No data';
+        }
+
+        return view( $views_category . '.table', compact('param', 'data_item', 'views_category'));
     }
 }
