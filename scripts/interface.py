@@ -4,28 +4,23 @@ import subprocess
 from datetime import datetime
 
 
-def time():
+def execution(comand):
     hour = datetime.now().time().strftime("%H:%M:%S")
-    return hour
+    path = os.path.join(os.getcwd(), 'laravel_projects', 'sugycom')
+    os.chdir(path)
+    process = subprocess.run(comand, shell=True, capture_output=True)
+    output = process.stdout
+    texto.insert(tk.END, f"[{hour}]\toutput: {comand}\n")
+    texto.insert(tk.END, output)
 
 # Definimos las funciones que se ejecutarán al hacer click sobre los botones
 def boton1_click():
-    hour = time()
-    directory = os.getcwd()
-    texto.insert(tk.END, f"[{hour}]\t{directory}\n")
-    path = os.path.join(directory, 'laravel_projects', 'sugycom')
-    # texto.insert(tk.END, "\n")
-    # for archivo in os.listdir(output):
-    #     texto.insert(tk.END, f"{archivo}\n")
-    texto.insert(tk.END, path)
-    process = subprocess.run(["npm", "run", "dev"], capture_output=True, cwd=path)
-    output = process.stdout
-    texto.insert(tk.END, output)
+    comand = 'npm run dev'
+    texto.insert(tk.END, comand)
 
 def boton2_click():
-    hour = time()
-    output = os.getcwd()
-    texto.insert(tk.END, f"[{hour}]\t{output}\n")
+    comand = 'php artisan serve'
+    texto.insert(tk.END, comand)
 
 # Creamos la ventana principal
 root = tk.Tk()
