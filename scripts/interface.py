@@ -16,11 +16,13 @@ def execution(comand):
 # Definimos las funciones que se ejecutarán al hacer click sobre los botones
 def boton1_click():
     comand = 'npm run dev'
-    texto.insert(tk.END, comand)
+    execution(comand)
+    # texto.insert(tk.END, comand)
 
 def boton2_click():
     comand = 'php artisan serve'
-    texto.insert(tk.END, comand)
+    execution(comand)
+    # texto.insert(tk.END, comand)
 
 # Creamos la ventana principal
 root = tk.Tk()
