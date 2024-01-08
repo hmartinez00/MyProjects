@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+import subprocess
 from datetime import datetime
 
 
@@ -10,12 +11,21 @@ def time():
 # Definimos las funciones que se ejecutarán al hacer click sobre los botones
 def boton1_click():
     hour = time()
-    output = os.getcwd()
-    texto.insert(tk.END, f"[{hour}]\t{output}\n")
+    directory = os.getcwd()
+    texto.insert(tk.END, f"[{hour}]\t{directory}\n")
+    path = os.path.join(directory, 'laravel_projects', 'sugycom')
+    # texto.insert(tk.END, "\n")
+    # for archivo in os.listdir(output):
+    #     texto.insert(tk.END, f"{archivo}\n")
+    texto.insert(tk.END, path)
+    process = subprocess.run(["npm", "run", "dev"], capture_output=True, cwd=path)
+    output = process.stdout
+    texto.insert(tk.END, output)
 
 def boton2_click():
     hour = time()
-    texto.insert(tk.END, f"[{hour}]\tSe hizo click en el botón 2 \n")
+    output = os.getcwd()
+    texto.insert(tk.END, f"[{hour}]\t{output}\n")
 
 # Creamos la ventana principal
 root = tk.Tk()

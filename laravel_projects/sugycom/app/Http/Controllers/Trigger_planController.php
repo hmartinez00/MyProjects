@@ -60,6 +60,7 @@ class Trigger_planController extends Controller
 
     public function select( $data_item ): RedirectResponse
     {
+        $views_category = $this->views_category;
         $matriz = $this->select_0( $data_item );
         $param = shell_exec('python ' . $this->extract_dates_py);;
         $result = explode(
