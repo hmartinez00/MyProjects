@@ -2,8 +2,7 @@ import os
 import pandas as pd
 from datetime import datetime, timedelta
 from modulos.processes.routing_module import routing
-import tkinter as tk
-from tkinter import filedialog
+from modulos.processes.tcplanprepare_module import tcplanprepare2
 
 
 def batchid_status(dates):
@@ -32,6 +31,8 @@ def extract_dates(rootes):
     key = 'missions'
     directorio = rootes[key]
 
+    # tcplanprepare2(rootes, True)
+
     rutas = []
     for nombre_directorio, dirs, ficheros in os.walk(directorio):
         for nombre_fichero in ficheros:
@@ -42,11 +43,7 @@ def extract_dates(rootes):
     archivo_0 = rutas[-1]
 
     misiones_0 = pd.read_excel(archivo_0, sheet_name='Progresion de Accesos')
-      
-    # dates = [
-    #     misiones_0['Start Time (UTCG)'].min().strftime('%Y-%m-%d %H:%M:%S'),
-    #     misiones_0['Start Time (UTCG)'].max().strftime('%Y-%m-%d %H:%M:%S')
-    # ]
+
     dates = [
         misiones_0['Start Time (UTCG)'].min(),
         misiones_0['Start Time (UTCG)'].max()

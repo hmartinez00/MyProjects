@@ -75,17 +75,17 @@ def tcplanprepare2(rootes, mode):
 
     key = 'missions'
     directorio = rootes[key]
-    print(directorio)
+    # print(directorio)
 
     rutas = []
     for nombre_directorio, dirs, ficheros in os.walk(directorio):
         for nombre_fichero in ficheros:
             if '.txt' in nombre_fichero:
-                ruta = nombre_directorio + '\\' + nombre_fichero
-                rutas.append(ruta.replace('\\', ''))
+                ruta = os.path.join(nombre_directorio, nombre_fichero)
+                rutas.append(ruta.replace('\\', '/'))
 
     archivo_viejo = rutas[-1]
-    print(archivo_viejo)
+    # print(archivo_viejo)
 
     satellite = TCPLAN_extract(archivo_viejo)['SCNAME'][0]
 
@@ -101,13 +101,13 @@ def tcplanprepare2(rootes, mode):
             , '%Y-%m-%d %H:%M:%S.%f'
         ), '%Y%m%d')
 
-    print(satellite, dia_inicial, dia_final)
+    # print(satellite, dia_inicial, dia_final)
 
     archivo_nuevo = directorio + '\\' + \
         os.path.basename(archivo_viejo.split('.')[0]) + '_' + \
         satellite + '_' + dia_inicial + '-' + dia_final + '.xml'
 
-    print(archivo_nuevo)
+    # print(archivo_nuevo)
 
     # pregunta = input('Desea cambiar la extension del archivo? (S/N): ')
     if mode == True:
