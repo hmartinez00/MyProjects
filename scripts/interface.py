@@ -8,9 +8,9 @@ def execution(comand):
     hour = datetime.now().time().strftime("%H:%M:%S")
     path = os.path.join(os.getcwd(), 'laravel_projects', 'sugycom')
     os.chdir(path)
+    texto.insert(tk.END, f"[{hour}]\toutput: {comand}\n")
     process = subprocess.run(comand, shell=True, capture_output=True)
     output = process.stdout
-    texto.insert(tk.END, f"[{hour}]\toutput: {comand}\n")
     texto.insert(tk.END, output)
 
 # Definimos las funciones que se ejecutarán al hacer click sobre los botones
