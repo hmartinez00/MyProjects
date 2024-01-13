@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('researcher', ResearcherController::class);
     
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
-    // Route::post('setting', [SettingController::class, 'store'])->name('setting.store');
-    Route::post('setting', [SettingController::class, 'show'])->name('setting.show');
+    Route::post('setting', [SettingController::class, 'store'])->name('setting.store');
+    // Route::post('setting', [SettingController::class, 'show'])->name('setting.show');
     
     Route::get('trigger/{starttime?}/{endtime?}', [Trigger_planController::class, 'index'])->name('trigger.index');
     Route::post('trigger', [Trigger_planController::class, 'trigger'])->name('trigger.trigger');

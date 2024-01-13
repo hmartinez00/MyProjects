@@ -53,6 +53,36 @@ class SettingController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $views_category = $this->views_category;
+        $param = $request->all();
+        
+        $database_status = [];
+        $dir = [];
+        $py_settings = [];
+        $py_scripts = [];
+        foreach ( $param as $key => $value ){
+            if ( strpos($key, 'database_status__') !== false ){
+                $database_status[] = $value;
+            }
+            elseif ( strpos($key, 'dir__') !== false ){
+                $dir[] = $value;
+            }
+            elseif ( strpos($key, 'py_settings__') !== false ){
+                $py_settings[] = $value;
+            }
+            elseif ( strpos($key, 'py_scripts__') !== false ){
+                $py_scripts[] = $value;
+            }
+        }
+
+        $json = json_decode(file_get_contents($this->directory));
+        $json->database_status = $database_status;
+        $json->dir = $dir;
+        $json->py_settings = $py_settings;
+        $json->py_scripts = $py_scripts;
+        file_put_contents($this->directory, json_encode($json, JSON_PRETTY_PRINT));
+
+        return redirect()->route($views_category . '.index', compact('views_category'));
 
     }
 
@@ -61,16 +91,7 @@ class SettingController extends Controller
      */
     public function show(Request $request): View
     {
-        $views_category = $this->views_category;
-        $var_list = $request->all();
-        // $param = $var_list;
-        $param = [];
-        foreach ( $var_list as $key => $value ){
-            if ( strpos($key, 'dir__') !== false ){
-                $param[$key] = $value;
-            }
-        }
-        return view('setting.show', compact('views_category', 'param'));
+
     }
 
     /**

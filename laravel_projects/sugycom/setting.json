@@ -3,19 +3,19 @@
         "True"
     ],
     "dir": [
-        "C:/Users/admin/Documents/0 - A Control de Procesos",
-        "F:/MyProjects/laravel_projects/sugycom/py_scripts"
+        "C:\/Users\/admin\/Documents\/0 - A Control de Procesos",
+        "F:\/MyProjects\/laravel_projects\/sugycom\/py_scripts"
     ],
     "py_settings": [
         "rootes.json",
         "data_trigger.json"
     ],
     "py_scripts": [
-        "/trigger/rooting.py",
-        "/trigger/generar_TCPLAN.py",
-        "/trigger/generar_batchid.py",
-        "/trigger/compress.py",
-        "/trigger/trackingplan.py",
-        "/trigger/extract_dates.py"
+        "\/trigger\/rooting.py",
+        "\/trigger\/generar_TCPLAN.py",
+        "\/trigger\/generar_batchid.py",
+        "\/trigger\/compress.py",
+        "\/trigger\/trackingplan.py",
+        "\/trigger\/extract_dates.py"
     ]
 }
