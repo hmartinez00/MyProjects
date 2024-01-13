@@ -13,7 +13,8 @@ class SettingController extends Controller
 
     public function __construct()
     {
-        $this->directory = 'F:/MyProjects/laravel_projects/sugycom/setting.json';
+        $this->directory        = 'F:/MyProjects/laravel_projects/sugycom/setting.json';
+        $this->views_category   = 'setting';
     }
     
     /**
@@ -21,8 +22,9 @@ class SettingController extends Controller
      */
     public function index(): View
     {
+        $views_category = $this->views_category;
+
         $directoryData = json_decode(file_get_contents($this->directory));
-        
         $dir = $directoryData->dir;
         $database_status = $directoryData->database_status;
         $py_settings = $directoryData->py_settings;
@@ -35,7 +37,7 @@ class SettingController extends Controller
             'py_scripts' => $directoryData->py_scripts
         ];
 
-        return view('setting.index', compact('dir', 'database_status', 'py_settings', 'py_scripts'));
+        return view('setting.index', compact('views_category', 'dir', 'database_status', 'py_settings', 'py_scripts'));
     }
 
     /**
@@ -57,9 +59,11 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Setting $setting): View
+    public function show(Request $request): View
     {
-
+        $views_category = $this->views_category;
+        $param = $request->all();
+        return view('setting.show', compact('views_category', 'param'));
     }
 
     /**
