@@ -14,7 +14,7 @@
                         <tr>
                             <td><b>Database Status</b></td>
                             <td>
-                                <select name="database_status" class="form-control">
+                                <select name="database_status__" class="form-control">
                                     <option value="True" {{ $database_status == 'True' ? 'selected' : '' }}>True</option>
                                     <option value="False" {{ $database_status == 'False' ? 'selected' : '' }}>False</option>
                                 </select>
@@ -45,7 +45,7 @@
                         </div> --}}
                         @forelse ($dir as $item)
                             <tr>
-                                <td><input type="text" name="{{ str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
+                                <td><input type="text" name="{{ "dir__" . str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
                                 <td>
                                     <button type="button" class="btn btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@
                         </tr>
                         @forelse ($py_settings as $item)
                             <tr>
-                                <td><input type="text" name="{{ str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
+                                <td><input type="text" name="{{ "py_settings__" . str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
                                 <td>
                                     <button type="button" class="btn btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -99,7 +99,7 @@
                         </tr>
                         @forelse ($py_scripts as $item)
                             <tr>
-                                <td><input type="text" name="{{ str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
+                                <td><input type="text" name="{{ "py_scripts__" . str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
                                 <td>
                                     <button type="button" class="btn btn-outline-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

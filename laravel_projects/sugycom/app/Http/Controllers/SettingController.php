@@ -62,7 +62,14 @@ class SettingController extends Controller
     public function show(Request $request): View
     {
         $views_category = $this->views_category;
-        $param = $request->all();
+        $var_list = $request->all();
+        // $param = $var_list;
+        $param = [];
+        foreach ( $var_list as $key => $value ){
+            if ( strpos($key, 'dir__') !== false ){
+                $param[$key] = $value;
+            }
+        }
         return view('setting.show', compact('views_category', 'param'));
     }
 
