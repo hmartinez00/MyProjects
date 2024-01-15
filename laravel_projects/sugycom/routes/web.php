@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
-    Route::post('setting/store/{param?}', [SettingController::class, 'store'])->name('setting.store');
+    Route::get('setting/store/{param?}', [SettingController::class, 'store'])->name('setting.store');
     Route::get('setting/show/{param?}', [SettingController::class, 'show'])->name('setting.show');
     
     Route::get('trigger/{starttime?}/{endtime?}', [Trigger_planController::class, 'index'])->name('trigger.index');

@@ -51,10 +51,11 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store($param = null): RedirectResponse
     {
         $views_category = $this->views_category;
-        $param = $request->all();
+        // $param = $request->all();
+        $param = 'Hola';
         return redirect()->route($views_category . '.show', compact('param'));
     }
 

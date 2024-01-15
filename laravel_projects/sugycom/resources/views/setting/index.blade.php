@@ -55,39 +55,34 @@
                                 </td>
                             </tr>
 
-                            <div class="offcanvas offcanvas-top" tabindex="-1" id="directories" aria-labelledby="directoriesLabel">
+                            {{-- <div class="offcanvas offcanvas-top" tabindex="-1" id="directories" aria-labelledby="directoriesLabel">
                                 <div class="offcanvas-header">
                                     <h5 class="offcanvas-title" id="directoriesLabel">Offcanvas top</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
-                                <div class="offcanvas-body">
-                                    
-                                    <form method="POST" action="{{ route($views_category . '.store') }}">
-                                        @csrf
+                                <div class="offcanvas-body">                                   
 
-                                        <input type="text" name="input_directories" class="form-control">
-                                        <button type="submit" class="btn btn-success mt-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
-                                        </svg>
-                                        Save
-                                        </button>
-
-                                    </form>
+                                    <input type="text" name="input_directories" class="form-control">
+                                    <button type="submit" class="btn btn-success mt-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+                                    </svg>
+                                    Save
+                                    </button>
                                     
-                                    {{-- <script>
+                                    <script>
                                     function sendData() {
-                                      const inputValue = document.querySelector('input[name="input-directories"]').value;
-                                      const route = "{{ route($views_category . '.store') }}"; // Aquí usas la ruta '.store'
-                                      const urlParams = new URLSearchParams(window.location.search);
-                                      urlParams.set('input-directories', inputValue);
-                                      window.location.href = route + '?' + urlParams.toString();
+                                        const inputValue = document.querySelector('input[name="input_directories"]').value;
+                                        const route = "{{ route($views_category . '.store') }}"; // Aquí usas la ruta '.store'
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        urlParams.set('input_directories', inputValue);
+                                        window.location.href = route + '?' + urlParams.toString();
                                     }
-                                    </script> --}}
+                                    </script>
                                                                       
-
                                 </div>
-                            </div>
+
+                            </div> --}}
 
                             @forelse ($dir as $item)
                                 <tr>
