@@ -55,6 +55,33 @@ class SettingController extends Controller
     {
         $views_category = $this->views_category;
         $param = $request->all();
+        return redirect()->route($views_category . '.show', compact('param'));
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show( $param = null ): View
+    {
+        $views_category = $this->views_category;
+        return view($views_category . '.show', compact('views_category', 'param'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Setting $setting): View
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request): RedirectResponse
+    {
+        $views_category = $this->views_category;
+        $param = $request->all();
         
         $database_status = [];
         $dir = [];
@@ -83,30 +110,6 @@ class SettingController extends Controller
         file_put_contents($this->directory, json_encode($json, JSON_PRETTY_PRINT));
 
         return redirect()->route($views_category . '.index', compact('views_category'));
-
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Request $request): View
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Setting $setting): View
-    {
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Setting $setting): RedirectResponse
-    {
 
     }
 

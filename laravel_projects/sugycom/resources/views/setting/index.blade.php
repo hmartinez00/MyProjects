@@ -1,8 +1,21 @@
 @extends('layouts.own.app')
 @section('content')
+    @if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
     <div class="content">
 
-        <form method="POST" action="{{ route($views_category . '.store') }}">
+        {{-- @if ($param !== null)
+            @foreach ($param as $item)
+                <p>{{ $item }}</p>
+            @endforeach
+        @endif --}}
+
+        <form method="POST" action="{{ route($views_category . '.update') }}">
             @csrf
 
             <div class='row'>
@@ -38,23 +51,44 @@
                             <tr>
                                 <td><b>Directories</b></td>
                                 <td>
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">+</button>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#directories" aria-controls="directories">+</button>
                                 </td>
                             </tr>
-                            {{-- <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+
+                            <div class="offcanvas offcanvas-top" tabindex="-1" id="directories" aria-labelledby="directoriesLabel">
                                 <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+                                    <h5 class="offcanvas-title" id="directoriesLabel">Offcanvas top</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
-                                    <input type="text" name="" class="form-control">
+                                    
+                                    <form method="POST" action="{{ route($views_category . '.store') }}">
+                                        @csrf
+
+                                        <input type="text" name="input_directories" class="form-control">
+                                        <button type="submit" class="btn btn-success mt-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+                                        </svg>
+                                        Save
+                                        </button>
+
+                                    </form>
+                                    
+                                    {{-- <script>
+                                    function sendData() {
+                                      const inputValue = document.querySelector('input[name="input-directories"]').value;
+                                      const route = "{{ route($views_category . '.store') }}"; // Aquí usas la ruta '.store'
+                                      const urlParams = new URLSearchParams(window.location.search);
+                                      urlParams.set('input-directories', inputValue);
+                                      window.location.href = route + '?' + urlParams.toString();
+                                    }
+                                    </script> --}}
+                                                                      
+
                                 </div>
-                                <button type="button" class="btn btn-outline-success mt-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
-                                    </svg>
-                                </button>
-                            </div> --}}
+                            </div>
+
                             @forelse ($dir as $item)
                                 <tr>
                                     <td><input type="text" name="{{ "dir__" . str_replace("/", "_", str_replace(" ", "_", $item)) }}" class="form-control" value="{{ $item }}"></td>
@@ -67,6 +101,7 @@
                                         </button>
                                     </td>
                                 </tr>
+
                             @empty
                                 <tr>
                                     <td>No data.</td>
