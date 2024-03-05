@@ -91,7 +91,8 @@ class ResearcherController extends Controller
         $data_item = $researcher;
         $views_category = $this->views_category;
         $data_item->update($request->all());
-        return redirect()->route($views_category . '.show', $data_item->id);
+        // return redirect()->route($views_category . '.show', $data_item->id);
+        return redirect()->route($views_category . '.index');
     }
 
     /**

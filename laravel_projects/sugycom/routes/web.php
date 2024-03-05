@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\ResearcherController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\Trigger_planController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProfileController;
@@ -30,9 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('priority', PriorityController::class);
-    Route::resource('researcher', ResearcherController::class);
-    
+    Route::resource('/priority', PriorityController::class);
+    Route::resource('/researcher', ResearcherController::class);
+    Route::resource('/note', NoteController::class);
+
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
     Route::get('setting/store/{param?}', [SettingController::class, 'store'])->name('setting.store');

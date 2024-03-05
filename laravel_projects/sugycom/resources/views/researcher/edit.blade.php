@@ -2,7 +2,7 @@
 @section('content')
     <div class="content">
 
-        <form method="POST" action="{{ route($views_category . '.update', $data_item->id) }}">
+        <form method="POST" action="{{ route($views_category . '.update', [$views_category => $data_item->id]) }}">
             @csrf
             @method('PUT')
         
