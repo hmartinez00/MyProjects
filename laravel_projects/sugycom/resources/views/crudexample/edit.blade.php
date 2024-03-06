@@ -1,6 +1,5 @@
 @extends('layouts.own.app')
 @section('content')
-<a href="{{ route($views_category . '.index') }}">Back</a>
 
 <div class="content">
 
@@ -34,25 +33,10 @@
                 </table>
             </div>
 
-            {{-- <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-md-6">
                 <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
-
                     <li>
-                        <input type="submit" class="dropdown-item rounded-2" value="Update">
-                    </li>
-                    <li>
-                        <a class="dropdown-item rounded-2" href="{{ route($views_category . '.show', $data_item->id) }}">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">Show</font>
-                            </font>
-                        </a>
-                    </li>
-                    <li>
-                        <form action="{{ route($views_category . '.destroy', $data_item->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" class="dropdown-item rounded-2" value="Delete">
-                        </form>
+                        <input type="submit" class="dropdown-item rounded-2" value='Update'>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -64,14 +48,6 @@
                             </font>
                         </a>
                     </li> 
-                </ul>
-            </div> --}}
-
-            <div class="col-sm-6 col-md-6">
-                <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
-                    <li>
-                        <input type="submit" class="dropdown-item rounded-2" value='Update'>
-                    </li>
                 </ul>
             </div>
 

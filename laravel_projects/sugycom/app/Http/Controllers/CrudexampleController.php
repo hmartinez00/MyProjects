@@ -96,7 +96,7 @@ class CrudexampleController extends Controller
         $data_item = $crudexample;
         $views_category = $this->views_category;
         $data_item->update($request->all());
-        return redirect()->route($views_category . '.index');
+        return redirect()->route($views_category . '.show', $data_item->id);
     }
 
     /**
