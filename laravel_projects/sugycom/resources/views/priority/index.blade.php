@@ -1,8 +1,10 @@
 @extends('layouts.own.app')
 @section('content')
+
     <div class="content">
+
         <button type="button" class="btn btn-primary m-4">
-            <a class="nav-link text-white" href="{{ route('priority.create') }}">Crear nuevo item</a>
+            <a class="nav-link text-white" href="{{ route($views_category . '.create') }}">Crear nuevo item</a>
         </button>
         <table class="table table-sm table-dark table-hover">
             <thead>
@@ -13,17 +15,22 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @forelse ($priorities as $priority)
+
+                @forelse ($items as $data_item)
                     <tr>
                         @foreach ($s_headers as $s_header)
-                            @if ($s_header != "target")
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}">{{ $priority->$s_header }}</a></td>                                
-                            @else
-                                <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $priority->id }}"><span class="d-inline-block text-truncate" style="max-width: 150px">{{ $priority->$s_header }}</span></a></td>                                                                
-                            @endif
+                            <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $data_item->id }}">{{ $data_item->$s_header }}</a></td>
                         @endforeach
+                        <td>
+                            <form method="POST" action="{{ route($views_category . '.destroy', [$views_category => $data_item->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value='DELETE'>
+                            </form>
+                        </td>
                     </tr>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $priority->id }}">
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $data_item->id }}">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menú</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -37,13 +44,13 @@
                                     Dropdown Button
                                 </button>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('priority.show', $priority->id) }}">Leer item {{ $priority->id }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('priority.edit', $priority->id) }}">Actualizar item {{ $priority->id }}</a></li>
-                                {{-- <li><a class="dropdown-item" href="{{ route('priority.destroy', $priority->id) }}">Borrar item {{ $priority->id }}</a></li> --}}
+                                <li><a class="dropdown-item" href="{{ route($views_category . '.show', [$views_category => $data_item->id]) }}">Leer item {{ $data_item->id }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route($views_category . '.edit', [$views_category => $data_item->id]) }}">Actualizar item {{ $data_item->id }}</a></li>
                               </ul>
                             </div>
                         </div>
                     </div>
+
 
                 @empty
                     <tr>
@@ -52,7 +59,9 @@
                         @endforeach
                     </tr>
                 @endforelse
+
             </tbody>
         </table>
+    
     </div>
 @endsection

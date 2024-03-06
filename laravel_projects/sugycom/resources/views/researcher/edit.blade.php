@@ -38,20 +38,6 @@
                             <input type="submit" class="dropdown-item rounded-2" value="Update">
                         </li>
                         <li>
-                            <a class="dropdown-item rounded-2" href="{{ route($views_category . '.show', $data_item->id) }}">
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Show</font>
-                                </font>
-                            </a>
-                        </li>
-                        <li>
-                            <form action="{{ route($views_category . '.destroy', $data_item->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" class="dropdown-item rounded-2" value="Delete">
-                            </form>
-                        </li>
-                        <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>

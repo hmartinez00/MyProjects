@@ -13,8 +13,9 @@ class ResearcherController extends Controller
 {
     public function __construct()
     {
-        $this->indices_0                = [0, 1, 2, 3, 4];
+        $this->indices_0                = [1, 2, 3, 4];
         $this->text_index_0             = [1, 2, 3, 4, 5];
+        $this->float_index_0            = [];
         $this->datetime_local_index_0   = [6, 7, 8];
         $this->views_category           = 'researcher';
         $this->db_table                 = 'researchers';
@@ -42,10 +43,12 @@ class ResearcherController extends Controller
         $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         $text_index = $this->text_index_0;
+        $float_index = $this->float_index_0;
         $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
+        $headers_float = array_intersect_key($headers, array_flip($float_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view($views_category . '.create', compact('views_category', 'headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.create', compact('views_category', 'headers', 'headers_text', 'headers_float', 'headers_datetime_local'));
     }
 
     /**
@@ -54,7 +57,8 @@ class ResearcherController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Researcher::create($request->all());
-        return redirect()->route($this->views_category . '.index');
+        $views_category = $this->views_category;
+        return redirect()->route($views_category . '.index');
     }
 
     /**
@@ -77,10 +81,12 @@ class ResearcherController extends Controller
         $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         $text_index = $this->text_index_0;
+        $float_index = $this->float_index_0;
         $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
+        $headers_float = array_intersect_key($headers, array_flip($float_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view($views_category . '.edit', compact('data_item', 'views_category', 'headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.edit', compact('data_item', 'views_category', 'headers', 'headers_text', 'headers_float', 'headers_datetime_local'));
     }
 
     /**
@@ -91,8 +97,7 @@ class ResearcherController extends Controller
         $data_item = $researcher;
         $views_category = $this->views_category;
         $data_item->update($request->all());
-        // return redirect()->route($views_category . '.show', $data_item->id);
-        return redirect()->route($views_category . '.index');
+        return redirect()->route($views_category . '.show', $data_item->id);
     }
 
     /**
@@ -101,6 +106,7 @@ class ResearcherController extends Controller
     public function destroy(Researcher $researcher): RedirectResponse
     {
         $researcher->delete();
-        return redirect()->route($this->views_category . '.index');
+        $views_category = $this->views_category;
+        return redirect()->route($views_category . '.index');
     }
 }

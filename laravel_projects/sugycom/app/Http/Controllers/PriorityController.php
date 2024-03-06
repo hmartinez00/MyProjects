@@ -11,16 +11,28 @@ use Illuminate\Support\Facades\Schema;
 
 class PriorityController extends Controller
 {
+    public function __construct()
+    {
+        $this->indices_0                = [1, 2, 6, 7];
+        $this->text_index_0             = [1, 2, 7, 8, 9, 10];
+        $this->float_index_0            = [3, 4, 6];
+        $this->datetime_local_index_0   = [11, 12, 13];
+        $this->views_category           = 'priority';
+        $this->db_table                 = 'priorities';
+        
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $priorities = Priority::all();
-        $headers = Schema::getColumnListing('priorities');
-        $indices = [0, 1, 2, 9, 11];
+        $items = Priority::all();
+        $views_category = $this->views_category;
+        $indices = $this->indices_0;
+        $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view('priority.index', compact('priorities', 's_headers'));
+        return view($views_category . '.index', compact('items', 'views_category', 's_headers'));
     }
 
     /**
@@ -28,12 +40,15 @@ class PriorityController extends Controller
      */
     public function create(): View
     {
-        $headers = Schema::getColumnListing('priorities');
-        $text_index = [2, 8, 10];
-        $datetime_local_index = [11, 12, 13];
+        $views_category = $this->views_category;
+        $headers = Schema::getColumnListing($this->db_table);
+        $text_index = $this->text_index_0;
+        $float_index = $this->float_index_0;
+        $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
+        $headers_float = array_intersect_key($headers, array_flip($float_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view('priority.create', compact('headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.create', compact('views_category', 'headers', 'headers_text', 'headers_float', 'headers_datetime_local'));
     }
 
     /**
@@ -42,7 +57,8 @@ class PriorityController extends Controller
     public function store(Request $request):RedirectResponse
     {
         Priority::create($request->all());
-        return redirect()->route('priority.index');
+        $views_category = $this->views_category;
+        return redirect()->route($views_category . '.index');
     }
 
     /**
@@ -50,8 +66,10 @@ class PriorityController extends Controller
      */
     public function show(Priority $priority): View
     {
-        $headers = Schema::getColumnListing('priorities');
-        return view('priority.show', compact('priority', 'headers'));
+        $data_item = $priority;
+        $views_category = $this->views_category;
+        $headers = Schema::getColumnListing($this->db_table);
+        return view($views_category . '.show', compact('data_item', 'views_category', 'headers'));
     }
 
     /**
@@ -59,12 +77,16 @@ class PriorityController extends Controller
      */
     public function edit(Priority $priority): View
     {
-        $headers = Schema::getColumnListing('priorities');
-        $text_index = [2, 8, 10];
-        $datetime_local_index = [11, 12, 13];
+        $data_item = $priority;
+        $views_category = $this->views_category;
+        $headers = Schema::getColumnListing($this->db_table);
+        $text_index = $this->text_index_0;
+        $float_index = $this->float_index_0;
+        $datetime_local_index = $this->datetime_local_index_0;
         $headers_text = array_intersect_key($headers, array_flip($text_index));
+        $headers_float = array_intersect_key($headers, array_flip($float_index));
         $headers_datetime_local = array_intersect_key($headers, array_flip($datetime_local_index));
-        return view('priority.edit', compact('priority', 'headers', 'headers_text', 'headers_datetime_local'));
+        return view($views_category . '.edit', compact('data_item', 'views_category', 'headers', 'headers_text', 'headers_float', 'headers_datetime_local'));
     }
 
     /**
@@ -72,8 +94,10 @@ class PriorityController extends Controller
      */
     public function update(Request $request, Priority $priority): RedirectResponse
     {
-        $priority->update($request->all());
-        return redirect()->route('priority.show', $priority->id);
+        $data_item = $priority;
+        $views_category = $this->views_category;
+        $data_item->update($request->all());
+        return redirect()->route($views_category . '.show', $data_item->id);
     }
 
     /**
@@ -82,6 +106,7 @@ class PriorityController extends Controller
     public function destroy(Priority $priority):RedirectResponse
     {
         $priority->delete();
-        return redirect()->route('priority.index');
+        $views_category = $this->views_category;
+        return redirect()->route($views_category . '.index');
     }
 }

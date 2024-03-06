@@ -18,6 +18,13 @@
                         @foreach ($s_headers as $s_header)
                             <td><a class="nav-link text-white" data-bs-toggle="offcanvas" href="#{{ $data_item->id }}">{{ $data_item->$s_header }}</a></td>
                         @endforeach
+                        <td>
+                            <form method="POST" action="{{ route($views_category . '.destroy', [$views_category => $data_item->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value='DELETE'>
+                            </form>
+                        </td>
                     </tr>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="{{ $data_item->id }}">
                         <div class="offcanvas-header">
