@@ -19,6 +19,10 @@ class CrudexampleController extends Controller
         $this->datetime_local_index_0   = [4];
         $this->views_category           = 'crudexample';
         $this->db_table                 = 'crudexamples';
+        $this->directorio_0             = 'F:/MyProjects/laravel_projects/sugycom/py_scripts';
+        $this->actions                  = 'backup_options';
+        $this->export_py                = $this->directorio_0 . '/backup_options/export.py';
+        $this->import_py                = $this->directorio_0 . '/backup_options/import.py';
     }
 
     /**
@@ -28,10 +32,11 @@ class CrudexampleController extends Controller
     {
         $items = Crudexample::all();
         $views_category = $this->views_category;
+        $actions = $this->actions;
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('items', 'views_category', 's_headers'));
+        return view($views_category . '.index', compact('items', 'views_category', 's_headers', 'actions'));
     }
 
     /**
@@ -57,7 +62,8 @@ class CrudexampleController extends Controller
     {
         Crudexample::create($request->all());
         $views_category = $this->views_category;
-        return redirect()->route($views_category . '.index');
+        $actions = $this->actions;
+        return redirect()->route($views_category . '.index', compact('actions'));
     }
 
     /**
@@ -106,6 +112,24 @@ class CrudexampleController extends Controller
     {
         $crudexample->delete();
         $views_category = $this->views_category;
-        return redirect()->route($views_category . '.index');
+        $actions = $this->actions;
+        return redirect()->route($views_category . '.index', compact('actions'));
     }
+
+    public function import()
+    {
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        shell_exec('python ' . $this->import_py);
+        return redirect()->route($views_category . '.index', compact('actions'));
+    }
+
+    public function export()
+    {
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        shell_exec('python ' . $this->export_py);
+        return redirect()->route($views_category . '.index', compact('actions'));
+    }
+
 }

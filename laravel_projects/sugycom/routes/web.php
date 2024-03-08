@@ -48,6 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::get('sender/{param?}', [Trigger_planController::class, 'sender'])->name('trigger.sender');
     Route::get('select/{data_item?}', [Trigger_planController::class, 'select'])->name('trigger.select');
     Route::get('table/{param?}/{data_item?}', [Trigger_planController::class, 'table'])->name('trigger.table');
+    
+    Route::post('export', [CrudexampleController::class, 'export'])->name('backup_options.export');
+    Route::post('import', [CrudexampleController::class, 'import'])->name('backup_options.import');
+
 });
 
 require __DIR__.'/auth.php';

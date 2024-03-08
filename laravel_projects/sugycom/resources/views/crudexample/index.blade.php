@@ -4,7 +4,7 @@
     <div class="content">
 
         <button type="button" class="btn btn-primary m-4">
-            <a class="nav-link text-white" href="{{ route($views_category . '.create') }}">Crear nuevo item</a>
+            <a class="nav-link text-white" href="{{ route($views_category . '.create') }}">Create new item</a>
         </button>
         <table class="table table-sm table-dark table-hover">
             <thead>
@@ -25,7 +25,12 @@
                             <form method="POST" action="{{ route($views_category . '.destroy', [$views_category => $data_item->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value='DELETE'>
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                    </svg>
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -62,6 +67,17 @@
 
             </tbody>
         </table>
-    
+
+        <div class="space">
+            <form action="{{ route($actions . '.import') }}" method="POST">
+                @csrf
+                <input type="submit" class="btn btn-success m-2 ms-5 fa-download" value="Import">
+            </form>
+            <form action="{{ route($actions . '.export') }}" method="POST">
+                @csrf
+                <input type="submit" class="btn btn-success m-2 ms-5 fa-download" value="Export">
+            </form>
+        </div>
+
     </div>
 @endsection
