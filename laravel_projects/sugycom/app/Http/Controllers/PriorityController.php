@@ -6,19 +6,31 @@ use App\Models\Priority;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Schema;
 
 class PriorityController extends Controller
 {
     public function __construct()
     {
+        $this->directory        = 'F:/MyProjects/laravel_projects/sugycom/setting.json';
+        $directoryData          = json_decode(file_get_contents($this->directory));
+        $dir                    = $directoryData->dir;
+        $database_status        = $directoryData->database_status;
+        $py_settings            = $directoryData->py_settings;
+        $py_scripts             = $directoryData->py_scripts;
+
+        $this->db_options_json  = $dir[1] . $py_settings[2];
+
         $this->indices_0                = [1, 2, 6, 7];
         $this->text_index_0             = [1, 2, 7, 8, 9, 10];
         $this->float_index_0            = [3, 4, 6];
         $this->datetime_local_index_0   = [11, 12, 13];
         $this->views_category           = 'priority';
         $this->db_table                 = 'priorities';
+        $this->actions                  = $this->views_category . '.db_options';
+        $this->export_py                = $dir[1] . $py_scripts[6]; #'/db_options/export.py';
+        $this->import_py                = $dir[1] . $py_scripts[7]; #'/db_options/import.py';
+        $this->reset_count_py           = $dir[1] . $py_scripts[8]; #'/db_options/reset_count.py';
         
     }
 
@@ -28,11 +40,40 @@ class PriorityController extends Controller
     public function index(): View
     {
         $items = Priority::all();
+        $rows   = count($items);
+        $start  = 1;
+        if ( $rows > $start + 4 ){
+            $end = $start + 4;
+        } else {
+            $end = $rows;
+        }
+
+        // Comprueba si el archivo existe
+        if (!file_exists($this->db_options_json)) {
+            // Crea el archivo JSON
+            $json = array("db_table" => null, "start" => null, "end" => null);
+            file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+
+        } else {
+            // Actualiza las claves db_table en el archivo JSON
+            $json = json_decode(file_get_contents($this->db_options_json));
+            if ( $json->db_table !== $this->db_table ){
+                $json = array("db_table" => $this->db_table, "start" => $start, "end" => $end);
+                file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+            } else {
+                $json   = json_decode(file_get_contents($this->db_options_json));
+                $start  = $json->start;
+                $end    = $json->end;
+            }
+        }
+
+        $items = Priority::whereBetween('id', [$start, $end])->get();
         $views_category = $this->views_category;
+        $actions = $this->actions;
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('items', 'views_category', 's_headers'));
+        return view($views_category . '.index', compact('rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions'));
     }
 
     /**
@@ -58,7 +99,8 @@ class PriorityController extends Controller
     {
         Priority::create($request->all());
         $views_category = $this->views_category;
-        return redirect()->route($views_category . '.index');
+        $actions = $this->actions;
+        return redirect()->route($views_category . '.index', compact('actions'));
     }
 
     /**
@@ -107,6 +149,24 @@ class PriorityController extends Controller
     {
         $priority->delete();
         $views_category = $this->views_category;
-        return redirect()->route($views_category . '.index');
+        $actions = $this->actions;
+        shell_exec('python ' . $this->reset_count_py);
+        return redirect()->route($views_category . '.index', compact('actions'));
+    }
+
+    public function import()
+    {
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        shell_exec('python ' . $this->import_py);
+        return redirect()->route($views_category . '.index', compact('actions'));
+    }
+
+    public function export()
+    {
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        shell_exec('python ' . $this->export_py);
+        return redirect()->route($views_category . '.index', compact('actions'));
     }
 }

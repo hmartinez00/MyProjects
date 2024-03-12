@@ -7,8 +7,9 @@
         "F:\/MyProjects\/laravel_projects\/sugycom\/py_scripts"
     ],
     "py_settings": [
-        "rootes.json",
-        "data_trigger.json"
+        "\/rootes.json",
+        "\/data_trigger.json",
+        "\/db_options.json"
     ],
     "py_scripts": [
         "\/trigger\/rooting.py",
@@ -16,6 +17,9 @@
         "\/trigger\/generar_batchid.py",
         "\/trigger\/compress.py",
         "\/trigger\/trackingplan.py",
-        "\/trigger\/extract_dates.py"
+        "\/trigger\/extract_dates.py",
+        "\/db_options\/export.py",
+        "\/db_options\/import.py",
+        "\/db_options\/reset_count.py"
     ]
 }

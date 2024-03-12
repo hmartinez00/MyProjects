@@ -15,16 +15,25 @@ class Trigger_planController extends Controller
 
     public function __construct()
     {
-        $this->directorio           = Setting::find(1)->route;
-        $this->directorio_0         = Setting::find(2)->route;
-        $this->rootes_json          = $this->directorio_0 . "/rootes.json";
-        $this->data_trigger_json    = $this->directorio_0 . "/data_trigger.json";
-        $this->rooting_py           = $this->directorio_0 . '/trigger/rooting.py';
-        $this->generar_TCPLAN_py    = $this->directorio_0 . '/trigger/generar_TCPLAN.py';
-        $this->generar_batchid_py   = $this->directorio_0 . '/trigger/generar_batchid.py';
-        $this->compress_py          = $this->directorio_0 . '/trigger/compress.py';
-        $this->trackingplan_py      = $this->directorio_0 . '/trigger/trackingplan.py';
-        $this->extract_dates_py     = $this->directorio_0 . '/trigger/extract_dates.py';
+        $this->directory    = 'F:/MyProjects/laravel_projects/sugycom/setting.json';
+        $directoryData      = json_decode(file_get_contents($this->directory));
+        $dir                = $directoryData->dir;
+        $database_status    = $directoryData->database_status;
+        $py_settings        = $directoryData->py_settings;
+        $py_scripts         = $directoryData->py_scripts;
+
+        // $this->directorio           = Setting::find(1)->route;
+        // $this->directorio_0         = Setting::find(2)->route;
+        $this->directorio           = $dir[0];
+        $this->directorio_0         = $dir[1];
+        $this->rootes_json          = $this->directorio_0 . $py_settings[0] ;#"/rootes.json";
+        $this->data_trigger_json    = $this->directorio_0 . $py_settings[1] ;#"/data_trigger.json";
+        $this->rooting_py           = $this->directorio_0 . $py_scripts[0]  ;#'/trigger/rooting.py';
+        $this->generar_TCPLAN_py    = $this->directorio_0 . $py_scripts[1]  ;#'/trigger/generar_TCPLAN.py';
+        $this->generar_batchid_py   = $this->directorio_0 . $py_scripts[2]  ;#'/trigger/generar_batchid.py';
+        $this->compress_py          = $this->directorio_0 . $py_scripts[3]  ;#'/trigger/compress.py';
+        $this->trackingplan_py      = $this->directorio_0 . $py_scripts[4]  ;#'/trigger/trackingplan.py';
+        $this->extract_dates_py     = $this->directorio_0 . $py_scripts[5]  ;#'/trigger/extract_dates.py';
         $this->views_category       = 'trigger';
         $this->database             = '/data';
         $this->missions             = '/Seleccion de Misiones';
