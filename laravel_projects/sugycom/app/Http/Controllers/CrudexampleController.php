@@ -67,13 +67,26 @@ class CrudexampleController extends Controller
             }
         }
 
+        $rowsList = array();
+        for ($j = $start; $j <= $end; $j++) {
+            $rowsList[] = $j;
+        }
+
+        $status = array(TRUE, TRUE);
+        if ( $start - 1 < 1 ){
+            $status[0] = FALSE;
+        }
+        if ( $end + 1 > $rows ) {
+            $status[1] = FALSE;
+        }
+
         $items = Crudexample::whereBetween('id', [$start, $end])->get();
         $views_category = $this->views_category;
         $actions = $this->actions;
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions'));
+        return view($views_category . '.index', compact('rowsList', 'rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions', 'status'));
     }
 
     /**
@@ -170,18 +183,8 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
-    public function previus( $param = null )
+    public function step( $param = null )
     {
-        $views_category = $this->views_category;
-        $actions = $this->actions;
-        return redirect()->route($views_category . '.index', compact('actions'));
-    }
-
-    public function show_rows( $param = null )
-    {
-        $views_category = $this->views_category;
-        $actions = $this->actions;
-
         $items  = Crudexample::all();
         $rows   = count($items);
         $start  = intval($param);
@@ -191,17 +194,37 @@ class CrudexampleController extends Controller
             $end = $rows;
         }
 
-        $json = array("db_table" => $this->db_table, "start" => $start, "end" => $end);
-        file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+        $rowsList = array();
+        for ($j = $start; $j < $end; $j++) {
+            $rowsList[] = $j;
+        }
 
-        return redirect()->route($views_category . '.index', compact('actions'));
+        $status = array(TRUE, TRUE);
+        if ( $start - 1 < 1 ){
+            $status[0] = FALSE;
+        }
+        if ( $end + 1 > $rows ) {
+            $status[1] = FALSE;
+        }
+
+        $json = array("db_table" => $this->db_table, "start" => $start, "end" => $end);
+        return array($json, $rowsList, $status);
+
     }
 
-    public function next( $param = null )
+    public function show_rows( $param = null )
     {
         $views_category = $this->views_category;
         $actions = $this->actions;
-        return redirect()->route($views_category . '.index', compact('actions'));
+
+        $values     = $this->step($param);
+
+        $json       = $values[0];
+        $rowsList   = $values[1];
+        $status     = $values[2];
+        file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+
+        return redirect()->route($views_category . '.index', compact('actions', 'rowsList', 'status'));
     }
 
 }

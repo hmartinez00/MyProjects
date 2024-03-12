@@ -110,6 +110,42 @@
         <div class='row'>
             <div class="col-sm-4 col-md-4"></div>
             <div class="col-sm-4 col-md-4">
+                <nav aria-label="...">
+                    <ul class="pagination">
+
+                        @if ( $status[0] == TRUE )                            
+                            <li class="page-item">
+                                <a class="page-link" href="{{ route($actions . '.show_rows', ['param' => $rowsList[0] - 1]) }}">Previous</a>
+                            </li>                            
+                        @else                            
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Previous</a>
+                            </li>
+                        @endif
+
+                        @foreach ($rowsList as $row)
+                            <li class="page-item"><a class="page-link" href="{{ route($actions . '.show_rows', ['param' => $row]) }}">{{ $row }}</a></li>
+                        @endforeach
+                       
+                        @if ( $status[1] == TRUE )                            
+                            <li class="page-item">
+                                <a class="page-link" href="{{ route($actions . '.show_rows', ['param' => $rowsList[0] + 1]) }}">Next</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-sm-4 col-md-4"></div>
+        </div>
+
+        {{-- <div class='row'>
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-sm-4 col-md-4">
 
                 <nav aria-label="...">
                     <ul class="pagination">
@@ -130,7 +166,7 @@
                 </nav>
             </div>
             <div class="col-sm-4 col-md-4"></div>
-        </div>
+        </div> --}}
 
     </div>
 @endsection

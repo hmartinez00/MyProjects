@@ -49,11 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::get('select/{data_item?}', [Trigger_planController::class, 'select'])->name('trigger.select');
     Route::get('table/{param?}/{data_item?}', [Trigger_planController::class, 'table'])->name('trigger.table');
     
-    Route::post('crudexample/export',   [CrudexampleController::class   , 'export'      ])->name('crudexample.db_options.export'    );
-    Route::post('crudexample/import',   [CrudexampleController::class   , 'import'      ])->name('crudexample.db_options.import'    );
-    Route::get('crudexample/previus/{param?}',      [CrudexampleController::class   , 'previus'     ])->name('crudexample.db_options.previus'   );
+    Route::post('crudexample/export',   [CrudexampleController::class       , 'export'  ])->name('crudexample.db_options.export'    );
+    Route::post('crudexample/import',   [CrudexampleController::class       , 'import'  ])->name('crudexample.db_options.import'    );
+    Route::get('crudexample/step/{param?}', [CrudexampleController::class   , 'step'    ])->name('crudexample.db_options.step'      );
     Route::get('crudexample/show_rows/{param?}',    [CrudexampleController::class   , 'show_rows'   ])->name('crudexample.db_options.show_rows' );
-    Route::get('crudexample/next/{param?}',         [CrudexampleController::class   , 'next'        ])->name('crudexample.db_options.next'      );
 
     Route::post('priority/export',      [PriorityController::class      , 'export'      ])->name('priority.db_options.export'     );
     Route::post('priority/import',      [PriorityController::class      , 'import'      ])->name('priority.db_options.import'     );
