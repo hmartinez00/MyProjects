@@ -80,13 +80,18 @@ class CrudexampleController extends Controller
             $status[1] = FALSE;
         }
 
+        $rowsList_2 = array();
+        for ($j = 1; $j <= $rows; $j++) {
+            $rowsList_2[] = $j;
+        }
+
         $items = Crudexample::whereBetween('id', [$start, $end])->get();
         $views_category = $this->views_category;
         $actions = $this->actions;
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('rowsList', 'rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions', 'status'));
+        return view($views_category . '.index', compact('rowsList', 'rowsList_2', 'rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions', 'status'));
     }
 
     /**
