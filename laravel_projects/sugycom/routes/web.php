@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('crudexample/import',   [CrudexampleController::class       , 'import'  ])->name('crudexample.db_options.import'    );
     Route::get('crudexample/step/{param?}', [CrudexampleController::class   , 'step'    ])->name('crudexample.db_options.step'      );
     Route::get('crudexample/show_rows/{param?}',    [CrudexampleController::class   , 'show_rows'   ])->name('crudexample.db_options.show_rows' );
+    Route::post('crudexample/send-message/{param?}', [CrudexampleController::class, 'sendTelegramMessage'])->name('crudexample.sendTelegramMessage');
 
     Route::post('priority/export',      [PriorityController::class      , 'export'      ])->name('priority.db_options.export'     );
     Route::post('priority/import',      [PriorityController::class      , 'import'      ])->name('priority.db_options.import'     );

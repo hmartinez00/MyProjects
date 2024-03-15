@@ -81,6 +81,18 @@
                                         </button>
                                     <ul class="dropdown-menu">
                                         <li>
+                                            <form method="POST" action="{{ route($views_category . '.sendTelegramMessage', $data_item->id) }}">
+                                                @csrf
+                                                {{-- <input type="submit" class="btn btn-primary mt-4" value="Enviar mensaje {{ $data_item->id }} a Telegram"> --}}
+                                                <button type="submit" class="btn btn-primary m-2 mt-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                                                    </svg>
+                                                    Send message {{ $data_item->id }} by Telegram
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
                                             <form method="POST" action="{{ route($views_category . '.destroy', [$views_category => $data_item->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
@@ -89,7 +101,7 @@
                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                                                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                                     </svg>
-                                                    Borrar item {{ $data_item->id }}
+                                                    Delete item {{ $data_item->id }}
                                                 </button>
                                             </form>
                                         </li>

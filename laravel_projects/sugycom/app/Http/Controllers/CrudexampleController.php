@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use TelegramBot\Api\BotApi;
+
 
 class CrudexampleController extends Controller
 {
@@ -172,7 +174,7 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
-    public function import()
+    public function import(): RedirectResponse
     {
         $views_category = $this->views_category;
         $actions = $this->actions;
@@ -180,7 +182,7 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
-    public function export()
+    public function export(): RedirectResponse
     {
         $views_category = $this->views_category;
         $actions = $this->actions;
@@ -217,7 +219,7 @@ class CrudexampleController extends Controller
 
     }
 
-    public function show_rows( $param = null )
+    public function show_rows( $param = null ): RedirectResponse
     {
         $views_category = $this->views_category;
         $actions = $this->actions;
@@ -230,6 +232,25 @@ class CrudexampleController extends Controller
         file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
 
         return redirect()->route($views_category . '.index', compact('actions', 'rowsList', 'status'));
+    }
+
+    public function sendTelegramMessage(Crudexample $crudexample): RedirectResponse
+    {
+        $items  = Crudexample::all();
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        
+        $telegram = new BotApi("5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA");
+        $chatId = "1580008489";
+
+        $text = $items;
+
+        $telegram->sendMessage(
+            $chatId,
+            $text,
+        );
+
+        return redirect()->route($views_category . '.index', compact('actions'));        
     }
 
 }
