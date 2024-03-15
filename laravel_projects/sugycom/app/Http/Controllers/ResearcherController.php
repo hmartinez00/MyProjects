@@ -26,9 +26,9 @@ class ResearcherController extends Controller
         $this->db_options_json  = $dir[1] . $py_settings[2];
 
         $this->indices_0                = [0, 1, 2, 3, 4];
-        $this->text_index_0             = [1];
-        $this->float_index_0            = [2];
-        $this->datetime_local_index_0   = [4];
+        $this->text_index_0             = [1, 2, 3, 4, 5];
+        $this->float_index_0            = [];
+        $this->datetime_local_index_0   = [6, 7, 8];
         $this->views_category           = 'researcher';
         $this->db_table                 = 'researchers';
 
