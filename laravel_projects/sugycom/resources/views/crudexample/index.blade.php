@@ -132,9 +132,9 @@
                 <div class="dropdown">
                     <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Rows
-                    </a>                   
+                    </a>
                     <ul class="dropdown-menu">
-                        @foreach ($rowsList_2 as $row)
+                        @foreach ($rowsList_dropdown as $row)
                             <li class="page-item"><a class="page-link pr-2" href="{{ route($actions . '.show_rows', ['param' => $row]) }}">{{ $row }}</a></li>
                         @endforeach
                     </ul>

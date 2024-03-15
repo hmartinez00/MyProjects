@@ -21,5 +21,9 @@
         "\/db_options\/export.py",
         "\/db_options\/import.py",
         "\/db_options\/reset_count.py"
+    ],
+    "telegram": [
+        "5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA",
+        "1580008489"
     ]
 }

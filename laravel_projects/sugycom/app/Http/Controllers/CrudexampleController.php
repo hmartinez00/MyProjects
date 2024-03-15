@@ -20,6 +20,8 @@ class CrudexampleController extends Controller
         $database_status        = $directoryData->database_status;
         $py_settings            = $directoryData->py_settings;
         $py_scripts             = $directoryData->py_scripts;
+        
+        $this->telegram         = $directoryData->telegram;
 
         $this->db_options_json  = $dir[1] . $py_settings[2];
 
@@ -82,9 +84,9 @@ class CrudexampleController extends Controller
             $status[1] = FALSE;
         }
 
-        $rowsList_2 = array();
+        $rowsList_dropdown = array();
         for ($j = 1; $j <= $rows; $j++) {
-            $rowsList_2[] = $j;
+            $rowsList_dropdown[] = $j;
         }
 
         $items = Crudexample::whereBetween('id', [$start, $end])->get();
@@ -93,7 +95,7 @@ class CrudexampleController extends Controller
         $indices = $this->indices_0;
         $headers = Schema::getColumnListing($this->db_table);
         $s_headers = array_intersect_key($headers, array_flip($indices));
-        return view($views_category . '.index', compact('rowsList', 'rowsList_2', 'rows', 'start', 'end', 'items', 'views_category', 's_headers', 'actions', 'status'));
+        return view($views_category . '.index', compact('items', 'views_category', 's_headers', 'actions', 'status', 'rowsList', 'rowsList_dropdown'));
     }
 
     /**
@@ -174,6 +176,9 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
+    /**
+     * Import data from storage.
+     */
     public function import(): RedirectResponse
     {
         $views_category = $this->views_category;
@@ -182,6 +187,9 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
+    /**
+     * Export data from storage.
+     */
     public function export(): RedirectResponse
     {
         $views_category = $this->views_category;
@@ -190,6 +198,9 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));
     }
 
+    /**
+     * Auxiliar function for control of pages.
+     */    
     public function step( $param = null )
     {
         $items  = Crudexample::all();
@@ -219,6 +230,9 @@ class CrudexampleController extends Controller
 
     }
 
+    /**
+     * Limit rows shown.
+     */
     public function show_rows( $param = null ): RedirectResponse
     {
         $views_category = $this->views_category;
@@ -234,14 +248,19 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions', 'rowsList', 'status'));
     }
 
+    /**
+     * Special function to send the specified resource from storage by API's telegram.
+     */
     public function sendTelegramMessage(Crudexample $crudexample): RedirectResponse
     {
         $items  = Crudexample::all();
         $views_category = $this->views_category;
         $actions = $this->actions;
+        $api_key = $this->telegram[0];
+        $id = $this->telegram[1];
         
-        $telegram = new BotApi("5522228971:AAE0YIZt7yCH7rhXXQEuRVsh1VsoF8I-vDA");
-        $chatId = "1580008489";
+        $telegram = new BotApi($api_key);
+        $chatId = $id;
 
         $text = $items;
 
