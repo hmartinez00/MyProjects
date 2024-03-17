@@ -262,7 +262,7 @@ class PriorityController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $items;
+        $text = $items[0]->target;
 
         $telegram->sendMessage(
             $chatId,

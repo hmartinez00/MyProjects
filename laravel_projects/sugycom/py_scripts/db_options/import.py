@@ -13,9 +13,14 @@ with open(r"F:\MyProjects\laravel_projects\sugycom\py_scripts\db_options.json") 
 S_base_datos = 'sugycom'
 S_tabla = rootes['db_table']
 
+print(
+    S_base_datos,
+    S_tabla,
+)
+
 df = mysql_extract_table_df(S_base_datos, S_tabla)
 val_index = df.index[-1] + 1
-# print(df.dtypes)
+print(df.dtypes)
 
 file = filedialog.askopenfilename()
 dataf = pd.read_csv(file)
@@ -28,7 +33,7 @@ print(columnas_datetime)
 for _ in columnas_datetime:
     dataf[_]   = dataf[_].astype('datetime64[ns]')
 
-# print(new_index_list)
-# print(dataf.dtypes)
+print(new_index_list)
+print(dataf.dtypes)
 
 Insertar_registro_masivo(dataf, S_base_datos, S_tabla)

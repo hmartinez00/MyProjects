@@ -262,7 +262,7 @@ class CrudexampleController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $items;
+        $text = $items[0]->col_str;
 
         $telegram->sendMessage(
             $chatId,

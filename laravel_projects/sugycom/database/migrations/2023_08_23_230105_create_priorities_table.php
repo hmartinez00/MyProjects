@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('sensor');
             $table->string('status');
             $table->string('code')->nullable();
-            $table->timestamps();
             $table->dateTime('closing_date')->nullable();
+            $table->timestamps();
         });
     }
 
