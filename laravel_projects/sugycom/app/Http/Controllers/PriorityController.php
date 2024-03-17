@@ -122,7 +122,15 @@ class PriorityController extends Controller
         Priority::create($request->all());
         $views_category = $this->views_category;
         $actions = $this->actions;
-        return redirect()->route($views_category . '.index', compact('actions'));
+
+        $values     = $this->step(1);
+
+        $json       = $values[0];
+        $rowsList   = $values[1];
+        $status     = $values[2];
+        file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+
+        return redirect()->route($views_category . '.index', compact('actions', 'rowsList', 'status'));
     }
 
     /**
@@ -172,8 +180,16 @@ class PriorityController extends Controller
         $Priority->delete();
         $views_category = $this->views_category;
         $actions = $this->actions;
+
+        $values     = $this->step(1);
+
+        $json       = $values[0];
+        $rowsList   = $values[1];
+        $status     = $values[2];
+        file_put_contents($this->db_options_json, json_encode($json, JSON_PRETTY_PRINT));
+
         shell_exec('python ' . $this->reset_count_py);
-        return redirect()->route($views_category . '.index', compact('actions'));
+        return redirect()->route($views_category . '.index', compact('actions', 'rowsList', 'status'));
     }
 
     /**
