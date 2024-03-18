@@ -20,8 +20,8 @@ class Priority extends Model
         'sensor',
         'status',
         'code',
+        'closing_date',
         'created_at',
         'updated_at',
-        'closing_date',
     ];
 }

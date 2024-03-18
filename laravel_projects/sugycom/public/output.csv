@@ -1,5 +1,21 @@
-,id,col_str,col_flt,col_int,col_date,created_at,updated_at
-0,5,Fourth,0.01,4,2024-03-06 11:48:00,2024-03-06 15:48:44,2024-03-06 16:24:00
-1,7,Fifth,0.02,2,2024-03-06 12:27:00,2024-03-06 16:27:42,2024-03-06 16:27:42
-2,9,First,0.02,1,2024-03-06 13:04:00,2024-03-06 17:04:59,2024-03-06 17:06:23
-3,10,first,0.01,1,2024-03-07 15:59:00,2024-03-07 19:59:34,2024-03-07 19:59:34
+id,satellite,target,latitude,longitude,duration,vh_angle,mode,sensor,status,code,closing_date,created_at,updated_at
+1,VRSS-2,Colombia_Cundinamarca_Tolemaida_FANB,4.24,-74.64,90,30.0,RealTime/Record,HRC+IRC,Baja,nan,,2020-01-23 09:08:00,2021-10-16 11:17:00
+2,VRSS-1,Curazao_WegNaarHato_AeropueroInternacionaldeCurazao,12.19,-68.96,90,30.0,Record,PMC+WMC,Baja,nan,2023-01-23 00:17:00,2020-08-07 12:57:00,2021-10-16 11:17:00
+3,VRSS-2,Curazao_WegNaarHato_AeropueroInternacionaldeCurazao,12.19,-68.96,90,30.0,Record,HRC+IRC,Baja,nan,,2020-08-07 12:57:00,2021-10-16 11:17:00
+4,VRSS-1,Colombia_Caldas_Palenquero,5.48,-74.76,90,30.0,RealTime/Record,PMC+WMC,Baja,nan,2023-01-23 00:17:00,2020-09-01 04:14:00,2021-10-16 11:17:00
+5,VRSS-2,Colombia_Caldas_Palenquero,5.48,-74.76,90,30.0,RealTime/Record,HRC+IRC,Baja,nan,,2020-09-01 04:14:00,2021-10-16 11:17:00
+6,VRSS-1,Colombia_Medellin_RioNegro,6.17,-75.42,90,30.0,RealTime/Record,PMC+WMC,Baja,nan,2023-01-23 00:17:00,2020-09-01 04:14:00,2021-10-16 11:17:00
+7,VRSS-2,Colombia_Medellin_RioNegro,6.17,-75.42,90,30.0,RealTime/Record,HRC+IRC,Baja,nan,,2020-09-01 04:14:00,2021-10-16 11:17:00
+8,VRSS-1,Colombia_Meta_Apiay,4.08,-73.56,90,30.0,RealTime/Record,PMC+WMC,Baja,nan,2023-01-23 00:17:00,2020-09-01 04:14:00,2021-10-16 11:17:00
+9,VRSS-2,Colombia_Meta_Apiay,4.08,-73.56,90,30.0,RealTime/Record,HRC+IRC,Baja,nan,,2020-09-01 04:14:00,2021-10-16 11:17:00
+10,VRSS-1,Colombia_Atlantico_Malambo_FANB,10.89,-74.78,90,30.0,Realtime/Record,PMC,Baja,oms-202010080001,2023-01-23 00:17:00,2020-10-08 18:04:00,2021-10-16 11:17:00
+11,VRSS-1,Colombia_Vichada_Marandua_FANB,5.52,-68.69,90,30.0,Realtime/Record,PMC,Baja,oms-202010080002,2023-01-23 00:17:00,2020-10-08 18:08:00,2021-10-16 11:17:00
+12,VRSS-2,Colombia_Atlantico_Malambo_FANB,10.89,-74.78,90,30.0,Realtime/Record,HRC+IRC,Baja,oms-202010120001,,2020-10-12 10:39:00,2021-10-16 11:17:00
+13,VRSS-2,Colombia_Vichada_Marandua_FANB,5.52,-68.69,90,30.0,Realtime/Record,HRC+IRC,Baja,oms-202010120002,,2020-10-12 10:40:00,2021-10-16 11:17:00
+14,VRSS-1,Venezuela_Apure_La-Rompida_Urdaneta_FANB,7.06,-71.63,90,25.0,RealTime/Record,PMC+WMC,Baja,nan,2023-01-23 00:17:00,2021-03-05 08:00:00,2021-10-25 03:15:00
+15,VRSS-2,Venezuela_Apure_La-Rompida_Urdaneta_FANB,7.06,-71.63,90,25.0,RealTime/Record,HRC+IRC,Baja,nan,,2021-03-05 08:00:00,2021-10-25 03:15:00
+16,VRSS-2,Venezuela_Apure_La-Victoria_FANB,7.05,-71.36,90,25.0,RealTime/Record,HRC+IRC,Baja,nan,,2021-03-08 10:40:00,2021-10-25 03:15:00
+17,VRSS-1,Venezuela_Apure_La-Victoria_FANB,7.05,-71.36,90,25.0,RealTime/Record,HRC+IRC,Baja,nan,2023-01-23 00:17:00,2021-03-08 10:40:00,2021-10-25 03:15:00
+18,VRSS-2,China - Hainan [Yangpu Bay],19.66,109.17,90,25.0,Record,HRC+IRC,Baja,oms-202110160001,,2021-10-16 15:23:00,2021-10-25 03:15:00
+19,VRSS-2,Venezuela_Bolivar_Rio-Caroni,8.33,-62.87,90,30.0,RealTime/Record,HRC/IRC,Alta,,2024-02-01 10:39:00,2024-03-18 14:41:02,2024-03-18 15:12:42
+20,VRSS-2,Venezuela_Bolivar_Bulla-La-Loca_MINEC,6.22,-63.74,90,30.0,RealTime/Record,HRC/IRC,Alta,,2024-03-08 16:46:00,2024-03-18 14:44:28,2024-03-18 14:44:28

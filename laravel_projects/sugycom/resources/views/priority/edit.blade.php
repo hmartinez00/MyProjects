@@ -38,7 +38,7 @@
                                         @elseif ( in_array($header, $headers_datetime_local ))
                                             <input type="datetime-local" name="{{ $header }}" class="form-control" value="{{ $data_item->$header }}">
                                         @elseif ( in_array($header, $headers_float ))
-                                            <input type="number" name="{{ $header }}" step="0.01" class="form-control" value="{{ $data_item->$header }}">
+                                            <input type="number" name="{{ $header }}" step="0.00001" class="form-control" value="{{ $data_item->$header }}">
                                         @else
                                             <input type="number" name="{{ $header }}" class="form-control" value="{{ $data_item->$header }}">
                                         @endif

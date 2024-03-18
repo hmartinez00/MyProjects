@@ -267,7 +267,7 @@ class PriorityController extends Controller
     /**
      * Special function to send the specified resource from storage by API's telegram.
      */
-    public function sendTelegramMessage(Priority $Priority): RedirectResponse
+    public function sendTelegramMessage(Priority $priority): RedirectResponse
     {
         $items  = Priority::all();
         $views_category = $this->views_category;
@@ -278,7 +278,7 @@ class PriorityController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $items[0]->target;
+        $text = $priority;
 
         $telegram->sendMessage(
             $chatId,

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('satellite');
             $table->string('target');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->float('latitude', 8, 5);
+            $table->float('longitude', 8, 5);
             $table->integer('duration');
             $table->float('vh_angle');
             $table->string('mode');
