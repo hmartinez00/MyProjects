@@ -278,7 +278,14 @@ class PriorityController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $priority;
+        $text = 'Solicitud de incorporación de target en escenario: ' . "\n\n" .
+        'Target: '      . $priority->target     . "\n" .
+        'Latitude: '    . $priority->latitude   . "\n" .
+        'Longitude: '   . $priority->longitude  . "\n" .
+        'Angle: '       . $priority->vh_angle   . "\n" .
+        'Date: '        . $priority->created_at . "\n\n" .
+        'Favor remitir a la brevedad datos de próximo acceso y simulación meteorológica sobre la zona.';
+
 
         $telegram->sendMessage(
             $chatId,
