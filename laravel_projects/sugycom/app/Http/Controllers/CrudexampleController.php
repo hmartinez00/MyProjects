@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crudexample;
+use App\Mail\TestMail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use TelegramBot\Api\BotApi;
+use Illuminate\Support\Facades\Mail;
 
 
 class CrudexampleController extends Controller
@@ -290,7 +292,11 @@ class CrudexampleController extends Controller
 
     public function mailme()
     {
-        
+        $views_category = $this->views_category;
+        $actions = $this->actions;
+        // Mail::to('hectoralonzomartinez00@gmail.com')->send(new TestMail('Hector Martinez'));
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new TestMail(env('MAIL_FROM_NAME')));
+        return redirect()->route($views_category . '.index', compact('actions'));        
     }
 
 }
