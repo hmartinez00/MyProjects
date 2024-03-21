@@ -288,4 +288,9 @@ class CrudexampleController extends Controller
         return redirect()->route($views_category . '.index', compact('actions'));        
     }
 
+    public function mailme()
+    {
+        
+    }
+
 }

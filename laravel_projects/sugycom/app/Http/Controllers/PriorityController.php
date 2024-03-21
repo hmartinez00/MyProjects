@@ -279,11 +279,14 @@ class PriorityController extends Controller
         $chatId = $id;
 
         $text = 'Solicitud de incorporación de target en escenario: ' . "\n\n" .
-        'Target: '      . $priority->target     . "\n" .
-        'Latitude: '    . $priority->latitude   . "\n" .
-        'Longitude: '   . $priority->longitude  . "\n" .
-        'Angle: '       . $priority->vh_angle   . "\n" .
-        'Date: '        . $priority->created_at . "\n\n" .
+        'Target: '      . $priority->target     . "\n"      .
+        'Latitude: '    . $priority->latitude   . "\n"      .
+        'Longitude: '   . $priority->longitude  . "\n"      .
+        'Angle: '       . $priority->vh_angle   . "\n"      .
+        'Mode: '        . $priority->mode       . "\n"      .
+        'Sensor: '      . $priority->sensor     . "\n"      .
+        'Status: '      . $priority->status     . "\n"      .
+        'Date: '        . $priority->created_at . "\n\n"    .
         'Favor remitir a la brevedad datos de próximo acceso y simulación meteorológica sobre la zona.';
 
 

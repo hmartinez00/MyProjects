@@ -47,11 +47,12 @@ Route::middleware('auth')->group(function () {
     Route::get('table/{param?}/{data_item?}', [Trigger_planController::class, 'table'])->name('trigger.table');
     
     Route::resource('/crudexample', CrudexampleController::class);
-    Route::post(    'crudexample/export',                   [CrudexampleController::class,  'export'                ])->name('crudexample.db_options.export'    );
-    Route::post(    'crudexample/import',                   [CrudexampleController::class,  'import'                ])->name('crudexample.db_options.import'    );
-    Route::get(     'crudexample/step/{param?}',            [CrudexampleController::class,  'step'                  ])->name('crudexample.db_options.step'      );
-    Route::get(     'crudexample/show_rows/{param?}',       [CrudexampleController::class,  'show_rows'             ])->name('crudexample.db_options.show_rows' );
+    Route::post(    'crudexample/export',                       [CrudexampleController::class,  'export'                ])->name('crudexample.db_options.export'    );
+    Route::post(    'crudexample/import',                       [CrudexampleController::class,  'import'                ])->name('crudexample.db_options.import'    );
+    Route::get(     'crudexample/step/{param?}',                [CrudexampleController::class,  'step'                  ])->name('crudexample.db_options.step'      );
+    Route::get(     'crudexample/show_rows/{param?}',           [CrudexampleController::class,  'show_rows'             ])->name('crudexample.db_options.show_rows' );
     Route::post(    'crudexample/send-message/{crudexample?}',  [CrudexampleController::class,  'sendTelegramMessage'   ])->name('crudexample.sendTelegramMessage'  );
+    Route::post(    'crudexample/mailme/{crudexample?}',        [CrudexampleController::class,  'mailme'                ])->name('crudexample.mailme'               );
     
     Route::resource('/priority', PriorityController::class);
     Route::post(    'priority/export',                      [PriorityController::class,     'export'                ])->name('priority.db_options.export'       );
