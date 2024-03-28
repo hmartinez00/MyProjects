@@ -18,6 +18,7 @@
         "\/trigger\/compress.py",
         "\/trigger\/trackingplan.py",
         "\/trigger\/extract_dates.py",
+        "\/trigger\/missions_df_builder.py",
         "\/db_options\/export.py",
         "\/db_options\/import.py",
         "\/db_options\/reset_count.py"

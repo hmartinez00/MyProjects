@@ -294,8 +294,8 @@ class CrudexampleController extends Controller
     {
         $views_category = $this->views_category;
         $actions = $this->actions;
-        // Mail::to('hectoralonzomartinez00@gmail.com')->send(new TestMail('Hector Martinez'));
-        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new TestMail(env('MAIL_FROM_NAME')));
+        Mail::to('hmartinez@abae.gob.ve')->send(new TestMail('hmartinez'));
+        // Mail::to(env('MAIL_FROM_ADDRESS'))->send(new TestMail(env('MAIL_FROM_NAME')));
         return redirect()->route($views_category . '.index', compact('actions'));        
     }
 

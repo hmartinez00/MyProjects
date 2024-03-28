@@ -34,6 +34,7 @@ class Trigger_planController extends Controller
         $this->compress_py          = $this->directorio_0 . $py_scripts[3]  ;#'/trigger/compress.py';
         $this->trackingplan_py      = $this->directorio_0 . $py_scripts[4]  ;#'/trigger/trackingplan.py';
         $this->extract_dates_py     = $this->directorio_0 . $py_scripts[5]  ;#'/trigger/extract_dates.py';
+        $this->missions_df_builder_py     = $this->directorio_0 . $py_scripts[6]  ;#'trigger/missions_df_builder.py';
         $this->views_category       = 'trigger';
         $this->database             = '/data';
         $this->missions             = '/Seleccion de Misiones';
@@ -61,9 +62,8 @@ class Trigger_planController extends Controller
         $json->missions = $missions;
         $json->plans = $plans;
         file_put_contents($this->rootes_json, json_encode($json, JSON_PRETTY_PRINT));
-    
         $result = array($compendium, $missions, $plans);
-        
+
         return $result;
     }    
 
@@ -71,7 +71,8 @@ class Trigger_planController extends Controller
     {
         $views_category = $this->views_category;
         $matriz = $this->select_0( $data_item );
-        $param = shell_exec('python ' . $this->extract_dates_py);;
+        shell_exec('py ' . $this->missions_df_builder_py);
+        $param = shell_exec('python ' . $this->extract_dates_py);
         $result = explode(
             ',',    str_replace("'", " ", 
                     str_replace("(", " ", 
@@ -85,7 +86,6 @@ class Trigger_planController extends Controller
         );
         $starttime = $result[0];
         $endtime = $result[1];
-
         return redirect()->route($views_category . '.index', compact('starttime', 'endtime'));
     }
 
@@ -183,10 +183,12 @@ class Trigger_planController extends Controller
     public function table( $param = null, $data_item = null )
     {
         $views_category = $this->views_category;
+        $this->select_0( $data_item );
         if          ( $param == 'tcplan' ){
             $data_item = shell_exec('python ' . $this->trackingplan_py);
         } else if   ( $param == 'cplan' ) {
-            $data_item = 'No data';
+            // $data_item = $this->select_0( $data_item );
+            $data_item = shell_exec('py ' . $this->missions_df_builder_py);
         } else {
             $data_item = 'No data';
         }

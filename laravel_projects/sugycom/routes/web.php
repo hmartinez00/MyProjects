@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('select/{data_item?}', [Trigger_planController::class, 'select'])->name('trigger.select');
     Route::get('table/{param?}/{data_item?}', [Trigger_planController::class, 'table'])->name('trigger.table');
     
-    Route::resource('/crudexample', CrudexampleController::class);
+    Route::resource('/crudexample', CrudexampleController::class    );
     Route::post(    'crudexample/export',                       [CrudexampleController::class,  'export'                ])->name('crudexample.db_options.export'    );
     Route::post(    'crudexample/import',                       [CrudexampleController::class,  'import'                ])->name('crudexample.db_options.import'    );
     Route::get(     'crudexample/step/{param?}',                [CrudexampleController::class,  'step'                  ])->name('crudexample.db_options.step'      );
@@ -54,18 +54,18 @@ Route::middleware('auth')->group(function () {
     Route::post(    'crudexample/send-message/{crudexample?}',  [CrudexampleController::class,  'sendTelegramMessage'   ])->name('crudexample.sendTelegramMessage'  );
     Route::post(    'crudexample/mailme/{crudexample?}',        [CrudexampleController::class,  'mailme'                ])->name('crudexample.mailme'               );
     
-    Route::resource('/priority', PriorityController::class);
-    Route::post(    'priority/export',                      [PriorityController::class,     'export'                ])->name('priority.db_options.export'       );
-    Route::post(    'priority/import',                      [PriorityController::class,     'import'                ])->name('priority.db_options.import'       );
-    Route::get(     'priority/step/{param?}',               [PriorityController::class,     'step'                  ])->name('priority.db_options.step'         );
-    Route::get(     'priority/show_rows/{param?}',          [PriorityController::class,     'show_rows'             ])->name('priority.db_options.show_rows'    );
-    Route::post(    'priority/send-message/{priority?}',    [PriorityController::class,     'sendTelegramMessage'   ])->name('priority.sendTelegramMessage'     );
+    Route::resource('/priority', PriorityController::class          );
+    Route::post(    'priority/export',                          [PriorityController::class,     'export'                ])->name('priority.db_options.export'       );
+    Route::post(    'priority/import',                          [PriorityController::class,     'import'                ])->name('priority.db_options.import'       );
+    Route::get(     'priority/step/{param?}',                   [PriorityController::class,     'step'                  ])->name('priority.db_options.step'         );
+    Route::get(     'priority/show_rows/{param?}',              [PriorityController::class,     'show_rows'             ])->name('priority.db_options.show_rows'    );
+    Route::post(    'priority/send-message/{priority?}',        [PriorityController::class,     'sendTelegramMessage'   ])->name('priority.sendTelegramMessage'     );
     
-    Route::resource('/researcher', ResearcherController::class);
-    Route::post(    'researcher/export',                    [ResearcherController::class,   'export'                ])->name('researcher.db_options.export'     );
-    Route::post(    'researcher/import',                    [ResearcherController::class,   'import'                ])->name('researcher.db_options.import'     );
-    Route::get(     'researcher/step/{param?}',             [ResearcherController::class,   'step'                  ])->name('researcher.db_options.step'       );
-    Route::get(     'researcher/show_rows/{param?}',        [ResearcherController::class,   'show_rows'             ])->name('researcher.db_options.show_rows'  );
+    Route::resource('/researcher', ResearcherController::class      );
+    Route::post(    'researcher/export',                        [ResearcherController::class,   'export'                ])->name('researcher.db_options.export'     );
+    Route::post(    'researcher/import',                        [ResearcherController::class,   'import'                ])->name('researcher.db_options.import'     );
+    Route::get(     'researcher/step/{param?}',                 [ResearcherController::class,   'step'                  ])->name('researcher.db_options.step'       );
+    Route::get(     'researcher/show_rows/{param?}',            [ResearcherController::class,   'show_rows'             ])->name('researcher.db_options.show_rows'  );
     Route::post(    'researcher/send-message/{researcher?}',    [ResearcherController::class,   'sendTelegramMessage'   ])->name('researcher.sendTelegramMessage'   );
     
     
