@@ -35,9 +35,9 @@ class CrudexampleController extends Controller
         $this->db_table                 = 'crudexamples';
 
         $this->actions                  = $this->views_category . '.db_options';
-        $this->export_py                = $dir[1] . $py_scripts[6]; #'/db_options/export.py';
-        $this->import_py                = $dir[1] . $py_scripts[7]; #'/db_options/import.py';
-        $this->reset_count_py           = $dir[1] . $py_scripts[8]; #'/db_options/reset_count.py';
+        $this->export_py                = $dir[1] . '/db_options/export.py';
+        $this->import_py                = $dir[1] . '/db_options/import.py';
+        $this->reset_count_py           = $dir[1] . '/db_options/reset_count.py';
     }
 
     /**
@@ -213,7 +213,7 @@ class CrudexampleController extends Controller
         $views_category = $this->views_category;
         $actions = $this->actions;
         shell_exec('python ' . $this->export_py);
-        return redirect()->route($views_category . '.index', compact('actions'));
+        return redirect()->route($views_category . '.index', compact('views_category', 'actions'));
     }
 
     /**

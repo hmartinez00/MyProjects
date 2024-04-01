@@ -22,6 +22,7 @@
                         </button>
                     </form>
                     <form action="{{ route($actions . '.export') }}" method="POST">
+                    {{-- <form action="{{ route($views_category . '.export') }}" method="POST"> --}}
                         @csrf
                         <button type="submit" class="btn btn-success m-2 ms-5 nav-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">

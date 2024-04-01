@@ -33,9 +33,9 @@ class ResearcherController extends Controller
         $this->db_table                 = 'researchers';
 
         $this->actions                  = $this->views_category . '.db_options';
-        $this->export_py                = $dir[1] . $py_scripts[6]; #'/db_options/export.py';
-        $this->import_py                = $dir[1] . $py_scripts[7]; #'/db_options/import.py';
-        $this->reset_count_py           = $dir[1] . $py_scripts[8]; #'/db_options/reset_count.py';
+        $this->export_py                = $dir[1] . '/db_options/export.py';
+        $this->import_py                = $dir[1] . '/db_options/import.py';
+        $this->reset_count_py           = $dir[1] . '/db_options/reset_count.py';
     }
 
     /**
