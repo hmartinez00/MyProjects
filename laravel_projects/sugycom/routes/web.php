@@ -5,6 +5,7 @@ use App\Http\Controllers\ResearcherController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CrudexampleController;
 use App\Http\Controllers\Trigger_planController;
+use App\Http\Controllers\OndutyController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,12 @@ Route::middleware('auth')->group(function () {
     Route::get(     'researcher/show_rows/{param?}',            [ResearcherController::class,   'show_rows'             ])->name('researcher.db_options.show_rows'  );
     Route::post(    'researcher/send-message/{researcher?}',    [ResearcherController::class,   'sendTelegramMessage'   ])->name('researcher.sendTelegramMessage'   );
     
+    Route::resource('/onduty', OndutyController::class              );
+    Route::post(    'onduty/export',                            [OndutyController::class,   'export'                    ])->name('onduty.db_options.export'         );
+    Route::post(    'onduty/import',                            [OndutyController::class,   'import'                    ])->name('onduty.db_options.import'         );
+    Route::get(     'onduty/step/{param?}',                     [OndutyController::class,   'step'                      ])->name('onduty.db_options.step'           );
+    Route::get(     'onduty/show_rows/{param?}',                [OndutyController::class,   'show_rows'                 ])->name('onduty.db_options.show_rows'      );
+    Route::post(    'onduty/send-message/{onduty?}',            [OndutyController::class,   'sendTelegramMessage'       ])->name('onduty.sendTelegramMessage'       );  
     
 });
 
