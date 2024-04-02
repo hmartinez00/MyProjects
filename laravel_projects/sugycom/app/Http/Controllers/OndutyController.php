@@ -30,7 +30,7 @@ class OndutyController extends Controller
         $this->indices_0                = [1, 2, 3, 4, 5];
         $this->text_index_0             = [2, 3];
         $this->float_index_0            = [];
-        $this->date_index_0            = [4, 5, 6];
+        $this->date_index_0             = [4, 5, 6];
         $this->datetime_local_index_0   = [];
         $this->views_category           = 'onduty';
         $this->db_table                 = 'onduties';

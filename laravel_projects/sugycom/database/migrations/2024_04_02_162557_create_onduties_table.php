@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('semana_nro')->nullable();
             $table->string('principal')->nullable();
             $table->string('Apoyo')->nullable();
-            $table->date('dia_planificacion')->nullable();
-            $table->date('lapso_inicio')->nullable();
-            $table->date('lapso_fin')->nullable();
+            $table->dateTime('dia_planificacion')->nullable();
+            $table->dateTime('lapso_inicio')->nullable();
+            $table->dateTime('lapso_fin')->nullable();
             $table->timestamps();
         });
     }

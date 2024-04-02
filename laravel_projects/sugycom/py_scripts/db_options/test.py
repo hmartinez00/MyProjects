@@ -33,6 +33,6 @@ print(columnas_datetime)
 for _ in columnas_datetime:
     dataf[_]   = dataf[_].astype('datetime64[ns]')
 
-print(new_index_list)
+# print(new_index_list)
 print(dataf.dtypes)
 
