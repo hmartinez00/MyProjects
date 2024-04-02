@@ -27,11 +27,11 @@ class OndutyController extends Controller
 
         $this->db_options_json  = $dir[1] . $py_settings[2];
 
-        $this->indices_0                = [1, 2, 3, 4, 5];
+        $this->indices_0                = [1, 2, 3, 4, 5, 6];
         $this->text_index_0             = [2, 3];
         $this->float_index_0            = [];
-        $this->date_index_0             = [4, 5, 6];
-        $this->datetime_local_index_0   = [];
+        $this->date_index_0             = [];
+        $this->datetime_local_index_0   = [4, 5, 6];
         $this->views_category           = 'onduty';
         $this->db_table                 = 'onduties';
 
@@ -141,9 +141,9 @@ class OndutyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Onduty $Onduty): View
+    public function show(Onduty $onduty): View
     {
-        $data_item = $Onduty;
+        $data_item = $onduty;
         $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         return view($views_category . '.show', compact('data_item', 'views_category', 'headers'));
@@ -152,9 +152,9 @@ class OndutyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Onduty $Onduty): View
+    public function edit(Onduty $onduty): View
     {
-        $data_item = $Onduty;
+        $data_item = $onduty;
         $views_category = $this->views_category;
         $headers = Schema::getColumnListing($this->db_table);
         $text_index = $this->text_index_0;
@@ -171,9 +171,9 @@ class OndutyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Onduty $Onduty): RedirectResponse
+    public function update(Request $request, Onduty $onduty): RedirectResponse
     {
-        $data_item = $Onduty;
+        $data_item = $onduty;
         $views_category = $this->views_category;
         $data_item->update($request->all());
         return redirect()->route($views_category . '.show', $data_item->id);
@@ -182,9 +182,9 @@ class OndutyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Onduty $Onduty): RedirectResponse
+    public function destroy(Onduty $onduty): RedirectResponse
     {
-        $Onduty->delete();
+        $onduty->delete();
         $views_category = $this->views_category;
         $actions = $this->actions;
 
@@ -274,7 +274,7 @@ class OndutyController extends Controller
     /**
      * Special function to send the specified resource from storage by API's telegram.
      */
-    public function sendTelegramMessage(Onduty $Onduty): RedirectResponse
+    public function sendTelegramMessage(Onduty $onduty): RedirectResponse
     {
         $items  = Onduty::all();
         $views_category = $this->views_category;
@@ -285,7 +285,13 @@ class OndutyController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $Onduty;
+        $text = 
+        'Saludos. Aca el próximo equipo de guardia de OMS designado para la semana del ' .
+        date('Y-m-d', strtotime($onduty->dia_planificacion)) . ' (Semana Nro ' . 
+        $onduty->semana_nro . '), ' . 
+        'acorde al cronograma de guardias:' . "\n\n" .
+        'Planificación: ' . $onduty->principal . "\n" .
+        'Personal de apoyo: ' . $onduty->Apoyo ;
 
         $telegram->sendMessage(
             $chatId,
