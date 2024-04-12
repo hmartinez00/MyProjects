@@ -6,6 +6,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CrudexampleController;
 use App\Http\Controllers\Trigger_planController;
 use App\Http\Controllers\OndutyController;
+use App\Http\Controllers\SpecialeventController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,13 @@ Route::middleware('auth')->group(function () {
     Route::get(     'onduty/step/{param?}',                     [OndutyController::class,   'step'                      ])->name('onduty.db_options.step'           );
     Route::get(     'onduty/show_rows/{param?}',                [OndutyController::class,   'show_rows'                 ])->name('onduty.db_options.show_rows'      );
     Route::post(    'onduty/send-message/{onduty?}',            [OndutyController::class,   'sendTelegramMessage'       ])->name('onduty.sendTelegramMessage'       );  
+    
+    Route::resource('/specialevent', SpecialeventController::class              );
+    Route::post(    'specialevent/export',                              [SpecialeventController::class,   'export'                    ])->name('specialevent.db_options.export'         );
+    Route::post(    'specialevent/import',                              [SpecialeventController::class,   'import'                    ])->name('specialevent.db_options.import'         );
+    Route::get(     'specialevent/step/{param?}',                       [SpecialeventController::class,   'step'                      ])->name('specialevent.db_options.step'           );
+    Route::get(     'specialevent/show_rows/{param?}',                  [SpecialeventController::class,   'show_rows'                 ])->name('specialevent.db_options.show_rows'      );
+    Route::post(    'specialevent/send-message/{specialevent?}',        [SpecialeventController::class,   'sendTelegramMessage'       ])->name('specialevent.sendTelegramMessage'       );  
     
 });
 

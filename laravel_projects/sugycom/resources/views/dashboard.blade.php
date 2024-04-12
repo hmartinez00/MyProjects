@@ -15,6 +15,7 @@
                         <li><a href="{{ route('researcher.index') }}">Researchers</a></li>
                         <li><a href="{{ route('crudexample.index') }}">Crudexamples</a></li>
                         <li><a href="{{ route('onduty.index') }}">On duties</a></li>
+                        <li><a href="{{ route('specialevent.index') }}">Special events</a></li>
                         <li><a href="{{ route('trigger.index') }}">Trigger</a></li>
                         <li><a href="{{ route('setting.index') }}">Settings</a></li>
                     </ul>
