@@ -296,7 +296,27 @@ class SpecialeventController extends Controller
         $telegram = new BotApi($api_key);
         $chatId = $id;
 
-        $text = $Specialevent;
+        $nombre = $Specialevent->nombre;
+        $index = array_search($nombre, $this->options);
+        $next_index_0 = $index + 1;
+        if ( $next_index_0 >= count($this->options) ){
+            $next_index_0 = 0;
+        }
+        $next_index_1 = $next_index_0 + 1;
+        if ( $next_index_1 >= count($this->options) ){
+            $next_index_1 = 0;
+        }
+
+        $text = 'Asunto: Convocatoria - Eventos especiales (ABAE, DAE, MinCyT, Presidencia)' . "\n\n" .
+        'Cordiales saludos para todos compañeros.' . "\n\n" .
+        'Se nos ha solicitado apoyo por parte del Ministerio para la asistencia' .
+        'a un evento con motivo de: ' . $Specialevent->descripcion . '. ' .
+        'La convocatoria ha sido realizada con fecha: ' . $Specialevent->fecha . ' HLV.' . "\n\n" .
+        'En esta oportunidad, dicho apoyo será prestado por nuestro compañero: ' . $Specialevent->nombre . "\n\n" .
+        'Por favor prevenidos para las próximas convocatorias según el esquema de rotación, ' .
+        'salvo situación excepcional por guardia o salud, los compañeros: ' . "\n\n" .
+        $this->options[$next_index_0] . ' y ' .
+        $this->options[$next_index_1];
 
         $telegram->sendMessage(
             $chatId,
