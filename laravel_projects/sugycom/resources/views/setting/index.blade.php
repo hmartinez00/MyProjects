@@ -55,12 +55,12 @@
                                 </td>
                             </tr>
 
-                            {{-- <div class="offcanvas offcanvas-top" tabindex="-1" id="directories" aria-labelledby="directoriesLabel">
+                            <div class="offcanvas offcanvas-top" tabindex="-1" id="directories" aria-labelledby="directoriesLabel">
                                 <div class="offcanvas-header">
                                     <h5 class="offcanvas-title" id="directoriesLabel">Offcanvas top</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
-                                <div class="offcanvas-body">                                   
+                                <div class="offcanvas-body">                            
 
                                     <input type="text" name="input_directories" class="form-control">
                                     <button type="submit" class="btn btn-success mt-2">
@@ -82,7 +82,7 @@
                                                                       
                                 </div>
 
-                            </div> --}}
+                            </div>
 
                             @forelse ($dir as $item)
                                 <tr>

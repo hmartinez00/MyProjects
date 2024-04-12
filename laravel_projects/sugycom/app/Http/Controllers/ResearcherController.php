@@ -25,7 +25,7 @@ class ResearcherController extends Controller
 
         $this->db_options_json  = $dir[1] . $py_settings[2];
 
-        $this->indices_0                = [0, 1, 2, 3, 4];
+        $this->indices_0                = [0, 1, 2, 3, 4, 6];
         $this->text_index_0             = [1, 2, 3, 4, 5];
         $this->float_index_0            = [];
         $this->datetime_local_index_0   = [6, 7, 8];
@@ -36,6 +36,8 @@ class ResearcherController extends Controller
         $this->export_py                = $dir[1] . '/db_options/export.py';
         $this->import_py                = $dir[1] . '/db_options/import.py';
         $this->reset_count_py           = $dir[1] . '/db_options/reset_count.py';
+
+        $this->num_rows                 = 7;
     }
 
     /**
@@ -46,8 +48,8 @@ class ResearcherController extends Controller
         $items  = Researcher::all();
         $rows   = count($items);
         $start  = 1;
-        if ( $rows > $start + 4 ){
-            $end = $start + 4;
+        if ( $rows > $start + $this->num_rows ){
+            $end = $start + $this->num_rows;
         } else {
             $end = $rows;
         }
@@ -222,8 +224,8 @@ class ResearcherController extends Controller
         $items  = Researcher::all();
         $rows   = count($items);
         $start  = intval($param);
-        if ( $rows > $start + 4 ){
-            $end = $start + 4;
+        if ( $rows > $start + $this->num_rows ){
+            $end = $start + $this->num_rows;
         } else {
             $end = $rows;
         }
