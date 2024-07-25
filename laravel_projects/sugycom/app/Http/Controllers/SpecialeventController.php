@@ -312,9 +312,8 @@ class SpecialeventController extends Controller
         'Se nos ha solicitado apoyo por parte del Ministerio para la asistencia' .
         'a un evento con motivo de: ' . $Specialevent->descripcion . '. ' .
         'La convocatoria ha sido realizada con fecha: ' . $Specialevent->fecha . ' HLV.' . "\n\n" .
-        'En esta oportunidad, dicho apoyo será prestado por nuestro compañero: ' . $Specialevent->nombre . "\n\n" .
-        'Por favor prevenidos para las próximas convocatorias según el esquema de rotación, ' .
-        'salvo situación excepcional por guardia o salud, los compañeros: ' . "\n\n" .
+        'En esta oportunidad, dicho apoyo será prestado por nuestros compañeros: ' . $Specialevent->nombre . "\n\n" .
+        'Por favor prevenidos para las próximas convocatorias según el esquema de rotación, y en función del listado de los últimos eventos y la asistencia confirmada, salvo situación excepcional por guardia o salud, los compañeros: ' . "\n\n" .
         $this->options[$next_index_0] . ' y ' .
         $this->options[$next_index_1];
 
