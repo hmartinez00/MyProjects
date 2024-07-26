@@ -10,6 +10,7 @@
             "Hacer autocommit",
             "Opciones Backend",
             "Consultar Gemini Pro",
+            "Guardar consulta",
             "Agregar Script",
             "Volcar a DB"
         ],
@@ -17,6 +18,7 @@
             "scripts/git_update.py",
             "scripts/backend_menu.py",
             "scripts/app.py",
+            "scripts\\save_quest.py",
             "scripts/add_script.py",
             "scripts/test.py"
         ]
